@@ -1,0 +1,225 @@
+{
+  "topic": "Spring Batch",
+  "questions": [
+    {
+      "question": "What is `Spring Batch` and what are its core features?",
+      "answer": "Spring Batch is a framework for batch processing, designed to handle large volumes of data.\n\nCore features include:\n- Job and step configurations\n- chunk-based processing\n- declarative I/O\n- transaction management\n- scalability"
+    },
+    {
+      "question": "Describe the main components of Spring Batch (Job, Step, ItemReader, ItemProcessor, ItemWriter, JobRepository, JobLauncher).",
+      "answer": "`Job`: Represents the entire batch process.\n- `Step`: Encapsulates an independent, logical section of the job.\n- `ItemReader`: Reads data.\n- `ItemProcessor`: Processes data\n- `ItemWriter`: Writes data.\n- `JobRepository`: Stores job execution metadata.\n- `JobLauncher`: Launches the job."
+    },
+    {
+      "question": "Explain chunk-based processing and its benefits.",
+      "answer": "**Chunk-based processing**:\n- data is read, processed, and written in chunks.\n\n**Benefits**:\n- Improves performance and manages transactions efficiently, reducing memory usage."
+    },
+    {
+      "question": "How does Spring Batch handle transaction management?",
+      "answer": "- Spring Batch integrates with Spring's transaction management.\n- Each step can be configured with its own transaction boundaries\n- Chunk-based processing ensures that transactions are committed after each chunk."
+    },
+    {
+      "question": "What are retry and skip capabilities in Spring Batch?",
+      "answer": "- **Retry**: Allows a step to retry operations on failure, with configurable retry limits.\n- **Skip**: Enables skipping of failed records within a step, with configurable skip limits."
+    },
+    {
+      "question": "Can you describe a scenario where you would use Spring Batch?",
+      "answer": "Spring Batch is ideal for processing large data sets such as:\n- Migrating data from one system to another\n- Performing nightly data aggregations\n- Generating reports from a database"
+    },
+    {
+      "question": "How do you configure a Spring Batch job?",
+      "answer": "A Spring Batch job is configured using XML or Java configuration. Define the `job`, `steps`, `readers`, `processors`, `writers`, and job repository in the configuration."
+    },
+    {
+      "question": "What is the role of the JobRepository in Spring Batch?",
+      "answer": "`JobRepository`:\n- Stores metadata related to job executions, such as job parameters, execution status, and step executions\n- It provides a way to manage and query job execution data."
+    },
+    {
+      "question": "How do you implement parallel processing in Spring Batch?",
+      "answer": "Parallel processing can be achieved using partitioning:\n- A step is divided into multiple partitions that can be processed in parallel\n- Multi-threaded step execution -> Multiple threads process items within a step."
+    },
+    {
+      "question": "What are the advantages of using Spring Batch for batch processing?",
+      "answer": "Spring Batch offers:\n- Robust transaction management\n- Scalability\n- Declarative I/O\n- Built-in retry and skip capabilities\n- Seamless integration with the Spring ecosystem"
+    },
+    {
+      "question": "What is a `JobExecution` in Spring Batch?",
+      "answer": "Represents the execution of a Job:\n- It holds metadata about the job's execution, such as start time, end time, status, and exit status."
+    },
+    {
+      "question": "What is a `StepExecution` in Spring Batch?",
+      "answer": "Represents the execution of a Step\n\nIt contains information about the step's execution including:\n- start and end times\n- read count\n- write count\n- commit count\n- statuses"
+    },
+    {
+      "question": "How do you handle job parameters in Spring Batch?",
+      "answer": "- Job parameters can be passed when a job is launched\n- They are used to control the job's behavior and can be accessed within the job using `JobParameters`."
+    },
+    {
+      "question": "What is a `Tasklet` in Spring Batch, and when would you use it?",
+      "answer": "- A `Tasklet` is a simple interface for performing a single task within a step\n- Use `Tasklet` for non-chunk processing, such as running a command or performing a single operation."
+    },
+    {
+      "question": "How do you implement job listeners in Spring Batch?",
+      "answer": "- Job listeners can be implemented by implementing the `JobExecutionListener` interface.\n- They provide hooks for actions before and after a job's execution."
+    },
+    {
+      "question": "What is job partitioning, and how does it work in Spring Batch?",
+      "answer": "- Job partitioning splits a step into multiple partitions, each processed in parallel\n- It is used for scaling out processing by distributing data across multiple threads or processes."
+    },
+    {
+      "question": "How does Spring Batch support multi-threaded processing?",
+      "answer": "- Spring Batch supports multi-threaded processing through the `TaskExecutor` abstraction.\n- By configuring a `TaskExecutor` on a step, multiple threads can process items concurrently."
+    },
+    {
+      "question": "What are the different ways to configure a job in Spring Batch?",
+      "answer": "Jobs in Spring Batch can be configured using XML configuration or Java-based configuration (using `@Configuration` and `@Bean` annotations)."
+    },
+    {
+      "question": "Explain the purpose of ItemStream in Spring Batch.",
+      "answer": "- `ItemStream` is an interface used to manage the state of an `ItemReader` or `ItemWriter` across transactions\n- It provides methods to open, update, and close the stream."
+    },
+    {
+      "question": "What are the common exit statuses in Spring Batch, and what do they indicate?",
+      "answer": "Common exit statuses include:\n- `COMPLETED`\n- `FAILED`\n- `STOPPED`\n- `UNKNOWN`. They indicate the final outcome of a job or step execution."
+    },
+    {
+      "question": "What is Spring Batch, and why is it useful?",
+      "answer": "**Definition**:\nSpring Batch is a framework for processing **large volumes of data** in a batch-oriented manner.\n\n**Features**:\n- Transaction Management\n- Chunk Processing\n- Parallel Processing\n- Retry & Skip Logic\n\nExample Job Configuration:\n```java\n@Configuration\n@EnableBatchProcessing\npublic class BatchConfig {\n    @Bean\n    public Job job(JobBuilderFactory jobBuilderFactory, Step step) {\n        return jobBuilderFactory.get(\"myJob\")\n            .start(step)\n            .build();\n    }\n\n    @Bean\n    public Step step(StepBuilderFactory stepBuilderFactory, ItemReader<String> reader, ItemWriter<String> writer) {\n        return stepBuilderFactory.get(\"myStep\")\n            .<String, String>chunk(10)\n            .reader(reader)\n            .writer(writer)\n            .build();\n    }\n}\n```"
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    }
+  ]
+}

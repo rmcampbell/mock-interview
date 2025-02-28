@@ -1,0 +1,57 @@
+{
+  "topic": "Advanced Java",
+  "questions": [
+    {
+      "question": "What is the difference between `synchronized` block and `ReentrantLock`?",
+      "answer": "`synchronized`:\n- Implicit locking mechanism\n- Lock is released automatically when the thread exits the synchronized block or method\n\n`ReentrantLock`:\n- Explicit locking mechanism\n- Provides additional features like try-lock, timed lock, and interruptible lock acquisition\n- Requires manual unlocking, which gives more control"
+    },
+    {
+      "question": "What are the differences between `String`, `StringBuilder`, and `StringBuffer`?",
+      "answer": "`String`:\n- Immutable; once created, it cannot be modified\n\n`StringBuilder`:\n- Mutable\n- Not thread-safe\n- Provides better performance in single-threaded scenarios\n\n`StringBuffer`:\n- Mutable\n- Thread-safe\n- Slightly slower than `StringBuilder` due to synchronization"
+    },
+    {
+      "question": "What is the purpose of the `volatile` keyword in Java?",
+      "answer": "`volatile`:\n- Ensures that changes to a variable are visible to all threads\n- Prevents threads from caching stale values of the variable\n- Useful for ensuring visibility in multi-threaded environments"
+    },
+    {
+      "question": "What is the difference between `wait()` and `sleep()` in Java?",
+      "answer": "`wait()`:\n- Used for thread communication in synchronized blocks\n- Releases the lock on the object while waiting\n- Must be called inside a synchronized block\n\n`sleep()`:\n- Pauses the thread for a specified duration\n- Does not release any locks\n- Can be called without synchronization"
+    },
+    {
+      "question": "What is the role of `fork/join` in Java's parallelism framework?",
+      "answer": "The `fork/join` framework:\n- Breaks tasks into smaller sub-tasks (forking)\n- Combines the results of sub-tasks (joining)\n- Optimized for recursive task processing\n- Ideal for divide-and-conquer algorithms"
+    },
+    {
+      "question": "What are some performance tuning techniques for Java applications?",
+      "answer": "Performance tuning can include:\n- Optimizing garbage collection\n- Profiling and eliminating memory leaks\n- Reducing synchronization overhead\n- Minimizing the use of reflection\n- Using efficient data structures and algorithms\n- Adjusting JVM parameters (e.g., heap size) for better performance"
+    },
+    {
+      "question": "How does the Java Garbage Collector work, and what strategies can you use to optimize its performance?",
+      "answer": "The Garbage Collector reclaims memory by removing unreachable objects using strategies like:\n- Mark-and-Sweep\n- Generational GC\n\n- Optimize using proper JVM options (`-Xms`, `-Xmx`)\n- analyze GC logs\n- choose appropriate GC algorithms like G1GC."
+    },
+    {
+      "question": "What is the difference between `ExecutorService` and `ForkJoinPool`?",
+      "answer": "`ExecutorService`:\n- General-purpose thread pool for managing tasks\n- Suitable for independent, non-recursive tasks\n\n`ForkJoinPool`:\n- Optimized for tasks that can be recursively split into smaller sub-tasks\n- Better suited for divide-and-conquer algorithms"
+    },
+    {
+      "question": "What is the difference between `HashMap` and `ConcurrentHashMap`?",
+      "answer": "`HashMap`:\n- Not thread-safe\n- May fail in concurrent environments\n\n`ConcurrentHashMap`:\n- Designed for thread-safe operations\n- Allows multiple threads to read and write concurrently by locking specific segments\n- Improves performance in multi-threaded applications"
+    },
+    {
+      "question": "What are some JVM performance issues you might face, and how would you resolve them?",
+      "answer": "Common JVM performance issues include:\n- Long garbage collection pauses\n- Excessive heap usage\n- Memory leaks\n- Inefficient thread management\n\nSolutions:\n- Tuning the garbage collector (e.g., using G1 GC or CMS GC)\n- Profiling and analyzing heap dumps to identify memory leaks\n- Using memory-efficient data structures\n- Adjusting JVM flags (e.g., heap size and GC thresholds) to optimize performance"
+    },
+    {
+      "question": "What is the difference between `HashMap` and `TreeMap`?",
+      "answer": "`HashMap`:\n- Unordered map that uses the hash code of keys for storage\n- Average O(1) time complexity for lookup operations\n\n`TreeMap`:\n- Sorted map that maintains natural or custom order of keys\n- O(log n) time complexity for operations"
+    },
+    {
+      "question": "What is atomicity in Java, and how do you ensure atomicity in concurrent programming?",
+      "answer": "Atomicity ensures that an operation is performed as an indivisible unit without interruption. To ensure atomicity:\n- Use synchronized blocks or methods\n- Utilize atomic classes like `AtomicInteger` or `AtomicBoolean`\n- Use explicit locks like `ReentrantLock` where necessary"
+    },
+    {
+      "question": "What is the difference between `hashCode()` and `equals()` in Java?",
+      "answer": "`hashCode()`:\n- Returns an integer representing the hash code of an object\n- Used in hash-based collections like `HashMap`\n\n`equals()`:\n- Determines logical equality between objects\n- Overriding both methods ensures consistent behavior in collections"
+    }
+  ]
+}

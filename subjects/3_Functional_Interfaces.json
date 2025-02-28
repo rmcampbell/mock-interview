@@ -1,0 +1,81 @@
+{
+  "topic": "Delegates and Functional Programming",
+  "questions": [
+    {
+      "question": "What is the role of functional programming in streams?",
+      "answer": "Functional programming enables declarative operations like:\n- `map`\n- `filter`\n- `forEach`\n\nOn streams using functional interfaces such as `Function`, `Predicate`, and `Consumer`."
+    },
+    {
+      "question": "What are the key methods provided by the `Function` interface?",
+      "answer": "`Function` interface provides methods such as:\n- `apply(T t)`: To execute the function\n- `andThen(Function<? super R, ? extends V> after)`: To chain another function after the current one\n- `compose(Function<? super V, ? extends T> before)`: To execute a function before the current one"
+    },
+    {
+      "question": "What is a `Consumer` in Java?",
+      "answer": "`Consumer` is a functional interface in Java that represents an operation that takes a single input argument and returns no result. It is part of the `java.util.function` package."
+    },
+    {
+      "question": "What is a `Supplier` in Java?",
+      "answer": "`Supplier`:\n- A functional interface in Java that represents a supplier of results\n- Takes no arguments and returns a result\n- Part of the `java.util.function` package"
+    },
+    {
+      "question": "What is a `Function` in Java?",
+      "answer": "`Function`:\n- A functional interface in Java that represents a function taking one argument and produces a result\n- Part of the `java.util.function` package"
+    },
+    {
+      "question": "What is the difference between a `Consumer` and a `Supplier`?",
+      "answer": "`Consumer`:\n- Accepts an input and performs an operation without returning a result\n\n`Supplier`:\n- Provides a result without accepting any input"
+    },
+    {
+      "question": "Can a `Function` interface return a value?",
+      "answer": "Yes:\n- The `Function` interface is designed to take one input and return a value as its result"
+    },
+    {
+      "question": "How do you chain `Consumers` in Java?",
+      "answer": "`Consumers` can be chained using:\n- The `andThen` method\n- Allows you to execute multiple `Consumers` in sequence"
+    },
+    {
+      "question": "What is the use case of a `Supplier`?",
+      "answer": "`Supplier`:\n- Commonly used when you want to delay or defer the production of a result\n\nSuch As:\n- Lazy initialization\n- Fetching data on demand"
+    },
+    {
+      "question": "Can a `Consumer` interface return a result?",
+      "answer": "No, the `Consumer` interface:\n- Is designed to perform an operation on the input and does not return any result"
+    },
+    {
+      "question": "What is the difference between a `Function` and a `BiFunction`?",
+      "answer": "`Function`:\n- Takes one input and produces one result\n\n`BiFunction`:\n- Takes two inputs and produces one result"
+    },
+    {
+      "question": "What is the difference between the `andThen` and `compose` methods in the `Function` interface?",
+      "answer": "`andThen`:\n- Executes the current function first and then the given `Function`\n\n`compose`:\n- Executes the given function first and then the current `Function`"
+    },
+    {
+      "question": "How does the `Predicate` interface relate to functional programming?",
+      "answer": "`Predicate` interface:\n- Another functional interface in Java that represents a condition or a filter\n- It takes one input and returns a boolean result"
+    },
+    {
+      "question": "What is the advantage of using functional interfaces like `Consumer`, `Supplier`, and `Function`?",
+      "answer": "1. Enable a declarative programming style\n2. Promote code reusability\n3. Allow for the use of lambda expressions and method references\n4. Can improve code readability and conciseness"
+    },
+    {
+      "question": "What is a `UnaryOperator` and how does it differ from a `Function`?",
+      "answer": "`UnaryOperator`:\n- A specialization of `Function` for operations where the input and output types are the same\n\n`Function`:\n- A general-purpose functional interface that can have different input and output types"
+    },
+    {
+      "question": "What is a `method reference` and how can it be used with functional interfaces?",
+      "answer": "`method reference`:\n- A shorthand for a lambda expression that calls a specific method\n- It can be used with functional interfaces like:\n  - `Consumer`\n  - `Supplier`\n  - `Function`\n\nTo directly reference a method instead of writing the lambda explicitly"
+    },
+    {
+      "question": "What is the purpose of the `BiConsumer` interface?",
+      "answer": "`BiConsumer`:\n- A functional interface that accepts two input arguments\n- Performs an operation on them **without** returning a result"
+    },
+    {
+      "question": "How do you pass a `Consumer` as a parameter to a method?",
+      "answer": "1. By declaring the method to accept a `Consumer`\n2. Provide a lambda expression or method reference as the argument when calling the method"
+    },
+    {
+      "question": "Can you use default methods in functional interfaces?",
+      "answer": "Yes.\n- Functional interfaces can have default methods\n- The single abstract method requirement for functional interfaces remains unchanged."
+    }
+  ]
+}

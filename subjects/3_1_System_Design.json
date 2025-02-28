@@ -1,0 +1,109 @@
+{
+  "topic": "System Design",
+  "questions": [
+    {
+      "question": "What is the difference between monolithic and microservices architectures?",
+      "answer": "**Monolithic Architecture**:\n  - A single unified codebase where all components are tightly coupled.\n  - **Pros**: Simple to develop, deploy, and test.\n  - **Cons**: Difficult to scale, maintain, and modify as the application grows.\n\n**Microservices Architecture**:\n- A distributed system where an application is broken into smaller, independently deployable services.\n- **Pros**: Scalability, flexibility, and easier maintenance.\n- **Cons**: Increased complexity, challenges with communication, and potential deployment overhead."
+    },
+    {
+      "question": "What is the purpose of a Service Oriented Architecture (`SOA`)",
+      "answer": "Service Oriented Architecture (`SOA`) organizes software components into **loosely coupled services** that communicate over a network.\n\n**Key Benefits**:\n- Reusability of services\n- Better scalability and flexibility\n- Facilitates integration of heterogeneous systems\n\n**Difference from Microservices**:\n- `SOA` often uses an Enterprise Service Bus (`ESB`) for communication\n- Microservices prefer lightweight protocols like `REST`"
+    },
+    {
+      "question": "What is the CAP theorem in distributed systems?",
+      "answer": "The **CAP theorem** states that a distributed system can guarantee at most two of the following three properties at the same time:\n1. **Consistency**: Every read receives the most recent write.\n2. **Availability**: Every request receives a response, even if some nodes are down.\n3. **Partition Tolerance**: The system continues to operate despite network partitions.\n\nTrade-offs must be made depending on the system's priorities."
+    },
+    {
+      "question": "What are the key characteristics of RESTful APIs?",
+      "answer": "1. **Statelessness**: Each request contains all the information needed to process it.\n2. **Client-Server Separation**: The client and server operate independently.\n3. **Cacheability**: Responses can be cached to improve performance.\n4. **Uniform Interface**: Standardized resources and actions (e.g., `GET`, `POST`, `PUT`, `DELETE`).\n5. **Layered System**: Intermediaries can exist between client and server for scalability or security."
+    },
+    {
+      "question": "What is the difference between horizontal and vertical scaling?",
+      "answer": "- **Horizontal Scaling**: Adding more machines (or instances) to distribute the load.\n  - **Example**: Adding more servers to a load balancer.\n- **Vertical Scaling**: Adding more resources (CPU, RAM, storage) to a single machine.\n  - **Example**: Upgrading a server's hardware.\n\nHorizontal scaling is more fault-tolerant and widely used in cloud systems."
+    },
+    {
+      "question": "What is Domain-Driven Design (DDD)",
+      "answer": "**Domain-Driven Design** is an approach to software development that focuses on:\n- Aligning software design with business goals and domain knowledge.\n- Breaking the system into **bounded contexts**, each responsible for a specific domain area.\n- Encouraging collaboration between developers and domain experts to create a **ubiquitous language** that avoids ambiguity."
+    },
+    {
+      "question": "What is the difference between synchronous and asynchronous communication in distributed systems?",
+      "answer": "- **Synchronous Communication**:\n  - The client waits for the server to respond before proceeding.\n  - **Example**: HTTP requests.\n- **Asynchronous Communication**:\n  - The client sends a request and continues without waiting for the response.\n  - **Example**: Message queues like RabbitMQ or Kafka.\n\nAsynchronous communication improves scalability but increases complexity."
+    },
+    {
+      "question": "What are the common strategies for database sharding?",
+      "answer": "**Database sharding** splits a database into smaller, faster, and more manageable parts. Common strategies include:\n1. **Horizontal Sharding**: Distributing rows across shards based on a key (e.g., user ID).\n2. **Vertical Sharding**: Splitting tables across shards by grouping columns.\n3. **Geographic Sharding**: Sharding based on geographical location.\n\nEach strategy improves performance but adds complexity to design."
+    },
+    {
+      "question": "Describe some of the pros and cons of using a relational database rather than, a NoSql DB.",
+      "answer": "- **Pros of Relational Databases**:\n  - **Structured Data**: Relational databases excel at handling structured data with defined relationships between tables.\n  - **ACID Properties**: They ensure data consistency, integrity, and reliability with ACID compliance (Atomicity, Consistency, Isolation, Durability).\n  - **Optimized Queries**: Relational databases offer optimized query performance with indexing, which makes retrieving large datasets faster.\n- **Cons of Relational Databases**:\n  - **Scalability**: Horizontal scaling can be challenging with relational databases compared to more modern NoSQL solutions.\n  - **Complexity**: Maintaining relational databases, especially with large, complex schemas, can become cumbersome as the application grows.\n- **Pros of NoSQL Data Stores**:\n  - **Flexibility**: Great for unstructured or semi-structured data, making it more flexible for scenarios where data schema may change frequently.\n  - **Readability**: JSON and XML data is more human-readable and can be easily manipulated or shared across different systems.\n- **Cons of NoSQL Data Stores**:\n  - **Lack of Structure**: It’s harder to query or enforce relationships between data as there’s no formal schema.\n  - **Performance**: Parsing and querying data can be slower, especially for large documents."
+    },
+    {
+      "question": "Can you explain the Model-View-Controller (MVC) architecture and its benefits?",
+      "answer": "**MVC Components**:\n- `Model`: Represents the application's data and business logic.\n- `View`: Displays the data (the user interface).\n- `Controller`: Handles user input and updates the Model and View accordingly.\n\n**Benefits**:\n- **Separation of Concerns:** Each component has a distinct responsibility, making the application modular.\n- **Maintainability:** Easier to update code.\n- **Testability:** Components can be tested independently."
+    },
+    {
+      "question": "What are microservices, and what are their advantages over monolithic architectures?",
+      "answer": "**Definition**:\n- Microservices is an architectural style where an application is composed of small, independent services that communicate over well-defined APIs.\n\n**Advantages**:\n- `Scalability`: Services can be scaled independently.\n- `Flexibility`: Services can use different technologies.\n- `Resilience`: A failure in one service does not necessarily impact others.\n- `Maintainability`: Smaller codebases are easier to manage."
+    },
+    {
+      "question": "What is the difference between Monolithic and Microservices Architecture?",
+      "answer": "| Feature          | Monolithic Architecture  | Microservices Architecture |\n|-----------------|----------------------|----------------------|\n| Structure      | Single application     | Multiple independent services |\n| Deployment    | Entire application must be deployed together | Services can be deployed independently |\n| Scalability   | Limited scalability    | Highly scalable |\n| Technology Stack | Single tech stack    | Different services can use different stacks |\n| Failure Impact | A bug in one part can break the whole app | Failure in one service does not break others |"
+    },
+    {
+      "question": "How would you handle authentication and authorization in a full-stack application?",
+      "answer": "**Authentication**:\n- `JWT` (`JSON Web Token`): A stateless token-based mechanism that verifies users by sending the token with each request.\n- `OAuth`: A protocol that allows third-party services to authenticate users.\n\n**Authorization**:\n- Role-Based Access Control (`RBAC`): Grant users access based on their roles (e.g., admin, user).\n- Attribute-Based Access Control (`ABAC`): Uses policies that determine access based on attributes."
+    },
+    {
+      "question": "What is the purpose of caching, and how can you implement it in a web application?",
+      "answer": "Purpose of Caching:\n- **Improve Performance**: Reduces the need to repeat expensive operations like database queries.\n- **Reduce Latency**: Fetching data from cache is faster than querying a database.\n\nImplementation:\n- **In-Memory Caching**: Store frequently accessed data in memory (e.g., `Redis`, `Memcached`).\n- **HTTP Caching**: Use HTTP headers like `Cache-Control` to store responses in the browser or proxy servers.\n- **Database Caching**: Cache database query results to avoid redundant queries.\n\n```javascript\nconst cache = new Map();\nfunction getFromCache(key) {\n  if (cache.has(key)) {\n    return cache.get(key);\n  }\n\n  // fetch from database\n  let data = fetchDataFromDatabase(key);\n  cache.set(key, data);\n  return data;\n}\n```"
+    },
+    {
+      "question": "What is Event-Driven Architecture, and why is it useful?",
+      "answer": "Event-Driven Architecture (EDA): \n- A software architecture where components communicate through the emission and handling of events.\n\n**Benefits**:\n- Asynchronous Communication: Components do not wait for a response before continuing execution.\n- Loose Coupling: Services are independent, making them easier to scale and maintain.\n- Real-time Updates: Enables real-time reactions to system changes.\n\n**Example**:\n- In a full-stack app, a user triggers a `login` event that the backend listens for, authenticates the user, and sends a response event back to the frontend."
+    },
+    {
+      "question": "How would you ensure the scalability of a database in a distributed system?",
+      "answer": "Approaches to Ensure Scalability:\n- **Horizontal Scaling**: Add more database nodes to distribute the load (e.g., sharding).\n- **Vertical Scaling**: Increase the resources (CPU, RAM) of a single database server.\n- **Replication**: Use master-slave replication to offload read operations to replicas.\n- **Partitioning**: Divide large datasets into smaller, more manageable parts (horizontal or vertical partitioning)."
+    },
+    {
+      "question": "What are some important differences between a linked list and an array?",
+      "answer": "| Feature      | Linked List | Array |\n| ------------ | ----------- | ----- |\n| Memory Usage | Dynamic     | Fixed |\n| Access Time  | O(n)        | O(1)  |\n| Insertion    | O(1)        | O(n)  |\n| Contiguous?  | No          | Yes   |"
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    }
+  ]
+}

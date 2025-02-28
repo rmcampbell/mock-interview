@@ -1,0 +1,245 @@
+{
+  "topic": "SQL",
+  "questions": [
+    {
+      "question": "What is SQL?",
+      "answer": "SQL (Structured Query Language) is used to interact with and manage relational databases. It allows you to create, read, update, and delete data, as well as manage database structure and security."
+    },
+    {
+      "question": "How would you optimize a SQL query that is running too slowly?",
+      "answer": "Analyze query execution plans, add indexes, reduce table scans with partitioning, and optimize joins."
+    },
+    {
+      "question": "What are tables in SQL?",
+      "answer": "- Database objects that store data in rows and columns\n- Each column has a specific data type, and rows represent individual records."
+    },
+    {
+      "question": "What is a primary key?",
+      "answer": "- A primary key is a column or set of columns that uniquely identifies each row in a table\n- It ensures no duplicate rows and that the values are not NULL."
+    },
+    {
+      "question": "What is a foreign key?",
+      "answer": "- A column in a table that establishes a relationship with the primary key in another table\n- It enforces referential integrity."
+    },
+    {
+      "question": "What is a unique key?",
+      "answer": "- A constraint that ensures all values in a column or combination of columns are unique\n- Unlike primary keys, a table can have multiple unique keys."
+    },
+    {
+      "question": "What are the different types of SQL commands?",
+      "answer": "1. `DDL` (Data Definition Language): `CREATE`, `ALTER`, `DROP`.\n2. DML (Data Manipulation Language): `SELECT`, `INSERT`, `UPDATE`, `DELETE`.\n3. DQL (Data Query Language): `SELECT`.\n4. DCL (Data Control Language): `GRANT`, `REVOKE`.\n5. TCL (Transaction Control Language): `COMMIT`, `ROLLBACK`, `SAVEPOINT`."
+    },
+    {
+      "question": "What is the difference between `DELETE` and `TRUNCATE`?",
+      "answer": "- `DELETE`: Removes rows from a table based on a condition and logs each operation, allowing `ROLLBACK`\n- `TRUNCATE` removes all rows from a table without logging, and it cannot be rolled back."
+    },
+    {
+      "question": "What is a join in SQL?",
+      "answer": "A join combines rows from two or more tables based on a related column.\n\nCommon joins include:\n- `INNER JOIN`\n- `LEFT JOIN`\n- `RIGHT JOIN`\n- `FULL OUTER JOIN`"
+    },
+    {
+      "question": "What is the difference between `INNER JOIN` and `OUTER JOIN`?",
+      "answer": "- `INNER JOIN`: Retrieves only the rows that have matching values in both tables\n- `OUTER JOIN`: Retrieves all rows from one table and matching rows from the other, with NULLs for non-matching rows."
+    },
+    {
+      "question": "What is a constraint in SQL?",
+      "answer": "Constraints are rules enforced on columns to maintain data integrity. \n\nExamples include:\n- `NOT NULL`\n- `UNIQUE`\n- `PRIMARY KEY`\n- `FOREIGN KEY`\n- `CHECK`\n- `DEFAULT`"
+    },
+    {
+      "question": "What is the difference between `WHERE` and `HAVING` clauses?",
+      "answer": "`WHERE`: filters rows before grouping\n- `HAVING`: filters groups after the `GROUP BY` clause."
+    },
+    {
+      "question": "What is normalization?",
+      "answer": "- The process of organizing data in a database to reduce redundancy and improve integrity\n- It divides tables and establishes relationships between them."
+    },
+    {
+      "question": "What are the different normal forms?",
+      "answer": "1. **First Normal Form** (`1NF`): No repeating groups or arrays.\n2. **Second Normal Form** (`2NF`): No partial dependency on a composite key.\n3. **Third Normal Form** (`3NF`): No transitive dependency.\n4. **Boyce-Codd Normal Form** (`BCNF`): Every determinant is a candidate key."
+    },
+    {
+      "question": "What is denormalization?",
+      "answer": "**Denormalization**: The process of combining tables to improve read performance at the expense of redundancy and potential data anomalies."
+    },
+    {
+      "question": "What is an index?",
+      "answer": "An index is a database object that improves the speed of data retrieval operations on a table.\n\nTypes include:\n- clustered\n- non-clustered\n- unique\n- full-text indexes."
+    },
+    {
+      "question": "What is a view in SQL?",
+      "answer": "- A view is a virtual table based on a `SELECT` query\n- It does not store data but allows you to simplify complex queries or restrict access to certain data."
+    },
+    {
+      "question": "What is a stored procedure?",
+      "answer": "A precompiled collection of SQL statements stored in the database that can be executed as needed to perform operations."
+    },
+    {
+      "question": "What is a trigger in SQL?",
+      "answer": "A trigger is a special type of stored procedure that automatically executes in response to specific events on a table.\n\nTriggers include:\n- `INSERT`\n- `UPDATE`\n- `DELETE`"
+    },
+    {
+      "question": "What is the difference between `UNION` and `UNION ALL`?",
+      "answer": "- `UNION`: Combines the results of two queries and removes duplicates\n- `UNION ALL`: Combines the results and retains duplicates."
+    },
+    {
+      "question": "What is the difference between `COUNT`, `SUM`, `AVG`, `MIN`, and `MAX`?",
+      "answer": "- `COUNT`: counts rows\n- `SUM` calculates the total of a column\n- `AVG`: finds the average value\n- `MIN` returns the smallest value\n- `MAX`: returns the largest value in a column"
+    },
+    {
+      "question": "What are aggregate functions in SQL?",
+      "answer": "Aggregate functions perform calculations on a set of rows and return a single value.\n\nExamples include:\n- `COUNT`\n- `SUM`\n- `AVG`\n- `MIN`\n- `MAX`"
+    },
+    {
+      "question": "What is a subquery?",
+      "answer": "- A subquery is a query nested within another query.\n- It can be used in `SELECT`, `FROM`, `WHERE`, or `HAVING` clauses."
+    },
+    {
+      "question": "What is a correlated subquery?",
+      "answer": "A correlated subquery refers to columns from the outer query and is executed for each row processed by the outer query."
+    },
+    {
+      "question": "What is the difference between `CHAR` and `VARCHAR`?",
+      "answer": "`CHAR`:\n- A fixed-length string\n\n`VARCHAR`:\n- A variable-length string.\n- Uses less space for shorter strings but has slightly more overhead."
+    },
+    {
+      "question": "What is the difference between `RANK`, `DENSE_RANK`, and `ROW_NUMBER`?",
+      "answer": "- `RANK` assigns ranks with gaps for ties.\n- `DENSE_RANK` assigns ranks without gaps for ties.\n- `ROW_NUMBER` assigns unique row numbers regardless of ties."
+    },
+    {
+      "question": "What is the purpose of the `GROUP BY` clause?",
+      "answer": "Groups rows that have the same values in specified columns into summary rows, often used with aggregate functions."
+    },
+    {
+      "question": "What is a NULL value in SQL?",
+      "answer": "- `NULL` represents missing or unknown data.\n- It is not equal to zero or an empty string."
+    },
+    {
+      "question": "How do you handle NULL values in SQL?",
+      "answer": "Use functions like `IS NULL`, `IS NOT NULL`, or `COALESCE` (to replace `NULL` with a default value)."
+    },
+    {
+      "question": "Describe how you would perform a JOIN operation and give examples of when you would use `INNER`, `LEFT`, `RIGHT`, and `FULL` joins.",
+      "answer": "- `INNER JOIN` returns rows present in both tables.\n- `LEFT JOIN` includes all rows from the left table.\n- `RIGHT JOIN` includes all rows from the right table.\n- `FULL JOIN` includes all rows from both tables."
+    },
+    {
+      "question": "What do you understand about RDBMS?",
+      "answer": "- A **Relational Database Management System** (`RDBMS`) is a database system that stores data in a structured format, using rows and columns (tables).\n- RDBMS supports the use of Structured Query Language (`SQL`) to manage and query data.\n- It enforces data integrity through constraints like `primary keys`, `foreign keys`, and `normalization`.\n- Examples of RDBMS include `MySQL`, `PostgreSQL`, and `Oracle`."
+    },
+    {
+      "question": "State important SQL functions and their uses.",
+      "answer": "- `SELECT`: Retrieves data from one or more tables.\n- `INSERT INTO`: Adds new records into a table.\n- `UPDATE`: Modifies existing records in a table.\n- `DELETE`: Removes records from a table.\n- `JOIN`: Combines rows from two or more tables based on a related column.\n- `GROUP BY`: Groups rows that have the same values into summary rows.\n- `COUNT()`: Counts the number of rows.\n- `SUM()`: Calculates the sum of a column.\n- `AVG()`: Calculates the average value of a column.\n- `WHERE`: Filters records based on a condition.\n- `ORDER BY`: Sorts the result set in ascending or descending order.\n"
+    },
+    {
+      "question": "What is the difference between SQL and NoSQL databases?",
+      "answer": "| Feature          | SQL Databases         | NoSQL Databases       |\n|-----------------|----------------------|----------------------|\n| Data Structure  | Relational (tables)   | Key-Value, Document, Graph, Column |\n| Schema         | Fixed schema          | Dynamic schema      |\n| Scalability     | Vertical scaling      | Horizontal scaling  |\n| Transactions    | ACID-compliant        | BASE (Eventual Consistency) |\n| Examples       | MySQL, PostgreSQL     | MongoDB, Cassandra  |"
+    },
+    {
+      "question": "How do you optimize SQL queries for performance?",
+      "answer": "**Best Practices**:\n- Use Indexing: Speed up data retrieval.\n- Avoid `SELECT *`: Fetch only required columns.\n- Use Joins Efficiently: Prefer `INNER JOIN` over `OUTER JOIN` when possible.\n- Optimize `WHERE` Conditions: Use indexed columns in filters.\n- Use Pagination: `LIMIT` and `OFFSET` for large datasets."
+    },
+    {
+      "question": "What are the advantages and disadvantages of using a NoSQL database?",
+      "answer": "**Advantages**:\n- Scalability: NoSQL databases can handle massive amounts of data and can scale horizontally.\n- Flexible Schema: Supports dynamic data models (e.g., document, key-value, graph).\n- High Availability: Typically provide built-in replication and fault tolerance.\n\n**Disadvantages**:\n- Eventual Consistency: Data consistency can be delayed, leading to temporary inconsistencies.\n- Limited Querying: NoSQL may not support complex queries or joins like relational databases.\n- Lack of Standardization: Each NoSQL database has a different query language and approach."
+    },
+    {
+      "question": "What is the importance of database normalization, and what are its forms?",
+      "answer": "**Importance**:\n- Reduces Data Redundancy: Ensures data is only stored once.\n- Improves Data Integrity: Prevents anomalies (insert, update, delete).\n- Increases Query Efficiency: Optimizes data access.\n\n**Forms**:\n1. First Normal Form (`1NF`): Eliminate duplicate data by ensuring each column contains only atomic values.\n2. Second Normal Form (`2NF`): Remove partial dependencies (non-key attributes should depend on the entire primary key).\n3. Third Normal Form (`3NF`): Remove transitive dependencies (non-key attributes should depend only on the primary key)."
+    },
+    {
+      "question": "What is SQL Injection, and how can you prevent it?",
+      "answer": "SQL Injection:\n- **Definition**: A code injection technique where an attacker exploits a vulnerability in an application’s software by manipulating SQL queries.\n- **Risk**: Allows attackers to view, modify, or delete data.\n\nPrevention:\n- **Use Prepared Statements**: Avoid concatenating user input directly into SQL queries.\n- **Use ORM**: Use an Object-Relational Mapping (ORM) tool that abstracts direct SQL query execution.\n- **Input Validation**: Sanitize user input to ensure it is safe.\n\nExample of Prepared Statement:\n```java\nPreparedStatement stmt = connection.prepareStatement(\"SELECT * FROM users WHERE username = ?\");\nstmt.setString(1, username);  // Prevents injection by escaping user input\nResultSet rs = stmt.executeQuery();\n```"
+    },
+    {
+      "question": "What is SQL injection?",
+      "answer": "A security vulnerability where an attacker manipulates SQL queries to access or alter the database."
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    }
+  ]
+}

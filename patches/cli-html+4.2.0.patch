@@ -1,0 +1,21 @@
+diff --git a/node_modules/cli-html/index.js b/node_modules/cli-html/index.js
+index 9d55aeb..48e580e 100644
+--- a/node_modules/cli-html/index.js
++++ b/node_modules/cli-html/index.js
+@@ -6,15 +6,9 @@ import { renderTag } from './lib/utils/render-tag.js';
+ 
+ const htmlToCli = (rawHTML, theme = {}) => {
+   const document = parse(rawHTML);
+-
+-  // console.dir(
+-  //   filterAst(document).childNodes[0].childNodes[1].childNodes,
+-  //   { depth: null },
+-  // );
+-
+   const clobalConfig = getGlobalConfig(document, theme);
+ 
+-  return `\n${indentify(' ', false)(
++  return `${indentify(' ', false)(
+     (renderTag(document, clobalConfig) || { value: '' }).value,
+   )}\n\n`;
+ };

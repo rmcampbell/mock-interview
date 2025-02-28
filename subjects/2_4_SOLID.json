@@ -1,0 +1,149 @@
+{
+  "topic": "SOLID Principles",
+  "questions": [
+    {
+      "question": "What is the Single Responsibility Principle (SRP)?",
+      "answer": "`Single Responsibility Principle`:\n- States that a class should have only one reason to change\n- A class should only have one job or responsibility\n- This reduces complexity\n- Makes the class easier to maintain"
+    },
+    {
+      "question": "Can you give an example of violating the Single Responsibility Principle (SRP)?",
+      "answer": "**Example:**\n- A class that handles both user authentication and logging\n- If either the authentication or logging requirements change:\n  - The class would need to be modified\n  - Thus violating SRP"
+    },
+    {
+      "question": "What is the `Open/Closed Principle` (`OCP`)?",
+      "answer": "`Open/Closed Principle` states that:\n- A class should be open for extension but closed for modification\n- You should be able to add new functionality to a class without changing its existing code"
+    },
+    {
+      "question": "Can you explain how the `Open/Closed Principle` (`OCP`) can be implemented in Java?",
+      "answer": "`Open/Closed Principle`:\n- Implemented by using inheritance or interfaces\n  - To extend the behavior of classes without modifying the original class\n\nExample:\n- Add new functionality with Use of:\n  - Abstract classes\n  - Interfaces\n  - Polymorphism"
+    },
+    {
+      "question": "What is the `Liskov Substitution Principle` (`LSP`)?",
+      "answer": "Liskov Substitution Principle states that:\n- Objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program\n- Subtypes must behave in a way that the parent class expects."
+    },
+    {
+      "question": "Can you give an example of violating the `Liskov Substitution Principle` (`LSP`)?",
+      "answer": "LSP violation example:\n- A subclass that overrides a method of the parent class:\n  - Behaves in a way that breaks the assumptions made by the superclass\n  - Causes unexpected behavior or bugs in the system"
+    },
+    {
+      "question": "What is the `Interface Segregation Principle` (`ISP`)?",
+      "answer": "`Interface Segregation Principle` states that:\n- No client should be forced to depend on methods it does not use\b- It's better to have many small, specific interfaces than a large, general-purpose interface"
+    },
+    {
+      "question": "Example of violating the `Interface Segregation Principle` (`ISP`)?",
+      "answer": "Example `ISP` violation:\n- A large interface that forces a class to implement methods that are irrelevant to its functionality\n\nFor example:\n- A `Worker` interface that includes methods for both `work()` and `fly()`\n- Only a subset of implementing classes actually need `fly()`\n- This forces unnecessary implementations in unrelated classes"
+    },
+    {
+      "question": "What is the `Dependency Inversion Principle` (`DIP`)?",
+      "answer": "`Dependency Inversion Principle` states that:\n- High-level modules should not depend on low-level modules\n- Both should depend on abstractions (e.g., interfaces)\n- Abstractions should not depend on details\n- Details should depend on abstractions"
+    },
+    {
+      "question": "How can the `Dependency Inversion Principle` (`DIP`) be applied in a typical software project?",
+      "answer": "`DIP` applied by:\n- Designing software components to depend on interfaces or abstract classes instead of concrete implementations\n\nFor Example:\n- Use dependency injection to inject service classes rather than directly instantiating them inside higher-level classes"
+    },
+    {
+      "question": "Why are the `SOLID principles` important for object-oriented design?",
+      "answer": "`SOLID principles`:\n- Help create systems that are easier to maintain, extend, and understand\n- They guide developers to write code that is flexible, modular, and less prone to bugs\n- Promote reusability and scalability"
+    },
+    {
+      "question": "What are the common benefits of applying the SOLID principles in software design?",
+      "answer": "The benefits of SOLID principles include:\n- Better maintainability\n- Scalability\n- Flexibility\n- Readability of code\n- They reduce the likelihood of introducing defects\n- Promote modular design making it easier to test and modify"
+    },
+    {
+      "question": "What is the relationship between the `Single Responsibility Principle` (`SRP`) and the `Open/Closed Principle` (`OCP`)?",
+      "answer": "**Both** `SRP` and `OCP`:\n- Aim to reduce complexity and enhance maintainability\n- Together, they promote separation of concerns and flexible design\n\n`SRP`:\n- Ensures that a class has one responsibility\n- Makes it easier to extend without modifying the original code (`OCP`)"
+    },
+    {
+      "question": "How do the `SOLID principles` improve testing and debugging in software development?",
+      "answer": "By adhering to the SOLID principles:\n- The code is easier to understand\n- Components are more modular and decoupled\n- Makes unit testing and debugging simpler because:\n  - Components have clear, focused responsibilities\n  - Do not have complex interdependencies"
+    },
+    {
+      "question": "Can you give an example where applying SOLID principles improved a system's maintainability?",
+      "answer": "Example:\n- Separate a monolithic application into smaller, more manageable modules\n- Ensure each module adheres to the principles\n- As a result:\n  - The system becomes easier to maintain\n  - Extensions can be added with minimal impact on other modules"
+    },
+    {
+      "question": "What is SOLID in software design?",
+      "answer": "`SOLID`:\n- A set of five principles for writing maintainable and scalable code:\n\n**S** (Single Responsibility Principle):\n– A class should have only one reason to change.\n\n**O** (Open/Closed Principle):\n– Classes should be open for extension but closed for modification\n\n**L** (Liskov Substitution Principle):\n– Subtypes should be substitutable for their base types\n\n**I** (Interface Segregation Principle):\n– Clients should not be forced to implement interfaces they don't use\n\n**D** (Dependency Inversion Principle):\n – High-level modules should not depend on low-level modules\n- Both should depend on abstractions"
+    },
+    {
+      "question": "What are the key principles of the SOLID design principles?",
+      "answer": "**SOLID Principles**:\n`S` - (`Single Responsibility Principle`):\n- A class should have only one reason to change\n\n`O` - (`Open/Closed Principle`):\n- A class should be open for extension but closed for modification\n\n`L` - (`Liskov Substitution Principle`):\n- Objects of a superclass should be replaceable with objects of a subclass\n\n`I` - (`Interface Segregation Principle`):\n- A client should not be forced to implement interfaces it does not use\n\n`D` - (`Dependency Inversion Principle`):\n- High-level modules should not depend on low-level modules\n- Both should depend on abstractions"
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    }
+  ]
+}

@@ -1,0 +1,465 @@
+{
+  "topic": "Spring & Spring Boot",
+  "questions": [
+    {
+      "question": "What are the main modules of the Spring Framework?",
+      "answer": "The main modules of the Spring Framework include:\n- Core Container:\n  - Bean\n  - Core\n  - Context\n  - Expression Language\n\n- AOP (Aspect-Oriented Programming)\n- Data Access/Integration:\n\n  - JDBC\n  - ORM\n  - JMS\n\n- Web:\n\n  - Web\n  - WebSocket\n  - Servlet\n\n- Test modules"
+    },
+    {
+      "question": "What is AOP in Spring?",
+      "answer": "AOP (Aspect-Oriented Programming) in Spring:\n- A programming paradigm that allows the separation of cross-cutting concerns, such as:\n  - logging\n  - security\n  - transaction management\n\nSpring provides AOP support using:\n- `@Aspect`\n- pointcuts."
+    },
+    {
+      "question": "What are the different ways to configure a `Spring` application?",
+      "answer": "A `Spring` application can be configured:\n- Using XML configuration\n- Annotation-based configuration\n  - `@Configuration`\n  - `@Component`\n\n- Java-based configuration:\n  - `@Bean` methods in `@Configuration` classes"
+    },
+    {
+      "question": "What is the `environment abstraction` in Spring?",
+      "answer": "`environment abstraction` in Spring:\n- Provides access to application properties and profiles\n- It allows runtime querying and resolution of:\n  - environment variables\n  - Properties\n  - Active profiles"
+    },
+    {
+      "question": "What is the purpose of the `@SpringBootApplication` annotation?",
+      "answer": "`@SpringBootApplication`:\n- A convenience annotation that combines:\n  - `@Configuration`\n  - `@EnableAutoConfiguration`\n  - `@ComponentScan`\n- It marks a class as the main configuration class\n- Enables auto-configuration and component scanning."
+    },
+    {
+      "question": "What is the difference between Spring and Spring Boot?",
+      "answer": "- `Spring` is a framework for building enterprise Java applications with extensive configuration options.\n- `Spring Boot` simplifies Spring by providing default configurations, embedded servers, and auto-configuration to create standalone, production-ready applications."
+    },
+    {
+      "question": "What is Dependency Injection (DI) in Spring?",
+      "answer": "- A design pattern where the dependencies of a class are provided by an external source rather than being instantiated within the class.\n- Spring implements `DI` through annotations (`@Autowired`), XML configuration, or Java-based configuration."
+    },
+    {
+      "question": "What are the key features of Spring Boot?",
+      "answer": "- `auto-configuration`\n- `embedded servers` (e.g., Tomcat, Jetty)\n- production-ready tools like `Actuator`\n- an opinionated starter dependency system\n- No requirement for XML configuration"
+    },
+    {
+      "question": "What is the difference between `@Component`, `@Service`, `@Repository`, and `@Controller`?",
+      "answer": "`@Component`:\n- A generic stereotype for Spring-managed beans\n\n`@Service`:\n- Indicates a service layer bean\n\n`@Repository`:\n- Marks a data access object (DAO)\n\n`@Controller`:\n- Used to define controller classes in an MVC application."
+    },
+    {
+      "question": "How does Spring handle transactions?",
+      "answer": "- Spring provides declarative transaction management using the `@Transactional` annotation\n- It automatically manages the transaction lifecycle by:\n  - beginning a transaction\n  - committing it upon success\n  - Rolling it back in case of exceptions"
+    },
+    {
+      "question": "What is Spring's IoC container?",
+      "answer": "The IoC (Inversion of Control) container in Spring is responsible for:\n- Managing the lifecycle of beans\n- Resolving dependencies\n- Injecting them into the application as needed\n\nThe container is configured using XML, annotations, or Java-based configuration."
+    },
+    {
+      "question": "What is the purpose of the `@RestController` annotation in Spring Boot?",
+      "answer": "`@RestController`:\n- A combination of `@Controller` and `@ResponseBody`\n- It is used to create RESTful web services\n- Automatically serializing the return values of handler methods into JSON or XML."
+    },
+    {
+      "question": "What is the difference between `@RequestParam` and `@PathVariable`?",
+      "answer": "`@RequestParam`:\n- Used to extract query parameters from the URL\n\n`@PathVariable`:\n- Extracts values from the URI path itself"
+    },
+    {
+      "question": "What is the role of `Spring Actuator` in Spring Boot?",
+      "answer": "`Spring Actuator`:\n- Provides production-ready features to monitor and manage applications\n- It includes endpoints for:\n  - Health checks\n  - Metrics\n  - Application environment\n  - Thread dumps\n  - More"
+    },
+    {
+      "question": "What is the purpose of the `application.properties` or `application.yml` file in Spring Boot?",
+      "answer": "`application.properties` or `application.yml` files:\n- Used to configure application settings including:\n- Server port\n- Database configurations\n- Logging levels\n- Custom properties"
+    },
+    {
+      "question": "What is the purpose of `@EnableAutoConfiguration` in Spring Boot?",
+      "answer": "`@EnableAutoConfiguration`:\n- Tells Spring Boot to configure the application automatically based on the dependencies on the classpath\n- Example:\n  - Creation of a `DataSource` bean if a database driver is present"
+    },
+    {
+      "question": "What is the difference between `BeanFactory` and `ApplicationContext` in Spring?",
+      "answer": "`BeanFactory`:\n- The root IoC container in Spring\n- Provides basic dependency injection\n\n`ApplicationContext`:\n- A more advanced container built on top of `BeanFactory` that includes additional features like:\n  - Event propagation\n  - Internationalization\n  - AOP"
+    },
+    {
+      "question": "What is the difference between `@Qualifier` and `@Primary` in Spring?",
+      "answer": "`@Qualifier`:\n- Used to resolve ambiguity when multiple beans of the same type are available\n\n`@Primary`:\n- Used to specify the default bean to be used when no qualifier is provided"
+    },
+    {
+      "question": "How does Spring Boot simplify working with databases?",
+      "answer": "Spring Boot simplifies database interaction by providing:\n- Auto-configuration for data sources\n- An integration with JPA/Hibernate\n- A repository abstraction through Spring Data JPA\n- It also supports in-memory databases like H2 for testing."
+    },
+    {
+      "question": "What is the purpose of `@Value` in Spring?",
+      "answer": "`@Value`:\n- Used to inject values from properties files into:\n  - fields\n  - methods\n  - constructor arguments\n\nFor example:\n- `@Value(\"${server.port}\")`\n  - Injects the server port value from the configuration."
+    },
+    {
+      "question": "What is the purpose of `Spring Boot Starters`?",
+      "answer": "`Spring Boot Starters`:\n- Pre-configured dependencies that simplify the inclusion of commonly used libraries\n\nFor example:\n- `spring-boot-starter-web`: includes libraries for building web applications\n- `spring-boot-starter-data-jpa`: Includes JPA and Hibernate."
+    },
+    {
+      "question": "What is the `@Bean` annotation in Spring?",
+      "answer": "`@Bean`:\n- Used to define a method that produces a bean to be managed by the Spring container\n- Typically used in Java-based configuration classes annotated with `@Configuration`"
+    },
+    {
+      "question": "How does Spring Boot handle logging?",
+      "answer": "- Spring Boot uses SLF4J with Logback as the default logging framework\n- You can configure logging levels and appenders:\n  - In the `application.properties`\n  - `application.yml` file\n  - By using a custom `logback.xml` file"
+    },
+    {
+      "question": "What is the purpose of `@Conditional` annotations in Spring Boot?",
+      "answer": "`@Conditional` annotations (`@ConditionalOnProperty`, `@ConditionalOnClass`):\n- Used to conditionally enable beans or configurations based on specific conditions such as the presence of a:\n  - class\n  - property\n  - environment"
+    },
+    {
+      "question": "What is `Spring Data JPA`?",
+      "answer": "`Spring Data JPA`:\n- A part of the Spring Data project\n- Simplifies JPA-based data access by providing repository abstractions\n- Eliminates boilerplate code for CRUD operations\n- Supports custom query methods with minimal effort"
+    },
+    {
+      "question": "What are profiles in Spring Boot, and how are they used?",
+      "answer": "Profiles in Spring Boot:\n- Allow you to define separate configurations for different environments (e.g., dev, test, prod)\n- Can be activated using the:\n  - `spring.profiles.active` property in the `application.properties` file\n  - Via environment variables"
+    },
+    {
+      "question": "How does Spring Boot manage externalized configuration?",
+      "answer": "Spring Boot supports externalized configuration through:\n- `application.properties`\n- `application.yml`\n- environment variables\n- command-line arguments\n- custom configuration files\n\nThis allows easy customization without changing the code."
+    },
+    {
+      "question": "What is the purpose of the `@RequestBody` annotation?",
+      "answer": "`@RequestBody`:\n- Used to bind the HTTP request body to a method parameter in a controller\n- Typically used for handling JSON or XML payloads in RESTful APIs"
+    },
+    {
+      "question": "What is the default scope of a Spring bean?",
+      "answer": "The default scope of a Spring bean is:\n- `singleton`\n- Meaning a single instance of the bean is created and shared across the application context"
+    },
+    {
+      "question": "What is Spring's Bean Lifecycle?",
+      "answer": "The Bean Lifecycle in Spring consists of several phases:\n1. Instantiation\n2. Property population\n3. `setBeanName()` call\n4. `setBeanFactory()` call\n5. Initialization (`@PostConstruct` or `afterPropertiesSet()`)\n6. Destruction (`@PreDestroy` or `destroy()`)\n\nSpring also allows custom initialization and destruction methods via:\n- The `@Bean` annotation\n- XML configuration."
+    },
+    {
+      "question": "What is the difference between `@Controller` and `@RestController`?",
+      "answer": "`@Controller`:\n- Used in MVC applications to handle web requests and returns `views` (HTML, JSP)\n\n`@RestController`\n- A specialization of `@Controller` that combines it with `@ResponseBody`\n- Returns JSON or XML data directly instead of a view"
+    },
+    {
+      "question": "What is the purpose of the `@PostConstruct` annotation?",
+      "answer": "`@PostConstruct`:\n- Used to define a method that should be executed after the bean's initialization and dependency injection is complete\n- It is part of the Java EE standard\n- Works with Spring-managed beans"
+    },
+    {
+      "question": "What is a proxy in Spring, and when is it used?",
+      "answer": "Spring creates proxies to:\n- Wrap beans for features like:\n  - AOP (Aspect-Oriented Programming)\n  - Transaction management\n\n- Intercept method calls to add behavior like:\n  - logging\n  - security\n  - lazy initialization without modifying the original code."
+    },
+    {
+      "question": "What is the `HandlerInterceptor` in Spring MVC?",
+      "answer": "`HandlerInterceptor`:\n- Used to intercept HTTP requests before they reach a controller or after the response is sent\n- It provides hooks for:\n  - pre-processing (`preHandle`)\n  - post-processing (`postHandle`)\n  - After-completion logic"
+    },
+    {
+      "question": "What are `Spring Boot DevTools`, and how do they help developers?",
+      "answer": "`Spring Boot DevTools`:\n- A development-time toolset\n- Enhances the developer experience\n- Provides features like:\n  - Automatic application restarts\n  - live reloading of templates\n  - Debugging support"
+    },
+    {
+      "question": "What is the role of `WebApplicationInitializer` in Spring?",
+      "answer": "`WebApplicationInitializer`:\n- An interface used to configure a Servlet 3.0+ application programmatically\n- Replaces the `web.xml` file\n- Often used to bootstrap Spring-based applications in a servlet container"
+    },
+    {
+      "question": "What is `@Async`, and how does it work in Spring?",
+      "answer": "`@Async`:\n- An annotation used to indicate that a method should run asynchronously in a separate thread\n- It requires a `TaskExecutor` bean\n- Allows non-blocking execution of tasks"
+    },
+    {
+      "question": "What is a `HandlerExceptionResolver` in Spring MVC?",
+      "answer": "`HandlerExceptionResolver`:\n- An interface used to handle exceptions thrown during request processing\n- Allows developers to map exceptions to specific HTTP responses or custom error views"
+    },
+    {
+      "question": "What is the difference between `ErrorController` and `@ExceptionHandler` in Spring Boot?",
+      "answer": "`ErrorController`:\n- A centralized mechanism for handling all errors in a Spring Boot application\n- Typically rendering error pages\n\n`@ExceptionHandler`:\n- Used at the controller level to handle specific exceptions"
+    },
+    {
+      "question": "How does Spring Boot support file uploads?",
+      "answer": "Spring Boot supports file uploads using:\n- `MultipartResolver`\n- `@RequestParam` annotation to handle `multipart/form-data` requests\n- Files can be stored:\n  - locally\n  - in-memory\n  - Uploaded to external services like AWS S3"
+    },
+    {
+      "question": "What is `WebFlux` in Spring Boot?",
+      "answer": "`WebFlux`:\n- a reactive web framework introduced in Spring 5\n- Supports:\n  - Reactive programming paradigms\n  - Non-blocking request handling\n  - Allowing applications to scale better for high-concurrency scenarios"
+    },
+    {
+      "question": "What is the difference between `@ComponentScan` and `@EnableAutoConfiguration`?",
+      "answer": "`@ComponentScan`:\n- Specifies the base packages for Spring to scan and detect components\n\n`@EnableAutoConfiguration`:\n- Enables Spring Boot to configure beans automatically based on the dependencies present in the classpath"
+    },
+    {
+      "question": "What are the differences between `Spring Security` and `OAuth2`?",
+      "answer": "`Spring Security`:\n- A framework for securing Java applications by handling authentication and authorization\n\n`OAuth2`:\n- A protocol for delegated access\n- Often used for Single Sign-On (SSO) and access to external APIs."
+    },
+    {
+      "question": "What is `Spring WebClient`, and how is it different from `RestTemplate`?",
+      "answer": "`Spring WebClient`:\n- A non-blocking, reactive HTTP client introduced in Spring 5\n- Supports asynchronous programming and streaming.\n\n`RestTemplate`:\n- A synchronous, blocking HTTP client suitable for traditional applications"
+    },
+    {
+      "question": "What is the purpose of `@ConditionalOnClass` and `@ConditionalOnMissingBean`?",
+      "answer": "`@ConditionalOnClass`:\n- Registers a bean only if a specific class is present on the classpath\n`@ConditionalOnMissingBean`:\n- Registers a bean only if a bean of the specified type is not already registered in the application context"
+    },
+    {
+      "question": "What is the role of `Spring Cloud` in a Spring Boot application?",
+      "answer": "`Spring Cloud`:\n- Provides tools for building distributed systems\n- Eureka (Service discovery)\n- Ribbon(load balancing)\n- Spring Cloud Gateway (API gateway)\n- Resilience4j/Hystrix (circuit breakers)."
+    },
+    {
+      "question": "What is the purpose of `@PathVariable` in Spring MVC?",
+      "answer": "`@PathVariable`:\n- Used to bind a URI template variable to a method parameter\n\nFor example:\n- `/users/{id}`\n- can bind the `id` variable to a method parameter"
+    },
+    {
+      "question": "How does Spring Boot handle CORS (Cross-Origin Resource Sharing)?",
+      "answer": "- By using `@CrossOrigin` annotations on controller methods or global configuration via `WebMvcConfigurer`\n- It allows specifying allowed origins, methods, and headers"
+    },
+    {
+      "question": "What is `Spring Initializr`, and how is it used?",
+      "answer": "`Spring Initializr`:\n- A web-based tool to bootstrap Spring Boot projects by selecting dependencies, project type, and configurations\n- It generates a pre-configured project structure for quick development"
+    },
+    {
+      "question": "What is the `CommandLineRunner` interface in Spring Boot?",
+      "answer": "`CommandLineRunner`:\n- An interface used to execute code after the Spring Boot application context has been initialized\n- It is often used for initialization tasks like seeding databases or running scripts"
+    },
+    {
+      "question": "What is the purpose of `@EnableScheduling` in Spring Boot?",
+      "answer": "`@EnableScheduling`:\n- Enables Spring's task scheduling capability\n- Allows methods annotated with `@Scheduled` to run at fixed intervals or use cron expressions"
+    },
+    {
+      "question": "What is the difference between `Stateful` and `Stateless` beans in Spring?",
+      "answer": "`Stateful` beans:\n- Maintain state across method calls\n\n`Stateless` beans:\n- Do not store any state between method calls\n- Preferred for thread safety and scalability"
+    },
+    {
+      "question": "What is the purpose of `@ConfigurationProperties` in Spring Boot?",
+      "answer": "`@ConfigurationProperties`:\n- Binds externalized configuration properties (from `application.properties` or `application.yml`) to a Java bean\n- Useful for grouping related properties and reducing boilerplate code"
+    },
+    {
+      "question": "What is the difference between Spring's `@Bean` and `@Component` annotations?",
+      "answer": "`@Bean`:\n- Used to define a bean in Java-based configuration classes\n\n`@Component`:\n- Used to indicate that a class is a Spring-managed bean\n- Detected through classpath scanning"
+    },
+    {
+      "question": "What are the different scopes of a Spring bean?",
+      "answer": "The common scopes in Spring are:\n- `singleton`: Default, one instance per application context\n- `prototype`: A new instance for every request\n- `request`: per HTTP request\n- `session`: Per HTTP session\n- `application`: shared across the servlet context"
+    },
+    {
+      "question": "What is the role of the `DispatcherServlet` in Spring MVC?",
+      "answer": "`DispatcherServlet`:\n- The front controller in Spring MVC\n- It handles incoming HTTP requests\n- Dispatches them to appropriate controllers\n- Manages the overall workflow of the application"
+    },
+    {
+      "question": "What is the difference between `setter-based` and `constructor-based` dependency injection?",
+      "answer": "`Setter-based DI`:\n- Uses setter methods to inject dependencies\n- Makes it more flexible for optional dependencies\n\n`Constructor-based DI`:\n- Uses constructors to inject dependencies\n- Best for mandatory dependencies\n- Ensures the class is fully initialized upon creation"
+    },
+    {
+      "question": "What is the purpose of the `@Repository` annotation in Spring?",
+      "answer": "`@Repository`:\n- A specialization of `@Component`\n- Used to indicate that a class interacts with the database\n- It provides additional functionality for exception translation into Spring's `DataAccessException` hierarchy"
+    },
+    {
+      "question": "How does Spring handle bean initialization and destruction?",
+      "answer": "Spring allows custom initialization and destruction methods using:\n- Annotations like `@PostConstruct` and `@PreDestroy`\n- By specifying methods via the `@Bean(initMethod, destroyMethod)` attributes in Java-based configuration"
+    },
+    {
+      "question": "What is a Spring `Resource` in the context of `ApplicationContext`?",
+      "answer": "A `Resource` in Spring:\n- Abstracts access to external resources such as files, URLs, or classpath resources\n- `ApplicationContext` provides a `getResource()` method to retrieve these resources"
+    },
+    {
+      "question": "What is the purpose of the `ContextLoaderListener`?",
+      "answer": "`ContextLoaderListener`\n- Used to initialize the Spring application context in a web application\n- It loads the root `ApplicationContext`\n- Manages its lifecycle"
+    },
+    {
+      "question": "How does Spring Boot simplify dependency management?",
+      "answer": "- Spring Boot uses a curated list of dependencies (managed via `spring-boot-dependencies` POM)\n- Ensures compatibility between libraries\n- It allows developers to add only the starter dependencies they need\n- Simplifies version management and avoids conflicts"
+    },
+    {
+      "question": "What is the `ApplicationContext` in Spring?",
+      "answer": "- The central interface in Spring for accessing the IoC container\n- Extends the basic capabilities of `BeanFactory`\n- It provides advanced features like:\n  - AOP\n  - Internationalization\n  - Application event propagation"
+    },
+    {
+      "question": "What is the difference between `@Controller` and `@RestController`?",
+      "answer": "- `@Controller`: Used for building MVC controllers and returns views (e.g., JSP, Thymeleaf)\n- `@RestController`: A specialized annotation combining `@Controller` and `@ResponseBody` to handle REST APIs, directly returning JSON or XML."
+    },
+    {
+      "question": "What is the purpose of `@EnableAutoConfiguration` in Spring Boot?",
+      "answer": "`@EnableAutoConfiguration`:\n- Enables Spring Boot's auto-configuration feature\n- Configures beans automatically based on classpath dependencies, property files, and default settings."
+    },
+    {
+      "question": "What is the `PropertySourcesPlaceholderConfigurer` in Spring?",
+      "answer": "`PropertySourcesPlaceholderConfigurer`: A Spring bean that resolves placeholders in property files (`${}`) and injects the values into bean definitions during configuration."
+    },
+    {
+      "question": "What is the difference between `@RequestMapping` and `@GetMapping`?",
+      "answer": "- `@RequestMapping`: A versatile annotation that maps HTTP requests to controller methods, supporting multiple HTTP methods.\n- `@GetMapping`: A shorthand for `@RequestMapping(method = RequestMethod.GET)` and is specific to GET requests."
+    },
+    {
+      "question": "How does Spring Boot handle embedded servers?",
+      "answer": "- Spring Boot provides embedded servers (e.g., `Tomcat`, `Jetty`, `Undertow`) by default, eliminating the need for external deployment.\n- This allows developers to package applications as runnable JARs or WARs with the server included."
+    },
+    {
+      "question": "What is the purpose of `@SessionAttributes` in Spring MVC?",
+      "answer": "`@SessionAttributes`: Used to store model attributes in the HTTP session for later retrieval across multiple requests."
+    },
+    {
+      "question": "How does Spring Boot simplify working with different environments?",
+      "answer": "- Supports profiles and environment-specific configuration using `application-{profile}.properties` or `application-{profile}.yml`.\n- Developers can switch environments using the `spring.profiles.active` property."
+    },
+    {
+      "question": "How does Spring Boot simplify the development of Java applications?",
+      "answer": "Spring Boot provides:\n- **Auto-Configuration:** Configures applications based on dependencies.\n- **Starter POMs:** Simplifies dependency management.\n- **Embedded Servers:** Runs applications without an external server.\n- **Production-Ready Features:** Includes monitoring, health checks, and configuration management."
+    },
+    {
+      "question": "What is the purpose of the `@SpringBootApplication` annotation in Spring Boot?",
+      "answer": "The `@SpringBootApplication` annotation combines:\n- `@Configuration`: Defines beans and dependencies.\n- `@EnableAutoConfiguration`: Enables auto-configuration.\n- `@ComponentScan`: Scans the package for components.\n\nThis simplifies Spring Boot application setup."
+    },
+    {
+      "question": "How do you handle exceptions in a Spring Boot application?",
+      "answer": "**Exception Handling Approaches**:\n1. Global Exception Handling using `@ControllerAdvice`:\n```java\n@ControllerAdvice\npublic class GlobalExceptionHandler {\n    @ExceptionHandler(ResourceNotFoundException.class)\n    public ResponseEntity<String> handleResourceNotFound(ResourceNotFoundException ex) {\n        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);\n    }\n}\n```\n2. Using `@ResponseStatus`:\n```java\n@ResponseStatus(HttpStatus.NOT_FOUND)\npublic class ResourceNotFoundException extends RuntimeException {\n    public ResourceNotFoundException(String message) {\n        super(message);\n    }\n}\n```"
+    },
+    {
+      "question": "What is Dependency Injection, and why is it important?",
+      "answer": "**Definition**:\nDependency Injection (DI) is a design pattern used to achieve Inversion of Control (IoC) by injecting dependencies into a class rather than the class creating them itself.\n\n**Benefits**:\n- **Loose Coupling:** Improves testability and maintainability.\n- **Easier Unit Testing:** Mocks can replace actual dependencies.\n- **Improved Code Organization:** Encourages modular code design.\n\n**Example**:\n```java\n@Service\npublic class UserService {\n    private final UserRepository userRepository;\n\n    @Autowired\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}\n```"
+    },
+    {
+      "question": "How do you perform unit testing in Java using JUnit?",
+      "answer": "JUnit is a popular Java testing framework.\n\nExample Test:\n```java\nimport static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\npublic class CalculatorTest {\n    @Test\n    public void testAddition() {\n        Calculator calc = new Calculator();\n        assertEquals(5, calc.add(2, 3));\n    }\n}\n```"
+    },
+    {
+      "question": "What is Dependency Injection (DI) and why is it used in modern software development?",
+      "answer": "`Dependency Injection (DI)`:\n- A design pattern that allows a class to receive its dependencies (objects or services) from an external source rather than creating them itself.\n\n**Benefits**:\n- Loose Coupling: Components are decoupled, making the system more flexible and easier to test.\n- Reusability: Easily swap dependencies without affecting the class using them.\n- Testability: Dependencies can be easily mocked during unit testing.\n\nExample in Java (using Spring):\n```java\n@Component\npublic class UserService {\n    private final UserRepository userRepository;\n\n    @Autowired\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}\n```"
+    },
+    {
+      "question": "What is the purpose of `@ConditionalOnClass` and `@ConditionalOnMissingBean`?",
+      "answer": "`@ConditionalOnClass`:\n- Registers a bean only if a specific class is present on the classpath\n\n`@ConditionalOnMissingBean`:\n- Registers a bean only if a bean of the specified type is not already registered in the application context."
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    }
+  ]
+}

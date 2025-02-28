@@ -1,0 +1,277 @@
+{
+  "topic": "Java OOP",
+  "questions": [
+    {
+      "question": "What is the `Diamond Problem`?",
+      "answer": "- The `diamond problem` in Java occurs when multiple inheritance leads to ambiguity in method resolution.\n- However, Java does not support multiple inheritance of classes, which prevents this issue at the class level.\n- The problem can still arise with interfaces that have default methods.\n\n**Diamond Problem with Classes (Prevented in Java)** <br/>\n In languages that support multiple inheritance (like C++), the diamond problem occurs when a class inherits from two classes that both inherit from a common base class:\n\n```text\n    A\n   / \\\n  B   C\n   \\ /\n    D\n```\n\nIf:\n - Both B and C override a method from A\n- D inherits from both B and C\n- Then which method should D inherit?\n- This is the ambiguity known as the diamond problem.\n\nJava avoids this issue by disallowing multiple inheritance of classes. You cannot have `class D extends B, C` in Java."
+    },
+    {
+      "question": "Show an example of the `Diamond Problem` in Java?",
+      "answer": "**Diamond Problem with Interfaces**\nJava does allow multiple inheritance of interfaces:\n- Can lead to a similar issue if two interfaces define the same default method.\n\n**Example of the Diamond Problem with Default Methods**\n```java\ninterface A {\n    default void show() {\n        System.out.println(\"A's show\");\n    }\n}\n\ninterface B extends A {\n    default void show() {\n        System.out.println(\"B's show\");\n    }\n}\n\ninterface C extends A {\n    default void show() {\n        System.out.println(\"C's show\");\n    }\n}\n\nclass D implements B, C {\n    // Compilation error: show() is inherited from both B and C\n}\n```\n\n**Solution: Override the Method in D**\nTo resolve the ambiguity, D must explicitly override the `show()` method:\n\n```java\nclass D implements B, C {\n    @Override\n    public void show() {\n        // Choose explicitly which show() to use\n        B.super.show(); // or C.super.show();\n    }\n}\n```\n\n- `B.super.show();` → Calls `show()` from `B`\n- `C.super.show();` → Calls `show()` from `C`\n\n**Key Takeaways**:\n- Java does not support multiple inheritance of classes, preventing the diamond problem at the class level.\n- Java allows multiple inheritance of interfaces, which can cause conflicts when default methods are involved.\n- The compiler forces the implementing class to override conflicting default methods, making the choice explicit."
+    },
+    {
+      "question": "What is an association?",
+      "answer": "- `Association` represents a `uses-a` relationship between two classes.\n- It can be:\n  - `One-to-One`\n  - `One-to-Many`\n  - `Many-to-Many`."
+    },
+    {
+      "question": "Write an interface `Animal` with methods `makeSound()` and `move()`. Create two classes, `Dog` and `Bird`, that implement this interface.",
+      "answer": "interface Animal {\n\tvoid makeSound();\n\tvoid move();\n}\n\nclass Dog implements Animal {\n\tpublic void makeSound() {\n\t\tSystem.out.println(\"Bark\");\n\t}\n\n\tpublic void move() {\n\t\tSystem.out.println(\"Runs\");\n\t}\n}\n\nclass Bird implements Animal {\n\tpublic void makeSound() {\n\t\tSystem.out.println(\"Chirp\");\n\t}\n\n\tpublic void move() {\n\t\tSystem.out.println(\"Flies\");\n\t}\n}"
+    },
+    {
+      "question": "How does abstraction reduce complexity?",
+      "answer": "It allows focusing on what an object does rather than how it does it."
+    },
+    {
+      "question": "Why can’t you instantiate an abstract class?",
+      "answer": "Because it may have unimplemented methods."
+    },
+    {
+      "question": "How would you use OOP principles in designing a payment system?",
+      "answer": "Abstract Class:\n- Payment (common methods like `processPayment()`).\n\nSubclasses:\n- CreditCardPayment\n- PayPalPayment\n\nEncapsulation:\n- Keep payment details secure.\n\nPolymorphism:\n- Handle different payment methods dynamically."
+    },
+    {
+      "question": "Why use an interface if we already have abstract classes?",
+      "answer": "Interfaces allow multiple inheritance and are more flexible for defining contracts that multiple classes can implement."
+    },
+    {
+      "question": "What is abstraction in OOP?",
+      "answer": "Abstraction is the process of hiding the implementation details and showing only essential features of an object."
+    },
+    {
+      "question": "Write a program that demonstrates method overriding using a `Shape` superclass and `Circle` and `Rectangle` subclasses.",
+      "answer": "class Shape {\n public void draw() {\n\t\tSystem.out.println(\"Drawing a shape\");\n\t}\n}\n\nclass Circle extends Shape {\n\t@Override\n\tpublic void draw() {\n\t\tSystem.out.println(\"Drawing a circle\");\n\t}\n}\n\nclass Rectangle extends Shape {\n\t@Override\n\tpublic void draw() {\n\t\tSystem.out.println(\"Drawing a rectangle\");\n\t}\n}\n\npublic class Main {\n\tpublic static void main(String[] args) {\n\t\tShape shape1 = new Circle();\n\t\tShape shape2 = new Rectangle();\n\t\tshape1.draw(); // Drawing a circle\n\t\tshape2.draw(); // Drawing a rectangle\n\t}\n}"
+    },
+    {
+      "question": "How does polymorphism enhance flexibility?",
+      "answer": "It allows methods to operate on objects of different types, enabling code extensibility."
+    },
+    {
+      "question": "What is polymorphism?",
+      "answer": "Polymorphism allows objects to be treated as instances of their parent class, enabling a single interface for different types."
+    },
+    {
+      "question": "What is the difference between compile-time and runtime polymorphism?",
+      "answer": "Compile-time polymorphism:\n- Achieved through method overloading (resolved during compilation)\n\nRuntime polymorphism:\n- Achieved through method overriding (resolved during execution)."
+    },
+    {
+      "question": "Can static methods be polymorphic?",
+      "answer": "No, static methods are bound at compile time and belong to the class, not the object. Thus, they do not exhibit runtime polymorphism."
+    },
+    {
+      "question": "How does polymorphism benefit OOP?",
+      "answer": "Polymorphism allows methods to perform differently based on the object it is acting upon, promoting flexibility and code reuse."
+    },
+    {
+      "question": "Can constructors be inherited in Java?",
+      "answer": "No, constructors are not inherited. However, the child class can call the parent’s constructor using `super()`."
+    },
+    {
+      "question": "What is the difference between single inheritance and multiple inheritance?",
+      "answer": "Single inheritance:\n- A class inherits from one parent.\n\nMultiple inheritance:\n- A class inherits from multiple parents (Java doesn't support it directly to avoid ambiguity)."
+    },
+    {
+      "question": "Explain the `extends` keyword in Java.",
+      "answer": "The `extends` keyword is used to declare a subclass.\n\nFor example: class `Dog` extends `Animal`."
+    },
+    {
+      "question": "What is inheritance, and how does it promote code reuse?",
+      "answer": "Inheritance allows a class (child) to inherit fields and methods from another class (parent), promoting reuse and reducing redundancy."
+    },
+    {
+      "question": "How does encapsulation help in data hiding and security?",
+      "answer": "It ensures that internal implementation details are hidden from external users, only exposing controlled access through methods."
+    },
+    {
+      "question": "What are the four main principles of object-oriented programming?",
+      "answer": "`Encapsulation`:\n- ensures data integrity and hides implementation details\n\n`Inheritance`:\n- promotes code reuse\n\n`Polymorphism`:\n- Provides flexibility, especially when working with collections or designing APIs\n\n`Abstraction`:\n- simplifies complex systems by focusing on essential details"
+    },
+    {
+      "question": "How do you implement encapsulation in Java?",
+      "answer": "By making class fields private and providing public getter and setter methods to access or modify them."
+    },
+    {
+      "question": "What is encapsulation, and why is it important in object-oriented programming?",
+      "answer": "- Encapsulation is the bundling of data (fields) and methods that operate on the data into a single unit, usually a class.\n- It restricts direct access to certain components, promoting data hiding and security."
+    },
+    {
+      "question": "What is an interface in OOP?",
+      "answer": "An interface defines a contract or a set of methods that a class must implement without providing the method implementations."
+    },
+    {
+      "question": "What is the difference between overloading and overriding?",
+      "answer": "Overloading:\n- Allows multiple methods with the same name but different parameters.\n\nOverriding:\n- Allows a subclass to provide a specific implementation for a method already defined in its superclass."
+    },
+    {
+      "question": "Explain the concept of method hiding.",
+      "answer": "If a subclass defines a static method with the same name as in the parent class, the parent’s method is hidden, not overridden."
+    },
+    {
+      "question": "What is a marker interface?",
+      "answer": "A marker interface is an interface with no methods, used to provide metadata or tagging to a class. Example: `Serializable`."
+    },
+    {
+      "question": "What is aggregation?",
+      "answer": "- `Aggregation` is a `has-a` relationship where one class contains another.\n- It represents a weaker relationship compared to composition.\n- `Example`: A Library contains Books."
+    },
+    {
+      "question": "What is composition?",
+      "answer": "- Composition is a `part-of` relationship where one class is strongly dependent on another.\n- Example:\n  - A Car has an Engine.\n  - Without the engine, the car cannot function."
+    },
+    {
+      "question": "Can you define `encapsulation`, `inheritance`, and `abstraction`, and give examples of how you’ve used each in your projects?",
+      "answer": "`Encapsulation`:\n- restricts access to class members.\n\n`Inheritance`:\n- Reuses code by extending classes.\n`Abstraction`:\n- Defines interfaces for implementation.\n\nExample:\n- Payment gateway systems."
+    },
+    {
+      "question": "What is dependency injection in the context of OOP?",
+      "answer": "Dependency injection is a design pattern where an object’s dependencies are provided by an external source, promoting loose coupling."
+    },
+    {
+      "question": "How would you design a system for a library?",
+      "answer": "Key Classes:\n- `Book` (title, author, ISBN, etc.)\n- `Member` (name, ID, borrowed books)\n- `Librarian` (manage inventory, issue books)\n\nRelationships:\n- A `Member` can borrow multiple `Books`.\n- A `Librarian` interacts with `Book` and `Member`."
+    },
+    {
+      "question": "What is dynamic method dispatch in Java?",
+      "answer": "Dynamic method dispatch is the process by which the method to be executed is determined at runtime, based on the object’s actual type, not the reference type."
+    },
+    {
+      "question": "What is the role of the `final` keyword in inheritance?",
+      "answer": "final `class`:\n- Cannot be extended\n\nfinal `method`:\n- Cannot be overridden."
+    },
+    {
+      "question": "Can you extend multiple classes in Java? Why or why not?",
+      "answer": "No\n\n- Java does not support multiple inheritance with classes to avoid ambiguity (the `Diamond Problem`).\n- You can achieve similar functionality with interfaces."
+    },
+    {
+      "question": "How do constructors behave in inheritance?",
+      "answer": "- Constructors are not inherited.\n- The parent class’s constructor can be explicitly called using `super()`.\n- If not, the default no-argument constructor of the parent is called automatically."
+    },
+    {
+      "question": "What happens if a parent class method is private?",
+      "answer": "Private methods are not visible or accessible to the child class and cannot be overridden."
+    },
+    {
+      "question": "Can a class have methods without encapsulating its fields?",
+      "answer": "Yes, but the lack of encapsulation means the class does not control how its fields are accessed or modified, potentially leading to inconsistencies."
+    },
+    {
+      "question": "What are immutable classes, and how are they related to encapsulation?",
+      "answer": "Immutable classes prevent modification of their instances after creation.\n\nThey achieve this by:\n1. Declaring fields as final\n2. Providing no setters\n3. Ensuring deep copies of mutable fields are used in getters"
+    },
+    {
+      "question": "What is the difference between procedural programming and object-oriented programming?",
+      "answer": "`Procedural Programming`:\n- Focuses on procedures (functions) and structured steps to perform tasks\n\n`Object-Oriented Programming`:\n- Focuses on objects\n- Encapsulating data and behavior."
+    },
+    {
+      "question": "What is `upcasting` in Java?",
+      "answer": "`Upcasting`:\n- The process of treating a subclass object as an instance of its superclass\n- It allows access only to the methods defined in the superclass."
+    },
+    {
+      "question": "Why is `upcasting` used in Java?",
+      "answer": "`Upcasting`\n- Enables polymorphism\n- Enables code generalization\n- Enables method overriding\n- Allows handling different subclasses in a uniform manner."
+    },
+    {
+      "question": "Does `upcasting` affect method overriding?",
+      "answer": "No, overridden methods in the subclass are still called due to `dynamic method dispatch`."
+    },
+    {
+      "question": "Can you access subclass-specific methods after `upcasting`?",
+      "answer": "No.\n\n1. `Upcasting` restricts access to methods defined in the superclass\n2. To access subclass-specific methods, you need `downcasting`."
+    },
+    {
+      "question": "What is `downcasting`?",
+      "answer": "`Downcasting`:\n- The process of converting a superclass reference back to a subclass type\n- It requires explicit casting\n- Should be used cautiously to avoid `ClassCastException`."
+    },
+    {
+      "question": "How does constructor execution work in inheritance?",
+      "answer": "When a subclass object is created:\n- The superclass constructor is executed first\n- Followed by the subclass constructor\n\nThis ensures proper initialization."
+    },
+    {
+      "question": "Can we override constructors in Java?",
+      "answer": "No.\n- Constructors cannot be overridden\n- They can be overloaded within a class."
+    },
+    {
+      "question": "What happens if we don't call `super()` explicitly in a subclass constructor?",
+      "answer": "1. Java automatically inserts a call to the no-argument constructor of the superclass (`super();`)\n2. If the superclass has no default constructor, compilation fails."
+    },
+    {
+      "question": "Can a subclass call a private constructor of the superclass?",
+      "answer": "No, a private constructor prevents:\n- Inheritance\n- Making subclass instantiation impossible"
+    },
+    {
+      "question": "What is the difference between method hiding and method overriding?",
+      "answer": "`Overriding`:\n- A subclass provides a specific implementation of an inherited method (applicable for instance methods).\n\n`Hiding`:\n- If a subclass defines a static method with the same signature as a superclass static method\n- It hides the superclass method instead of overriding it."
+    },
+    {
+      "question": "Can interfaces cause the diamond problem in Java?",
+      "answer": "Yes, if multiple interfaces have the same default method:\n- A class implementing both must explicitly override the method to resolve the conflict."
+    },
+    {
+      "question": "How can you call a superclass method explicitly in a subclass?",
+      "answer": "Use `super.methodName();` to invoke the superclass' version of an overridden method."
+    },
+    {
+      "question": "What happens if you upcast an object and then downcast it incorrectly?",
+      "answer": "It results in a `ClassCastException` at runtime if the actual object type does not match the expected subclass."
+    },
+    {
+      "question": "Can a constructor be inherited in Java?",
+      "answer": "No, constructors are not inherited:\n- The subclass constructor **can** call the superclass constructor using `super();`"
+    },
+    {
+      "question": "What is the difference between upcasting and downcasting?",
+      "answer": "`Upcasting`:\n- Converting a subclass reference to a superclass reference (safe, implicit)\n\n`Downcasting`:\n- Converting a superclass reference back to a subclass reference (requires explicit casting, risky)."
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    }
+  ]
+}

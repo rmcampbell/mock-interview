@@ -1,0 +1,89 @@
+{
+  "topic": "Miscellaneous Topics",
+  "questions": [
+    {
+      "question": "What is Continuous Integration and Continuous Deployment (CI/CD)?",
+      "answer": "Continuous Integration (CI):\n- The practice of frequently integrating code changes into a shared repository. This allows teams to detect integration issues early.\n\nContinuous Deployment (CD):\n- The practice of automatically deploying code to production after passing tests and integration.\n\nBenefits:\n- Faster Releases: Automates testing and deployment pipelines.\n- Improved Quality: Continuous testing helps identify issues early in the development cycle.\n- Consistency: Automated deployment ensures environments are identical and deployments are consistent."
+    },
+    {
+      "question": "What is time complexity?",
+      "answer": "A measure of the efficiency of an algorithm based on input size."
+    },
+    {
+      "question": "What is an associative array?",
+      "answer": "A data structure that maps keys to values, often implemented as a hash table."
+    },
+    {
+      "question": "What is a stateless system?",
+      "answer": "A system where each request is processed independently without relying on previous interactions (e.g., REST APIs)."
+    },
+    {
+      "question": "What is the result of `1 XOR 1`?",
+      "answer": "- `0`: (Exclusive OR returns true only if inputs differ)"
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    }
+  ]
+}

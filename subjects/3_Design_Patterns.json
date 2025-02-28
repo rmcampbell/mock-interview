@@ -1,0 +1,201 @@
+{
+  "topic": "Design Patterns and Software Engineering",
+  "questions": [
+    {
+      "question": "What is the Singleton Design Pattern, and how is it implemented in Java?",
+      "answer": "The Singleton Design Pattern ensures that a class has only one instance and provides a global point of access to that instance. \nIn Java, it can be implemented as follows:\n\n```java\npublic class Singleton {\n    private static Singleton instance;\n\n    private Singleton() {\n        // Private constructor to prevent instantiation\n    }\n\n    public static Singleton getInstance() {\n        if (instance == null) {\n            instance = new Singleton();\n        }\n        return instance;\n    }\n}\n```\n\n**Key Points**:\n- The constructor is private to prevent direct instantiation.\n- A static method `getInstance()` returns the single instance, creating it if it doesn't already exist."
+    },
+    {
+      "question": "What is the Singleton design pattern, and when would you use it?",
+      "answer": "The Singleton pattern ensures that a class has only one instance and provides a global point of access to that instance. It is typically used for managing shared resources like:\n- A configuration object\n- Database connections\n- A logging service"
+    },
+    {
+      "question": "What is a Design Pattern?",
+      "answer": "A **design pattern** is a reusable solution to a common problem in software design. It provides best practices and templates for solving recurring design issues.\nExamples of design patterns include:\n- **Creational**: Factory, Singleton\n- **Structural**: Adapter, Composite\n- **Behavioral**: Observer, Strategy"
+    },
+    {
+      "question": "What is the Factory Method pattern?",
+      "answer": "- Defines an interface for creating objects but allows subclasses to alter the type of objects that will be created.\n- It is useful for decoupling object creation from its use."
+    },
+    {
+      "question": "What is the Observer design pattern?",
+      "answer": "- Defines a one-to-many dependency between objects, such that when one object changes state, all its dependents are notified.\n- It is commonly used in:\n- Event-driven systems\n- UI frameworks"
+    },
+    {
+      "question": "What is the Strategy design pattern?",
+      "answer": "- Defines a family of algorithms and allows clients to choose an algorithm at runtime.\n- It is useful when multiple algorithms are available to perform a task and allows the algorithm to be selected dynamically."
+    },
+    {
+      "question": "What is the Adapter design pattern?",
+      "answer": "- Allows incompatible interfaces to work together.\n- It acts as a bridge between two interfaces, translating calls from one interface into calls to another, ensuring compatibility without modifying the existing code."
+    },
+    {
+      "question": "What is the Command design pattern?",
+      "answer": "- Encapsulates a request as an object, thus allowing for parameterization of clients with queues, requests, and logs.\n- It decouples the sender of a request from the receiver by providing a command interface."
+    },
+    {
+      "question": "What is the Decorator design pattern?",
+      "answer": "- Allows you to dynamically add behavior to an object at runtime without altering its structure.\n- It is often used to extend the functionality of an object by wrapping it with additional functionality."
+    },
+    {
+      "question": "What is the Proxy design pattern?",
+      "answer": "- Provides a surrogate or placeholder for another object.\n\nIt controls access to the real object, often for purposes like:\n- Lazy initialization\n- Access control\n- Logging\n- Caching"
+    },
+    {
+      "question": "What is the Facade design pattern?",
+      "answer": "- Provides a simplified interface to a complex subsystem.\n- It hides the internal complexity of the system and provides an easier way to interact with it."
+    },
+    {
+      "question": "What is the Composite design pattern?",
+      "answer": "- Used to compose objects into tree-like structures to represent part-whole hierarchies.\n- Allows clients to treat individual objects and compositions of objects uniformly."
+    },
+    {
+      "question": "What is the State design pattern?",
+      "answer": "- Allows an object to alter its behavior when its internal state changes.\n- It enables an object to appear as if it has changed its class."
+    },
+    {
+      "question": "What is the Builder design pattern?",
+      "answer": "- Separates the construction of a complex object from its representation\n- Allows the same construction process to create different representations.\n- It is particularly useful for creating immutable objects with many optional parameters."
+    },
+    {
+      "question": "What is the Chain of Responsibility design pattern?",
+      "answer": "- Allows a request to be passed along a chain of handlers.\n- Each handler either processes the request or passes it to the next handler in the chain."
+    },
+    {
+      "question": "What is the Template Method design pattern?",
+      "answer": "- Defines the skeleton of an algorithm in the superclass\n- Lets subclasses implement specific steps of the algorithm without changing the overall structure."
+    },
+    {
+      "question": "What is the Memento design pattern?",
+      "answer": "- Allows an object's state to be captured and restored later without violating encapsulation.\n- It is useful for implementing features like undo/redo functionality."
+    },
+    {
+      "question": "What is the Flyweight design pattern?",
+      "answer": "- Reduces memory usage by sharing common parts of objects between multiple objects.\n- It is often used for managing large numbers of similar objects efficiently."
+    },
+    {
+      "question": "What is the Strategy design pattern and why is it useful?",
+      "answer": "-Allows a method to be selected at runtime, providing flexibility in algorithm selection.\n- It is especially useful when multiple methods exist to perform a task, and the best method is chosen based on runtime information."
+    },
+    {
+      "question": "What is the difference between abstract class and interface in Java?",
+      "answer": "**Abstract class**:\n- Can have both abstract and concrete methods\n- Can provide shared behavior\n\n**Interface**:\n- (Prior to Java 8) can only have abstract methods\n- Ideal for defining roles\n- Interfaces can be implemented by any class, regardless of its place in the class hierarchy"
+    },
+    {
+      "question": "What is the importance of SOLID principles in software engineering?",
+      "answer": "**SOLID principles**:\n- `Single Responsibility Principle` (`SRP`): A class should have only one reason to change\n- `Open/Closed Principle` (`OCP`): A class should be open for extension but closed for modification\n- `Liskov Substitution Principle` (`LSP`): Objects of a superclass should be replaceable with objects of a subclass\n- `Interface Segregation Principle` (`ISP`): A client should not be forced to depend on interfaces it does not use\n- `Dependency Inversion Principle` (`DIP`): High-level modules should not depend on low-level modules; both should depend on abstractions"
+    },
+    {
+      "question": "What is the difference between a `synchronous` and `asynchronous` system?",
+      "answer": "**Synchronous system**:\n- Tasks are performed sequentially\n- Execution is blocked until the task is completed\n\n**Asynchronous system**:\n- Tasks are performed independently\n- The system can continue executing other tasks while waiting for the task to complete"
+    },
+    {
+      "question": "What are the advantages and disadvantages of using microservices in software design?",
+      "answer": "**Advantages**:\n- `Scalability`\n- `Flexibility`\n- `Independent deployment`\n\n**Disadvantages**:\n- Complexity in managing inter-service communication\n- Challenges in maintaining data consistency"
+    },
+    {
+      "question": "What is the difference between vertical and horizontal scaling?",
+      "answer": "**Vertical scaling**:\n- Involves adding more resources (CPU, RAM) to a single machine\n\n**Horizontal scaling**:\n- Involves adding more machines or instances to distribute the load"
+    },
+    {
+      "question": "What is the singleton pattern?",
+      "answer": "- Restricts the instantiation of a class to one object.\n- It ensures that a class has only one instance and provides a global point of access to it.\n- This is useful for situations where only one object needs to coordinate actions across the system, like a database connection or configuration manager."
+    },
+    {
+      "question": "What is the Observer Design Pattern, and how is it implemented in Java?",
+      "answer": "Defines a one-to-many dependency where an object (subject) notifies a list of observers about state changes.\n\n**Implementation in Java*:\n```java\nimport java.util.*;\n\ninterface Observer {\n    void update(String message);\n}\n\nclass ConcreteObserver implements Observer {\n    private String observerName;\n    \n    public ConcreteObserver(String name) {\n        this.observerName = name;\n    }\n\n    public void update(String message) {\n        System.out.println(observerName + \" received message: \" + message);\n    }\n}\n\nclass Subject {\n    private List<Observer> observers = new ArrayList<>();\n\n    public void addObserver(Observer observer) {\n        observers.add(observer);\n    }\n\n    public void removeObserver(Observer observer) {\n        observers.remove(observer);\n    }\n\n    public void notifyObservers(String message) {\n        for (Observer observer : observers) {\n            observer.update(message);\n        }\n    }\n}\n```"
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    }
+  ]
+}

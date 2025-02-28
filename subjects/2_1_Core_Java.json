@@ -1,0 +1,509 @@
+{
+  "topic": "Core Java",
+  "questions": [
+    {
+      "question": "What is the difference between `StringBuilder` and `StringBuffer`?",
+      "answer": "`StringBuilder`: Faster, NOT thread-safe\n\n`StringBuffer`: Thread-safe because its methods are synchronized."
+    },
+    {
+      "question": "How does the `ConcurrentHashMap` differ from `HashMap`?",
+      "answer": "| Feature | `ConcurrentHashMap` | `HashMap` |\n|---------|---------------------|-----------|\n| **Thread-Safety** | Yes, designed for concurrent access | No, not thread-safe |\n| **Synchronization** | Uses **CAS (Compare-And-Swap)** and fine-grained locks | No synchronization, must be wrapped with `Collections.synchronizedMap()` for thread safety |\n| **Locking Mechanism** | **Bucket-level locking** (Java 8+), previously segment-based | No locking, meaning concurrent modifications can lead to race conditions |\n| **Performance in Multi-threading** | Optimized for concurrent access, avoids blocking where possible | Poor performance in multi-threaded environments without external synchronization |\n| **Null Keys and Values** | ❌ **Does NOT allow `null` keys or values** | ✅ Allows `null` keys and values |\n| **Iteration Safety** | **Weakly consistent iterator** (does not throw `ConcurrentModificationException`) | **Fail-fast iterator** (throws `ConcurrentModificationException` if modified during iteration) |\n| **Usage Scenario** | Best for multi-threaded applications | Best for single-threaded applications |"
+    },
+    {
+      "question": "What are soft and weak references in Java?",
+      "answer": "SoftReferences:\n- Cleared only when memory is low.\n\nWeakReferences:\n- Cleared as soon as the object is weakly reachable."
+    },
+    {
+      "question": "What is the difference between `Collection` and `Collections` in Java?",
+      "answer": "`Collection`:\n- An interface in the Java Collection Framework.\n- Represents a group of objects.\n\n`Collections`:\n- A utility class that provides static methods for operations such as sorting, searching, and synchronization on collections."
+    },
+    {
+      "question": "Explain the difference between `final`, `finally`, and `finalize` in Java.",
+      "answer": "`final`:\n- A keyword used for constants, method immutability, or preventing inheritance.\n\n`finally`:\n- A block in exception handling that always executes.\n\n`finalize`:\n- A method called by the garbage collector before object destruction."
+    },
+    {
+      "question": "How does the `HashMap` work internally in Java?",
+      "answer": "`HashMap`:\n\n- Uses an array of buckets where each bucket is a linked list or a balanced tree.\n- The key's hash code determines the bucket, and keys with the same hash code are stored in the same bucket.\n- From Java 8 onwards, when the bucket size exceeds a threshold, the linked list is converted into a tree for better performance."
+    },
+    {
+      "question": "What is the difference between `fail-fast` and `fail-safe` iterators?",
+      "answer": "`Fail-fast` iterators:\n- Throw a `ConcurrentModificationException` if the collection is modified during iteration.\n\n`Fail-safe` iterators:\n- Allow modifications and iterate over a copy of the collection.\n- Example: `CopyOnWriteArrayList`."
+    },
+    {
+      "question": "What is the purpose of the `default` keyword in interfaces?",
+      "answer": "The `default` keyword allows you to:\n- Define a method with a body in an interface.\n- Add new functionality to interfaces without breaking the classes that implement them."
+    },
+    {
+      "question": "What is a functional interface in Java?",
+      "answer": "- An interface with exactly one abstract method.\n- It can have default and static methods.\n- Functional interfaces are used as the basis for lambda expressions in Java."
+    },
+    {
+      "question": "What is the difference between `synchronized block` and `synchronized method`?",
+      "answer": "`synchronized method`:\n- Locks the entire method for a single thread.\n\n`synchronized block`:\n- Locks only a specific section of the code or an object.\n- Improves performance by reducing the scope of the lock."
+    },
+    {
+      "question": "What is the purpose of the `Optional` class?",
+      "answer": "- A container object that may or may not contain a non-null value\n- It helps to avoid NullPointerException by providing methods like:\n\t- isPresent()\n\t- ifPresent()\n\t- orElse()\n  to handle potential null values safely."
+    },
+    {
+      "question": "How does Java handle multiple inheritance?",
+      "answer": "- Java does not support multiple inheritance with classes to avoid ambiguity\n- It does allow multiple inheritance with interfaces\n- If multiple interfaces have default methods with the same signature, the implementing class must override them to resolve the conflict."
+    },
+    {
+      "question": "What is the difference between `Callable` and `Runnable` in Java?",
+      "answer": "`Runnable`:\n- A functional interface used to define a task with no return value\n\n`Callable`:\n- A functional interface that can return a result and throw checked exceptions."
+    },
+    {
+      "question": "What is the difference between `heap` and `stack` memory in Java?",
+      "answer": "`Heap memory`:\n- Used for objects and JRE classes\n\n`Stack memory`:\n- Used for method execution\n- Contains method-specific values like local variables and references."
+    },
+    {
+      "question": "What is the purpose of the `transient` keyword in serialization?",
+      "answer": "- Prevents a field from being serialized\n- When an object is serialized, the value of the transient field is not included in the serialized data."
+    },
+    {
+      "question": "How does Java achieve platform independence?",
+      "answer": "Java achieves platform independence by compiling source code into bytecode, which is interpreted by the JVM on any platform that has a compatible JVM implementation."
+    },
+    {
+      "question": "What is the difference between abstract classes and interfaces?",
+      "answer": "`Interfaces`:\n- Can have default and static methods, reducing the gap between abstract classes and interfaces.\n\n`Abstract classes`:\n- Can still have constructors, instance variables, and methods with full implementation."
+    },
+    {
+      "question": "What are the different ways to create threads in Java?",
+      "answer": "- Threads can be created by extending the Thread class or implementing the Runnable interface\n- Additionally, you can use the ExecutorService framework introduced in Java 5."
+    },
+    {
+      "question": "What is a `WeakHashMap` in Java?",
+      "answer": "- A special type of Map where the keys are referenced weakly\n- If a key is no longer referenced elsewhere, it becomes eligible for garbage collection."
+    },
+    {
+      "question": "What is the String pool in Java?",
+      "answer": "- The String pool is a special area in memory where Java stores String literals\n- When a String literal is created, Java checks the pool first to reuse the instance if it already exists, saving memory."
+    },
+    {
+      "question": "What is method `overloading` and method `overriding`?",
+      "answer": "`Method overloading`:\n- occurs when two or more methods in the same class have the same name but different parameter lists\n\n`Method overriding`:\n- occurs when a subclass provides a specific implementation of a method in its parent class."
+    },
+    {
+      "question": "What are daemon threads in Java?",
+      "answer": "- Daemon threads are low-priority threads that run in the background, supporting other threads\n- They automatically terminate when all user threads finish execution\n- Used for tasks like `garbage collection`, `monitoring`, and `background I/O`"
+    },
+    {
+      "question": "What is the purpose of `Enum` in Java?",
+      "answer": "`Enum`:\n- used to define a set of named constants\n- It can have fields, methods, and constructors, allowing you to create type-safe enumerated data."
+    },
+    {
+      "question": "What are static imports in Java?",
+      "answer": "- Static imports allow you to access static members (fields and methods) of a class directly without using the class name.\n\nFor example:\n- `import static java.lang.Math.*` lets you use `sin()` instead of `Math.sin()`."
+    },
+    {
+      "question": "What is the `Comparator` interface used for?",
+      "answer": "`Comparator` interface:\n- Used to define a custom sorting order for objects\n- It provides the `compare()` method, which can be implemented to specify sorting logic."
+    },
+    {
+      "question": "What is a `ThreadLocal` variable in Java?",
+      "answer": "`ThreadLocal` is a special kind of variable where each thread accessing it has its own, independently initialized copy of the variable, ensuring thread safety without synchronization."
+    },
+    {
+      "question": "What is `Reflection` in Java?",
+      "answer": "`Reflection`:\n- A feature in Java that allows you to inspect and manipulate classes, methods, and fields at runtime\n- even if they are private."
+    },
+    {
+      "question": "What are Java `Records` and how are they used?",
+      "answer": "`Records` (introduced in Java 14 as a preview):\n- are a special kind of class designed to represent immutable data objects\n- They automatically provide implementations for `equals()`, `hashCode()`, and `toString()`."
+    },
+    {
+      "question": "What is the Java Virtual Machine (JVM)?",
+      "answer": "- The JVM is an abstract computing machine that enables Java programs to run on any device or operating system by providing a runtime environment\n- It translates bytecode into machine-specific code."
+    },
+    {
+      "question": "What is the difference between `JDK`, `JRE`, and `JVM`?",
+      "answer": "- `JDK` (`Java Development Kit`): a software development kit for developing Java applications\n- `JRE` (`Java Runtime Environment`): provides the libraries and JVM required to run Java programs.\n- `JVM` (`Java Virtual Machine`): the engine that executes Java bytecode."
+    },
+    {
+      "question": "What are Java's main features?",
+      "answer": "- Java is platform-independent, object-oriented, secure, robust, multithreaded, portable, and high-performance\n- It also supports automatic memory management and a rich API."
+    },
+    {
+      "question": "What is the difference between an `instance variable` and a `static variable`?",
+      "answer": "- An instance variable belongs to an instance of a class and each object has its copy\n- A static variable belongs to the class and is shared among all instances of the class."
+    },
+    {
+      "question": "What is the purpose of the `main()` method in Java?",
+      "answer": "`main()` method:\n- The entry point of a Java program\n- It is where the execution starts, and it must be `public`, `static`, and have a `void` return type."
+    },
+    {
+      "question": "Why should you favor `composition` **over** `inheritance` in Java?",
+      "answer": "- Composition allows objects to be composed of other objects, allowing greater flexibility and easier modifications compared to inheritance\n- This helps avoid issues like tight coupling and fragile base class problems."
+    },
+    {
+      "question": "Why should you consider providing `toString()`, `equals()`, and `hashCode()` methods?",
+      "answer": "- These methods are essential for object comparison, debugging, and efficient storage or retrieval in collections.\n\n- `toString()`: provides a string representation of an object\n-  `equals()`: compares objects\n- `hashCode()`: provides an integer hash value."
+    },
+    {
+      "question": "Why should exceptions be used for exceptional conditions and not for normal control flow?",
+      "answer": "1. **Performance Overhead**: Throwing and catching exceptions is more resource-intensive than using standard control flow mechanisms like loops or conditionals.\n2. **Readability**: Using exceptions for normal flow confuses readers, as exceptions are typically meant for error conditions.\n3. **Unpredictable Behavior**: Exceptions disrupt normal execution, making the program harder to control and maintain.\n4. **Maintainability**: Misusing exceptions complicates debugging and makes it harder to distinguish between real errors and expected behavior.\n5. **Best Practices**: Exceptions are designed for errors or unexpected situations, while regular control flow should be handled by loops, conditionals, and returns."
+    },
+    {
+      "question": "Why should you use interfaces to define roles in Java?",
+      "answer": "- Interfaces should be used to define roles or capabilities, allowing multiple implementations\n- This ensures that your code can work with different classes or behaviors while remaining flexible and extensible."
+    },
+    {
+      "question": "When should you design for inheritance or prohibit it?",
+      "answer": "- If a class is intended to be subclassed, ensure that it is designed for inheritance, meaning it is well-documented, and has a clear contract.\n- If inheritance is not required, make the class final to prevent subclassing."
+    },
+    {
+      "question": "Why should you minimize the accessibility of classes and their members?",
+      "answer": "- Enhances `encapsulation`\n- Reduces unintended dependencies\n- Prevents external code from modifying internal implementation details\n- Use the least permissive access level possible (`private`, `protected`, or `package-private`), and expose only necessary methods."
+    },
+    {
+      "question": "Why should you avoid finalizing methods and classes unnecessarily?",
+      "answer": "- Overusing final on methods and classes limits flexibility and often breaks design patterns\n- Only mark methods and classes as final when there's a clear benefit, such as for security reasons or ensuring immutability."
+    },
+    {
+      "question": "When should you use abstract classes and interfaces in Java?",
+      "answer": "- Abstract classes and interfaces should be used to define general behaviors and roles, and they help in creating loosely coupled systems.\n- However, they should not be overused, as they introduce additional complexity and force classes to follow a rigid structure."
+    },
+    {
+      "question": "What is the use of the final keyword in Java?",
+      "answer": "The `final` keyword can be used in three ways:\n- `Variables`: To make them constants.\n- `Methods`: To prevent overriding.\n- `Classes`: To prevent inheritance."
+    },
+    {
+      "question": "What is the difference between `String`, `StringBuilder`, and `StringBuffer`?",
+      "answer": "`String`:\n- Immutable, meaning its value cannot be changed after creation.\n\n`StringBuilder`:\n- Mutable.\n- Not thread-safe, making it faster for single-threaded operations.\n\n`StringBuffer`:\n- Mutable.\n- Thread-safe, making it suitable for multi-threaded operations."
+    },
+    {
+      "question": "What are the main concepts of object-oriented programming (OOP)?",
+      "answer": "The main concepts of OOP are:\n- `Encapsulation`.\n- `Inheritance`.\n- `Polymorphism`.\n- `Abstraction`."
+    },
+    {
+      "question": "What is the difference between a checked exception and an unchecked exception?",
+      "answer": "`Checked` exceptions:\n- Are checked at compile time.\n- Must be declared in a throws clause or handled in a try-catch block.\n\n`Unchecked` exceptions:\n- Occur at runtime.\n- Do not need to be declared or handled explicitly."
+    },
+    {
+      "question": "What is the purpose of the super keyword in Java?",
+      "answer": "The `super` keyword is used to:\n- Call the parent class's methods or constructors.\n- Access parent class fields when they are shadowed by child class fields."
+    },
+    {
+      "question": "What are access modifiers in Java?",
+      "answer": "Access modifiers determine the visibility of a class, method, or variable.\nJava provides four access modifiers:\n- `public`: Accessible from anywhere.\n- `protected`: Accessible within the same package and subclasses.\n- `default` (no modifier): Accessible within the same package.\n- `private`: Accessible only within the defining class."
+    },
+    {
+      "question": "What is garbage collection in Java?",
+      "answer": "Garbage collection is the process of:\n- Automatically freeing memory by removing unused objects.\n- Managed by the JVM to ensure efficient memory usage."
+    },
+    {
+      "question": "What is multithreading in Java?",
+      "answer": "Multithreading is a process where:\n- Multiple threads run concurrently to perform tasks.\n- It allows efficient use of CPU resources and faster program execution."
+    },
+    {
+      "question": "What is the difference between `wait()` and `sleep()`?",
+      "answer": "`wait()`:\n- Called on an object.\n- Releases the lock on the object, allowing other threads to acquire it.\n\n`sleep()`:\n- Called on a thread.\n- Pauses its execution without releasing any locks."
+    },
+    {
+      "question": "What is the purpose of the synchronized keyword in Java?",
+      "answer": "The synchronized keyword is used to:\n- Control access to critical sections of code or objects.\n- Ensure thread safety by allowing only one thread at a time to execute the synchronized block or method."
+    },
+    {
+      "question": "What are Java annotations?",
+      "answer": "Annotations are metadata used to provide information about a program.\n\nExamples include:\n- `@Override`: Indicates that a method overrides a parent class method.\n- `@Deprecated`: Marks a method or class as obsolete.\n- Custom annotations: User-defined metadata for specific use cases."
+    },
+    {
+      "question": "What is the difference between HashMap and Hashtable?",
+      "answer": "`HashMap`:\n- Not synchronized.\n- Allows one null key and multiple null values.\n\n`Hashtable`:\n- Synchronized.\n- Does not allow null keys or values."
+    },
+    {
+      "question": "What is the transient keyword in Java?",
+      "answer": "The transient keyword is used to:\n- Indicate that a field should not be serialized when an object is serialized."
+    },
+    {
+      "question": "What is the volatile keyword in Java?",
+      "answer": "The volatile keyword ensures that:\n- Changes to a variable are visible to all threads.\n- Threads do not cache stale values of the variable."
+    },
+    {
+      "question": "What is the purpose of the instanceof operator?",
+      "answer": "The `instanceof` operator is used to:\n- Check whether an object is an instance of a specific class or implements a specific interface."
+    },
+    {
+      "question": "What is a singleton class?",
+      "answer": "A singleton class is a design pattern that:\n- Ensures only one instance of the class exists throughout the application.\n- Is typically implemented using a private constructor and a static instance method."
+    },
+    {
+      "question": "What is the difference between throw and throws?",
+      "answer": "`throw`:\n- Used to explicitly throw an exception in code.\n\n`throws`:\n- Used in method signatures to declare the exceptions that a method may throw."
+    },
+    {
+      "question": "What are wrapper classes in Java?",
+      "answer": "Wrapper classes are used to convert primitive types into objects.\n\nExamples include:\n- `Integer`.\n- `Double`.\n- `Boolean`."
+    },
+    {
+      "question": "What is autoboxing and unboxing?",
+      "answer": "`Autoboxing`:\n- Automatic conversion of a primitive type to its corresponding wrapper class (e.g., int to Integer).\n\n`Unboxing`:\n- The reverse process (e.g., Integer to int)."
+    },
+    {
+      "question": "What is a try-with-resources statement?",
+      "answer": "A try-with-resources statement is used to:\n- Automatically close resources such as files, streams, or sockets.\n- It requires the resource to implement the AutoCloseable interface."
+    },
+    {
+      "question": "What is the difference between ArrayList and LinkedList?",
+      "answer": "`ArrayList`:\n- Uses a dynamic array.\n- Better for random access.\n\n`LinkedList`:\n- Uses a doubly-linked list.\n- Better for insertions and deletions."
+    },
+    {
+      "question": "What is the difference between public, private, protected, and default access modifiers?",
+      "answer": "`public`:\n- Accessible from anywhere.\n\n`private`:\n- Accessible only within the class.\n\n`protected`:\n- Accessible within the package and subclasses.\n\n`default` (no modifier):\n- Accessible within the package."
+    },
+    {
+      "question": "What is the difference between a shallow copy and a deep copy?",
+      "answer": "`Shallow Copy`:\n- Copies the object’s fields but not the objects they reference.\n\n`Deep Copy`:\n- Copies the object and all objects it references, creating independent instances."
+    },
+    {
+      "question": "What is the difference between == and .equals() in Java?",
+      "answer": "`==`:\n- Compares references (memory addresses).\n\n`.equals()`:\n- Compares values, overridden in many classes like String."
+    },
+    {
+      "question": "State the significant features of the Java Programming language.",
+      "answer": "- **Object-Oriented**: Java follows the principles of object-oriented programming (OOP), including inheritance, polymorphism, and encapsulation.\n- **Platform Independence**: Java code is compiled to bytecode, which can run on any device with a JVM, making it platform-independent.\n- **Multithreading**: Java supports multithreading, allowing programs to perform multiple tasks simultaneously.\n- **Automatic Garbage Collection**: Java automatically manages memory through garbage collection, freeing up memory used by objects that are no longer in use.\n- **Robust**: Java is designed to be reliable and secure, with strong exception handling and type checking.\n- **Security**: Java provides a secure environment with features like the Java sandbox and bytecode verification to prevent malicious actions.\n- **Rich API**: Java provides a comprehensive set of libraries and frameworks for building applications."
+    },
+    {
+      "question": "How is the Java platform different from other platforms?",
+      "answer": "- The **Java platform** is different because it uses the **Java Virtual Machine (JVM)** to run Java bytecode.\n- Java code is compiled into platform-independent bytecode, which is then interpreted or compiled by the JVM for a specific operating system.\n- This allows Java applications to be written once and run anywhere (WORA), unlike other platforms where applications are compiled specifically for each operating system."
+    },
+    {
+      "question": "What does the term classloader mean?",
+      "answer": "A **classloader** in Java is a part of the Java Runtime Environment (JRE) responsible for dynamically loading class files into memory when they are needed. The classloader reads the bytecode from sources such as file systems, JAR files, or network locations. There are different types of classloaders:\n- **Bootstrap Classloader**: Loads core Java libraries like `rt.jar`.\n- **Extension Classloader**: Loads extension libraries found in the `ext` directory.\n- **Application Classloader**: Loads application-specific classes from the classpath."
+    },
+    {
+      "question": "What is the significance of static methods and variables?",
+      "answer": "**Static Variables**:\n- Shared across all instances of a class.\n- They belong to the class rather than any specific object instance and retain their values across method calls and object creations.\n- Static variables are often used for constants or counters that need to be common to all instances.\n\n**Static Methods**:\n- Static methods belong to the class itself, meaning they can be called without creating an instance of the class.\n- Static methods can only access other static members (variables or methods) and cannot directly access instance variables or methods.\n- They are useful for utility methods, such as math functions or class-level operations."
+    },
+    {
+      "question": "What is the difference between an interface and an abstract class?",
+      "answer": "- `Interface`: Defines method signatures without implementation.\n- `Abstract Class`: Can define both abstract methods and implemented methods."
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    }
+  ]
+}

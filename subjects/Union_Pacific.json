@@ -1,0 +1,73 @@
+{
+  "topic": "Union Pacific",
+  "questions": [
+    {
+      "question": "Tell me about one of your latest projects.",
+      "answer": "`Campaign/Outreach Managers`\n\n**Campaign Manager**:\n- Manage campaign configurations\n\n**Outreach Manager**:\n  - Maintain status of records to be sent to end user\n  - Info about client and record to be sent\n\n*Change*\n\nRecord Suppression (regex|string):\n- phone:\n\t- area\n\t- prefix\n- zip:\n\t- broad geographic area (1st digit)\n\t- regional area (digits 2-3)\n\t- postal zone (digits 4-5)\n\n*Challenges*\n- length/format validation for zip/phone\n- Complex Integration with existing code\n\t- Adding too soon/late or wrong location\n\t\t- Cause unintended side effects\n---\n`Data Recorder`\n\n*Problem*\n\nClient need reporting for messages sent/recieved\n- Outcome of calls/texts\n\n*Solution*\n\nAPI:\n- start/end time\n- GCP Storage bucket\n\nRetreived conclusion messages from mongo collection\n- between start/end times\n- transform data\n- write to client file\n- compress and encrypt\n\n*Outcome*\n\nNeeded for other clients and applications\n- Refactored common functionality into a library for reuse\n\n---\n`Big Query - Create retry record files`\n\n*Problem*\n\nClient apps sometimes encounter errors - platform sets status that wont be retried\n- Ex. out of memory\n\n*Previous Solution*\n1. Big Query UI to retrieve original recs - criteria (50k+)\n2. Manually format so they can be resent\n3. Save to files < of x records - due to client app limitations\n4. Manually upload to Storage bucket\n\n*Productized Solution*\n\nAPI taking parameters for:\n- date range\n- file size\n- Project/Bucket location\n\n*Automated*:\n- Queries\n- Result conversion\n- File creation\n\n*Result*\n\n- Clients able to create cron schedules to retry unrecoverable errors\n- Saving countless hours of manual labor"
+    },
+    {
+      "question": "How do you handle API versioning in your applications?",
+      "answer": "Use URI versioning (`/v1/resource`) or query parameters."
+    },
+    {
+      "question": "What's your process for securing REST APIs?",
+      "answer": "Use:\n- `OAuth2`\n- `API Gateway`\n- Rate limiting\n- Encrypted communication (`HTTPS`)"
+    },
+    {
+      "question": "Can you explain your approach to migrating 15 legacy Java applications to Node.js?",
+      "answer": "`Situation`: We had 15 legacy Java applications that were expensive to maintain and lacked scalability.\n`Task`: My task was to migrate these applications to Node.js on GCP Cloud Run while preserving functionality and improving performance.\n`Action`: I rewrote critical components in Node.js, used containerization for consistent environments, and incorporated Redis for caching to reduce database load. I also conducted extensive load testing to ensure scalability.\n`Result`: The migration led to a 30% improvement in performance and a significant reduction in infrastructure costs."
+    },
+    {
+      "question": "What strategies did you use to automate infrastructure with Terraform and Terragrunt?",
+      "answer": "- I used Terraform to define resources like Cloud Run services and Pub/Sub topics as code.\n- Terragrunt allowed me to manage configurations across multiple environments, ensuring consistency while reducing errors during deployments."
+    },
+    {
+      "question": "How did you use Node.js to process high-volume data streams?",
+      "answer": "- I used Node.js for its event-driven architecture and non-blocking I/O to efficiently process high-volume data streams.\n- The application utilized streams to process data incrementally and integrated with GCP Pub/Sub for event handling, ensuring scalability."
+    },
+    {
+      "question": "What techniques did you use to optimize message handling in your SMS/MMS APIs?",
+      "answer": "I optimized message handling by:\n- Implementing asynchronous processing with message queues\n- Using UUIDs for efficient tracking\n- Adding retry mechanisms to handle failures gracefully\n- Monitoring throughput and scaling as needed"
+    },
+    {
+      "question": "What experience do you have of designing multi-threaded applications?",
+      "answer": "- I've designed multi-threaded applications in Java using concepts like thread pools, synchronization, and locks to manage concurrent tasks\n- One example is a task scheduler I built, which needed to handle multiple jobs running in parallel while maintaining thread safety."
+    },
+    {
+      "question": "Tell me about yourself.",
+      "answer": "I'm a full-stack engineer with a strong focus on backend development, cloud architecture, and system scalability.\nI've spent the past few years at Mosaicx, where I design and develop high-performance applications using Spring Boot and event-driven architectures.\nI've also led modernization projects, migrating legacy applications to cloud-based solutions, improving efficiency, and reducing costs.\nI enjoy tackling complex problems, optimizing systems, and ensuring long-term sustainability in architecture."
+    },
+    {
+      "question": "What technologies are you most experienced with?",
+      "answer": "I primarily work with Java, JavaScript, and Python, with expertise in Spring Boot.\nOn the cloud side, I have extensive experience with GCP, Terraform, and CI/CD tools. I also have strong database experience with MongoDB, IBM DB2, and Oracle.\nMy focus is on designing scalable, high-performance applications and streamlining deployment processes."
+    },
+    {
+      "question": "Can you describe a challenging technical problem you've solved?",
+      "answer": "At Mosaicx, I led a project to migrate 15 legacy Java applications to Node.js in GCP Cloud Run.\nThe challenge was ensuring minimal downtime and maintaining performance while transitioning to a more cost-efficient, scalable architecture.\nBy optimizing the migration process, we improved system performance and reduced infrastructure costs, enhancing overall operational resilience."
+    },
+    {
+      "question": "Tell me about a time you improved system efficiency.",
+      "answer": "I developed a reusable Cloud Run template for high-volume data processing, enabling rapid deployment of over 10 applications and reducing data handling time by 30%.\nThis standardized approach not only improved efficiency but also made future scaling easier for the team."
+    },
+    {
+      "question": "How do you approach writing clean, maintainable code?",
+      "answer": "I prioritize clarity, modularity, and test coverage.\nI write reusable components, follow SOLID principles, and document key decisions.\nI also implement automated testing with tools like Jest to ensure code quality. My goal is to write code that's easy to understand and modify, ensuring long-term sustainability."
+    },
+    {
+      "question": "How do you ensure reliability and security in your applications?",
+      "answer": "I design systems with fault tolerance in mind, leveraging event-driven architecture for resilience.\nFor security, I follow best practices like securing APIs with authentication, implementing input validation, and using encryption for sensitive data.\nI also conduct regular reviews and use automated security scanning tools."
+    },
+    {
+      "question": "How do you stay updated with industry trends?",
+      "answer": "I actively follow developer communities, read technical blogs, and experiment with new technologies in side projects.\nI also engage in knowledge-sharing within my team, ensuring we adopt best practices and stay ahead of industry changes."
+    },
+    {
+      "question": "What role do you typically play in a development team?",
+      "answer": "I often take on a leadership role, mentoring developers, improving processes, and ensuring high-quality code.\nI've led multiple teams, coordinated cross-team efforts, and contributed to defining best practices for efficiency and scalability."
+    },
+    {
+      "question": "Why do you want to work at this Union Pacific?",
+      "answer": "I'm excited about the opportunity to work with a team that values high-quality engineering and innovation.\nUP's focus on [specific technology or project] aligns with my experience in building scalable, cloud-native applications.\nI'm eager to contribute my skills in backend development and cloud architecture while continuing to grow in a collaborative environment."
+    }
+  ]
+}

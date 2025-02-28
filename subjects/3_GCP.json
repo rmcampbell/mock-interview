@@ -1,0 +1,49 @@
+{
+  "topic": "GCP",
+  "questions": [
+    {
+      "question": "What is `BigQuery`, and how does it help in analytics?",
+      "answer": "`BigQuery` is a **serverless data warehouse** by Google Cloud for **processing data at large-scale**.\n\n**Benefits**:\n- SQL-based queries\n- Highly scalable\n- Supports real-time analytics\n- Integration with GCP ecosystem\n\nExample Query:\n```sql\nSELECT name, age FROM users WHERE age > 30;\n```"
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    }
+  ]
+}
