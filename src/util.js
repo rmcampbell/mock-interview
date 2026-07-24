@@ -40,10 +40,15 @@ function shuffle(arr) {
 function handleError(err, returnValue = null) {
   if (err.name === 'AbortPromptError') {
     return returnValue;
-  } else if (err.name === 'ExitPromptError') {
+  }
+
+  if (err.name === 'ExitPromptError') {
     console.log('\n👋 until next time!');
     process.exit(0);
   }
+
+  // anything else is a real bug — surface it instead of returning undefined
+  throw err;
 }
 
 
