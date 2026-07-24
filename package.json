@@ -11,11 +11,7 @@
     "interview": "node index.js"
   },
   "dependencies": {
-    "@inquirer/checkbox": "^5.2.1",
-    "@inquirer/confirm": "^6.1.1",
-    "@inquirer/input": "^5.1.2",
     "@inquirer/prompts": "^8.5.2",
-    "cli-markdown": "^3.5.1",
-    "uuid": "^14.0.1"
+    "cli-markdown": "^3.5.1"
   }
 }
