@@ -10,8 +10,8 @@ async function startQuiz(topics, combineQuestions) {
 
   do {
     if (combineQuestions) {
-      console.log(`Starting the randomized quiz!`);
       shuffle(questions)
+      console.clear()
       await askQuestions(questions);
     } else {
       await startTopicQuiz(topics);
