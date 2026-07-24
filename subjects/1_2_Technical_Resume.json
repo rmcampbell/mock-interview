@@ -3,19 +3,15 @@
   "questions": [
     {
       "question": "How do you explain technical challenges to stakeholders who do not have technical knowledge or backgrounds?",
-      "answer": ""
+      "answer": "I **lead with impact, not implementation**:\n- **Frame it in their terms**: cost, timeline, risk, or user experience — not classes and queries.\n- **Use analogies**: e.g., \"the database is a filing cabinet; right now every lookup reopens every drawer\" instead of \"we're missing an index.\"\n- **Quantify the trade-off**: \"Option A ships next week but slows under load; Option B takes three weeks and scales to 10x.\"\n- **Confirm understanding**: summarize the decision back and let them own the call.\n\n**Example**: When a migration risked downtime, I described it as \"repaving a road one lane at a time so traffic never stops,\" which let non-technical stakeholders approve the phased rollout with confidence."
     },
     {
       "question": "Describe a difficult bug you were tasked with fixing in a large application",
-      "answer": ""
+      "answer": "**Situation**: A data pipeline intermittently dropped records in production but never reproduced locally.\n\n**Task**: Find and fix the root cause without pausing the pipeline.\n\n**Action**:\n- Added **structured logging** with correlation IDs to trace individual records end-to-end.\n- Narrowed it to a **race condition**: an async writer occasionally flushed before an upstream transform completed.\n- Reproduced it under load in a staging environment, then fixed it by awaiting the transform and adding a **retry with backoff**.\n\n**Result**: Record loss dropped to zero, and the correlation-ID logging became a reusable debugging tool for the team."
     },
     {
       "question": "What are your most used design patterns and in what contexts do you use them?",
-      "answer": ""
-    },
-    {
-      "question": "What are your most used design patterns and in what contexts do you use them?",
-      "answer": ""
+      "answer": "- **Strategy**: Swap algorithms at runtime — e.g., pluggable record-suppression rules or payment providers.\n- **Factory / Builder**: Construct complex objects (batch job configs, HTTP clients) without leaking construction details.\n- **Dependency Injection**: Default in Spring — keeps services loosely coupled and unit-testable.\n- **Template Method**: Shared skeleton for batch steps where only read/process/write differ.\n- **Adapter**: Wrap third-party or legacy APIs behind a clean interface during migrations.\n- **Observer / Pub-Sub**: Event-driven flows via GCP Pub/Sub for decoupled, asynchronous processing."
     },
     {
       "question": "How do you handle API versioning in your applications?",
