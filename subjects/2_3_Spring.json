@@ -254,14 +254,6 @@
       "answer": "- The central interface in Spring for accessing the IoC container\n- Extends the basic capabilities of `BeanFactory`\n- It provides advanced features like:\n  - AOP\n  - Internationalization\n  - Application event propagation"
     },
     {
-      "question": "What is the difference between `@Controller` and `@RestController`?",
-      "answer": "- `@Controller`: Used for building MVC controllers and returns views (e.g., JSP, Thymeleaf)\n- `@RestController`: A specialized annotation combining `@Controller` and `@ResponseBody` to handle REST APIs, directly returning JSON or XML."
-    },
-    {
-      "question": "What is the purpose of `@EnableAutoConfiguration` in Spring Boot?",
-      "answer": "`@EnableAutoConfiguration`:\n- Enables Spring Boot's auto-configuration feature\n- Configures beans automatically based on classpath dependencies, property files, and default settings."
-    },
-    {
       "question": "What is the `PropertySourcesPlaceholderConfigurer` in Spring?",
       "answer": "`PropertySourcesPlaceholderConfigurer`: A Spring bean that resolves placeholders in property files (`${}`) and injects the values into bean definitions during configuration."
     },
@@ -304,10 +296,6 @@
     {
       "question": "What is Dependency Injection (DI) and why is it used in modern software development?",
       "answer": "`Dependency Injection (DI)`:\n- A design pattern that allows a class to receive its dependencies (objects or services) from an external source rather than creating them itself.\n\n**Benefits**:\n- **Loose Coupling**: Components are decoupled, making the system more flexible and easier to test.\n- **Reusability**: Easily swap dependencies without affecting the class using them.\n- **Testability**: Dependencies can be easily mocked during unit testing.\n\n**Example in Java (using Spring)**:\n```java\n@Component\npublic class UserService {\n    private final UserRepository userRepository;\n\n    @Autowired\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}\n```"
-    },
-    {
-      "question": "What is the purpose of `@ConditionalOnClass` and `@ConditionalOnMissingBean`?",
-      "answer": "`@ConditionalOnClass`:\n- Registers a bean only if a specific class is present on the classpath\n\n`@ConditionalOnMissingBean`:\n- Registers a bean only if a bean of the specified type is not already registered in the application context."
     },
     {
       "question": "",
