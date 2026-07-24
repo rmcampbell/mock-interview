@@ -9,15 +9,16 @@
   "license": "ISC",
   "scripts": {
     "generate": "node src/genFlashQuiz.js",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "run": "node index.js"
   },
   "dependencies": {
-    "@inquirer/checkbox": "^4.0.7",
-    "@inquirer/confirm": "^5.1.4",
-    "@inquirer/input": "^4.1.4",
-    "@inquirer/prompts": "^7.2.4",
-    "cli-markdown": "^3.4.0",
-    "uuid": "^11.0.3"
+    "@inquirer/checkbox": "^5.2.1",
+    "@inquirer/confirm": "^6.1.1",
+    "@inquirer/input": "^5.1.2",
+    "@inquirer/prompts": "^8.5.2",
+    "cli-markdown": "^3.5.1",
+    "uuid": "^14.0.1"
   },
   "devDependencies": {
     "patch-package": "^8.0.0"
