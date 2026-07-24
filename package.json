@@ -8,7 +8,6 @@
   "private": true,
   "license": "ISC",
   "scripts": {
-    "generate": "node src/genFlashQuiz.js",
     "postinstall": "patch-package",
     "run": "node index.js"
   },
