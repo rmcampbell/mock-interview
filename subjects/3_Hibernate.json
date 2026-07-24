@@ -3,19 +3,19 @@
   "questions": [
     {
       "question": "What is lazy loading in Hibernate?",
-      "answer": "Lazy loading in Hibernate is a technique where associations are not loaded from the database until they are explicitly accessed. This helps optimize performance by avoiding unnecessary database queries. However, it may lead to issues like LazyInitializationException if accessed outside of an active session."
+      "answer": "Lazy loading in Hibernate is a technique where associations are not loaded from the database until they are explicitly accessed. This helps optimize performance by avoiding unnecessary database queries. However, it may lead to issues like `LazyInitializationException` if accessed outside of an active session."
     },
     {
-      "question": "What is the difference between Session.save() and Session.persist() in Hibernate?",
-      "answer": "Session.save():\n- Used to insert an object into the database\n- Generates an identifier (primary key) immediately\n\nSession.persist():\n- Makes a transient object persistent\n- Does not immediately generate the identifier (this may be done later depending on the flush mode)"
+      "question": "What is the difference between `Session.save()` and `Session.persist()` in Hibernate?",
+      "answer": "`Session.save()`:\n- Used to insert an object into the database\n- Generates an identifier (primary key) immediately\n\n`Session.persist()`:\n- Makes a transient object persistent\n- Does not immediately generate the identifier (this may be done later depending on the flush mode)"
     },
     {
       "question": "What is the purpose of @ManyToOne and @OneToMany annotations in Hibernate?",
-      "answer": "@ManyToOne defines a many-to-one relationship between two entities, where multiple instances of the source entity are linked to a single instance of the target entity.\n@OneToMany defines a one-to-many relationship, where a single instance of the source entity is linked to multiple instances of the target entity."
+      "answer": "`@ManyToOne` defines a many-to-one relationship between two entities, where multiple instances of the source entity are linked to a single instance of the target entity.\n`@OneToMany` defines a one-to-many relationship, where a single instance of the source entity is linked to multiple instances of the target entity."
     },
     {
       "question": "How does Hibernate handle transactions?",
-      "answer": "Hibernate manages transactions by integrating with JTA (Java Transaction API) or JDBC. It provides a session-bound transaction model, where transactions are initiated with session.beginTransaction(), and changes are committed or rolled back using session.getTransaction().commit() or session.getTransaction().rollback(). Hibernate ensures atomicity and consistency of transactions."
+      "answer": "Hibernate manages transactions by integrating with JTA (Java Transaction API) or JDBC. It provides a session-bound transaction model, where transactions are initiated with `session.beginTransaction()`, and changes are committed or rolled back using `session.getTransaction().commit()` or `session.getTransaction().rollback()`. Hibernate ensures atomicity and consistency of transactions."
     },
     {
       "question": "What is second-level caching in Hibernate, and how does it work?",
@@ -26,24 +26,24 @@
       "answer": "Hibernate provides:\n- First-level cache (session cache): Stores objects for the duration of a session.\n- Second-level cache (session-factory cache): Stores objects beyond the session scope and requires external configuration with a cache provider.\n- Query cache: Caches results of queries."
     },
     {
-      "question": "What is the difference between @Entity and @Embeddable annotations?",
-      "answer": "@Entity defines a persistent entity, representing a table in the database.\n@Embeddable defines a component that can be embedded within an entity. @Embeddable components are typically used for value types, such as address or phone numbers, and are included in an entity using the @Embedded annotation."
+      "question": "What is the difference between ``@Entity`` and `@Embeddable` annotations?",
+      "answer": "``@Entity`` defines a persistent entity, representing a table in the database.\n`@Embeddable` defines a component that can be embedded within an entity. `@Embeddable` components are typically used for value types, such as address or phone numbers, and are included in an entity using the @Embedded annotation."
     },
     {
-      "question": "What is the role of @JoinColumn in Hibernate?",
-      "answer": "@JoinColumn specifies the column used to join two entities in a relationship. It is often used with @ManyToOne, @OneToMany, @OneToOne, and @ManyToMany annotations to specify the foreign key column in the target entity's table."
+      "question": "What is the role of `@JoinColumn` in Hibernate?",
+      "answer": "`@JoinColumn` specifies the column used to join two entities in a relationship. It is often used with `@ManyToOne`, `@OneToMany`, `@OneToOne`, and `@ManyToMany` annotations to specify the foreign key column in the target entity's table."
     },
     {
-      "question": "What is flush() in Hibernate, and when should it be used?",
-      "answer": "flush() is used to synchronize the in-memory state of the session with the database. It ensures that changes made to entities in the session are written to the database. It is typically used before a query or transaction commit, but Hibernate automatically flushes when necessary (e.g., before a query or commit)."
+      "question": "What is `flush()` in Hibernate, and when should it be used?",
+      "answer": "`flush()` is used to synchronize the in-memory state of the session with the database. It ensures that changes made to entities in the session are written to the database. It is typically used before a query or transaction commit, but Hibernate automatically flushes when necessary (e.g., before a query or commit)."
     },
     {
       "question": "What is the @Transactional annotation, and how does it work with Hibernate?",
-      "answer": "@Transactional is used to declare that a method should be wrapped in a transaction. It works with Hibernate to manage the transaction boundaries. Spring manages the transaction, ensuring that it is committed or rolled back depending on the method's outcome. If the method throws an exception, the transaction is automatically rolled back."
+      "answer": "`@Transactional` is used to declare that a method should be wrapped in a transaction. It works with Hibernate to manage the transaction boundaries. Spring manages the transaction, ensuring that it is committed or rolled back depending on the method's outcome. If the method throws an exception, the transaction is automatically rolled back."
     },
     {
-      "question": "What is the role of SessionFactory in Hibernate?",
-      "answer": "SessionFactory is a thread-safe object used to create Session objects. It is responsible for managing the configuration, including connection pools, caching, and transaction management. Typically, it is created once and reused throughout the application lifecycle."
+      "question": "What is the role of `SessionFactory` in Hibernate?",
+      "answer": "`SessionFactory` is a thread-safe object used to create Session objects. It is responsible for managing the configuration, including connection pools, caching, and transaction management. Typically, it is created once and reused throughout the application lifecycle."
     },
     {
       "question": "What is the difference between fetch and load in Hibernate?",
@@ -78,24 +78,24 @@
       "answer": "Hibernate provides advantages like:\n- Automatic table creation\n- Simplified object-relational mapping\n- Caching\n- Automatic dirty checking\n- The ability to work with different databases without changing the Java code."
     },
     {
-      "question": "What is the difference between Session and SessionFactory in Hibernate?",
-      "answer": "SessionFactory is a thread-safe object responsible for creating Session objects and managing the Hibernate configuration. Session is a single-threaded object used to interact with the database, retrieve, save, update, and delete entities."
+      "question": "What is the difference between `Session` and `SessionFactory` in Hibernate?",
+      "answer": "- `SessionFactory` is a thread-safe object responsible for creating\n- `Session` objects and managing the Hibernate configuration.\n- `Session` is a single-threaded object used to interact with the database, retrieve, save, update, and delete entities."
     },
     {
-      "question": "What is the purpose of the @Entity annotation in Hibernate?",
-      "answer": "@Entity is used to mark a class as an entity, which means it will be mapped to a table in the database. Every entity must have a primary key field marked with the @Id annotation."
+      "question": "What is the purpose of the `@Entity` annotation in Hibernate?",
+      "answer": "`@Entity` is used to mark a class as an entity, which means it will be mapped to a table in the database. Every entity must have a primary key field marked with the `@Id` annotation."
     },
     {
-      "question": "What is the role of the @Id annotation in Hibernate?",
-      "answer": "@Id is used to define the primary key field of an entity. This field uniquely identifies each record in the corresponding table in the database."
+      "question": "What is the role of the `@Id` annotation in Hibernate?",
+      "answer": "`@Id` is used to define the primary key field of an entity. This field uniquely identifies each record in the corresponding table in the database."
     },
     {
-      "question": "What is the difference between get() and load() methods in Hibernate?",
-      "answer": "get() method retrieves an object by its primary key, returning null if the entity is not found. It hits the database immediately. The load() method, on the other hand, also retrieves an entity by its primary key but returns a proxy if the entity is not found (which may cause an exception when accessed). It uses lazy loading and doesn’t hit the database until the object is accessed."
+      "question": "What is the difference between `get()` and `load()` methods in Hibernate?",
+      "answer": "`get()` method retrieves an object by its primary key, returning null if the entity is not found. It hits the database immediately. The load() method, on the other hand, also retrieves an entity by its primary key but returns a proxy if the entity is not found (which may cause an exception when accessed). It uses lazy loading and doesn’t hit the database until the object is accessed."
     },
     {
-      "question": "What is the difference between flush() and clear() methods in Hibernate?",
-      "answer": "flush() synchronizes the session’s in-memory state with the database by writing changes to the database. clear() clears the session cache, removing all objects, but does not write changes to the database. They are typically used in batch processing and large transactions."
+      "question": "What is the difference between `flush()` and `clear(`) methods in Hibernate?",
+      "answer": "`flush()` synchronizes the session’s in-memory state with the database by writing changes to the database. `clear()` clears the session cache, removing all objects, but does not write changes to the database. They are typically used in batch processing and large transactions."
     },
     {
       "question": "What is SessionFactory in Hibernate?",
@@ -110,16 +110,16 @@
       "answer": "@Embeddable is used to define a class that can be embedded within another entity. It is typically used for value types, like address or phone number, that are part of an entity but do not have their own identity."
     },
     {
-      "question": "What is the @GeneratedValue annotation in Hibernate?",
-      "answer": "@GeneratedValue is used to specify how the primary key should be generated for an entity. Common strategies include AUTO (let Hibernate choose the strategy), IDENTITY (use an auto-increment column), SEQUENCE (use a sequence generator), and TABLE (use a table for key generation)."
+      "question": "What is the `@GeneratedValue` annotation in Hibernate?",
+      "answer": "`@GeneratedValue` is used to specify how the primary key should be generated for an entity. Common strategies include AUTO (let Hibernate choose the strategy), IDENTITY (use an auto-increment column), SEQUENCE (use a sequence generator), and TABLE (use a table for key generation)."
     },
     {
       "question": "What is Hibernate's first-level cache?",
       "answer": "Hibernate’s first-level cache is associated with a session and stores objects that have been read or written during the current session. It helps to avoid multiple database queries for the same object within a session, ensuring that objects are fetched from the cache."
     },
     {
-      "question": "What are @OneToOne, @ManyToOne, @OneToMany, and @ManyToMany relationships in Hibernate?",
-      "answer": "@OneToOne defines a one-to-one relationship between two entities, where each instance of one entity is associated with exactly one instance of the other.\n@ManyToOne represents a many-to-one relationship, where many instances of one entity are associated with a single instance of another.\n@OneToMany represents a one-to-many relationship, and @ManyToMany defines a relationship where multiple instances of one entity are associated with multiple instances of another."
+      "question": "What are `@OneToOne`, `@ManyToOne`, `@OneToMany`, and `@ManyToMany` relationships in Hibernate?",
+      "answer": "@OneToOne defines a one-to-one relationship between two entities, where each instance of one entity is associated with exactly one instance of the other.\n`@ManyToOne` represents a many-to-one relationship, where many instances of one entity are associated with a single instance of another.\n@OneToMany represents a one-to-many relationship, and @ManyToMany defines a relationship where multiple instances of one entity are associated with multiple instances of another."
     },
     {
       "question": "What are the main advantages of using Hibernate?",
@@ -131,7 +131,7 @@
     },
     {
       "question": "How do you fetch data using JPQL in Hibernate?",
-      "answer": "JPQL (Java Persistence Query Language) is similar to SQL but operates on entities rather than database tables. You can fetch data using JPQL with the EntityManager.createQuery() method to execute a query. For example: SELECT e FROM Employee e WHERE e.department = :dept fetches all employees in a specific department."
+      "answer": "JPQL (Java Persistence Query Language) is similar to SQL but operates on entities rather than database tables. You can fetch data using JPQL with the EntityManager.createQuery() method to execute a query. For example: `SELECT e FROM Employee e WHERE e.department = :dept` fetches all employees in a specific department."
     },
     {
       "question": "What is the difference between Session and EntityManager in Hibernate?",
@@ -143,7 +143,7 @@
     },
     {
       "question": "What is Session.createQuery() in Hibernate?",
-      "answer": "Session.createQuery() is used to create and execute HQL (Hibernate Query Language) queries. It returns a Query object that can be used to configure and execute the query, providing results in the form of entities or other data."
+      "answer": "`Session.createQuery()` is used to create and execute HQL (Hibernate Query Language) queries. It returns a Query object that can be used to configure and execute the query, providing results in the form of entities or other data."
     }
   ]
 }
