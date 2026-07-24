@@ -8,7 +8,6 @@
   "private": true,
   "license": "ISC",
   "scripts": {
-    "postinstall": "patch-package",
     "interview": "node index.js"
   },
   "dependencies": {
@@ -18,8 +17,5 @@
     "@inquirer/prompts": "^8.5.2",
     "cli-markdown": "^3.5.1",
     "uuid": "^14.0.1"
-  },
-  "devDependencies": {
-    "patch-package": "^8.0.0"
   }
 }

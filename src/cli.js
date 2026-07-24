@@ -3,11 +3,18 @@ const { handleError } = require('./util');
 
 // cli-markdown is ESM-only; start with a plain-text fallback so a render call
 // can never hit `undefined` before the import settles (or if it fails).
-// Newline/indent shaping comes from patches/cli-html+4.5.1.patch.
 let md = (text) => String(text ?? '');
 const mdReady = import('cli-markdown')
   .then(({ default: render }) => {
-    md = (text) => render(String(text ?? ''));
+    // Shape cli-html's output here instead of patching the package on disk.
+    // cli-html frames every render with a leading "\n" and trailing "\n\n";
+    // trimming (rather than assuming that exact framing) makes this robust to
+    // cli-html version changes. We then re-add a one-space left margin on each
+    // line and the blank line that pushes the following prompt onto its own row.
+    md = (text) => {
+      const body = render(String(text ?? '')).trim();
+      return ` ${body.replace(/\n/g, '\n ')}\n\n`;
+    };
   })
   .catch(() => {});
 
