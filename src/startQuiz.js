@@ -32,7 +32,9 @@ async function startTopicQuiz(topics) {
     if (filteredQuestions.length > 1) {
       randomizeQs = await confirm({ message: 'Do you want to randomize the questions?', timeout: 15000 });
       if (randomizeQs) shuffle(filteredQuestions);
+    }
 
+    if (filteredQuestions.length > 0) {
       printTopicHeading(topic);
       await batchQuestions(filteredQuestions, randomizeQs);
     }
@@ -46,9 +48,11 @@ async function startTopicQuiz(topics) {
 async function batchQuestions(questions, randomizeQs) {
   let numQuestions = questions.length;
   let batchSize = numQuestions;
+  let batchQuestions = false;
 
   if (numQuestions > 1) {
-    if (await confirm({ message: 'Would you like to add questions in batches?', dfault: false })) {
+    batchQuestions = await confirm({ message: 'Would you like to add questions in batches?', dfault: false });
+    if (batchQuestions) {
         batchSize = await number({ message: `How many questions would you like to add at a time? (1-${numQuestions})`, min: 1, max: numQuestions, dfault: numQuestions });
     }
   }
@@ -58,10 +62,14 @@ async function batchQuestions(questions, randomizeQs) {
     askedQuestions = questions.slice(0, i + batchSize);
 
     if (randomizeQs) shuffle(askedQuestions);
-    do {
-      console.clear();
+    if (batchQuestions) {
+      do {
+        console.clear();
+        await askQuestions(askedQuestions);
+      } while (await confirm({ message: 'Would you like to repeat the batch?' }));
+    } else {
       await askQuestions(askedQuestions);
-    } while (await confirm({ message: 'Would you like to repeat the batch?' }));
+    }
   }
 }
 
