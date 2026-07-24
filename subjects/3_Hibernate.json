@@ -102,10 +102,6 @@
       "answer": "`SessionFactory`:\n- A **thread-safe** object responsible for creating `Session` instances and managing the Hibernate configuration\n- Typically created **once** and shared throughout the application lifecycle to provide efficient session management"
     },
     {
-      "question": "What is the difference between Criteria and HQL in Hibernate?",
-      "answer": "**Criteria**:\n- An **object-oriented** approach to querying the database, providing **type-safe** queries\n\n**HQL** (Hibernate Query Language):\n- A **string-based** query language similar to SQL but operates on **Java objects** instead of database tables"
-    },
-    {
       "question": "What is the purpose of `@Embeddable` annotation in Hibernate?",
       "answer": "`@Embeddable`:\n- Defines a class that can be **embedded within another entity**\n- Typically used for **value types**, like address or phone number, that are part of an entity but do not have their own identity"
     },
@@ -120,14 +116,6 @@
     {
       "question": "What are `@OneToOne`, `@ManyToOne`, `@OneToMany`, and `@ManyToMany` relationships in Hibernate?",
       "answer": "- `@OneToOne`: A **one-to-one** relationship — each instance of one entity is associated with exactly one instance of the other.\n- `@ManyToOne`: A **many-to-one** relationship — many instances of one entity are associated with a single instance of another.\n- `@OneToMany`: A **one-to-many** relationship — one instance of an entity is associated with multiple instances of another.\n- `@ManyToMany`: Multiple instances of one entity are associated with **multiple** instances of another."
-    },
-    {
-      "question": "What are the main advantages of using Hibernate?",
-      "answer": "Hibernate provides advantages like:\n- **Automatic table creation**\n- Simplified **object-relational mapping**\n- **Caching**\n- Automatic **dirty checking**\n- The ability to work with **different databases** without changing the Java code"
-    },
-    {
-      "question": "What is the difference between Session and SessionFactory in Hibernate?",
-      "answer": "`SessionFactory`:\n- A **thread-safe** object responsible for creating `Session` objects and managing the Hibernate configuration\n\n`Session`:\n- A **single-threaded** object used to interact with the database\n- Retrieve, save, update, and delete entities"
     },
     {
       "question": "How do you fetch data using JPQL in Hibernate?",
