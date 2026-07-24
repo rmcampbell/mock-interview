@@ -19,15 +19,15 @@
     },
     {
       "question": "Describe the last project you worked on including, any obstacles and your contributions to its success.",
-      "answer": ""
+      "answer": "**Situation**: A productized BigQuery retry-record tool to replace a slow, manual error-recovery process.\n\n**Obstacles**:\n- Result sets exceeded client file-size limits, requiring **chunked output**.\n- Formatting had to exactly match what the client apps expected on re-ingest.\n\n**Contributions**:\n- Designed the **API** taking date range, file size, and bucket location as parameters.\n- Automated the queries, result conversion, and compressed/encrypted file creation.\n- Added scheduling support so clients could **cron** their own retries.\n\n**Result**: Eliminated hours of manual labor per incident and made unrecoverable errors self-healing."
     },
     {
       "question": "How do you stay organized when different projects have different requirements?",
-      "answer": ""
+      "answer": "- **Prioritize explicitly**: I rank work with a framework like **MoSCoW** (Must/Should/Could/Won't) so competing asks have a clear order.\n- **Context per project**: separate boards/branches and a short written summary of each project's goals and constraints, so switching context is cheap.\n- **Small milestones**: break each project into shippable increments and review progress in daily check-ins.\n- **Single source of truth**: track everything in one tool (Jira) rather than memory, and surface blockers early."
     },
     {
       "question": "Was the last project you worked on successful? How did you contribute?",
-      "answer": ""
+      "answer": "Yes. I built a **reusable Cloud Run template** for high-volume batch processing.\n\n**Contributions**:\n- Designed the template and a shared library so 10+ apps could be deployed rapidly.\n- Integrated **GCP Pub/Sub** for event-driven, decoupled processing.\n- Added load testing to validate it scaled under production traffic.\n\n**Result**: Reduced data-handling time by ~30% and made the pattern a standard the team reused across projects."
     },
     {
       "question": "What accomplishment are you most proud of, and why?",
