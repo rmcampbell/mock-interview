@@ -70,16 +70,24 @@
       "answer": "| Feature      | Linked List | Array |\n| ------------ | ----------- | ----- |\n| Memory Usage | Dynamic     | Fixed |\n| Access Time  | O(n)        | O(1)  |\n| Insertion    | O(1)        | O(n)  |\n| Contiguous?  | No          | Yes   |"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is a load balancer, and what algorithms does it use?",
+      "answer": "A **load balancer** distributes incoming traffic across multiple servers to improve **availability** and **scalability**.\n\n**Common algorithms**:\n- **Round robin**: rotate through servers in order\n- **Least connections**: send to the server with the fewest active requests\n- **IP hash**: map a client consistently to a server (sticky sessions)\n- **Weighted**: favor more powerful instances\n\nIt also does **health checks**, routing traffic away from unhealthy nodes."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is a message queue, and why use one?",
+      "answer": "A **message queue** (e.g., Kafka, RabbitMQ, Pub/Sub) lets services communicate **asynchronously** by passing messages through a broker.\n\n**Benefits**:\n- **Decoupling**: producers and consumers scale and fail independently\n- **Buffering**: absorbs traffic spikes so consumers process at their own pace\n- **Reliability**: retries and dead-letter handling for failed messages\n- **Load leveling**: smooths bursty workloads\n\n**Trade-off**: adds eventual consistency and operational complexity."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "How do you design rate limiting for an API?",
+      "answer": "**Rate limiting** caps how many requests a client can make in a time window to prevent abuse and protect capacity.\n\n**Common algorithms**:\n- **Token bucket**: tokens refill at a fixed rate; each request consumes one — allows bursts.\n- **Leaky bucket**: processes at a constant rate, smoothing bursts.\n- **Fixed / sliding window**: count requests per window.\n\n**Practical notes**: track counters in a fast store like `Redis`, key by user/API-key/IP, and return `429 Too Many Requests` with a `Retry-After` header."
+    },
+    {
+      "question": "What is a CDN, and when should you use one?",
+      "answer": "A **CDN** (Content Delivery Network) caches content on **edge servers** geographically close to users.\n\n**Benefits**:\n- **Lower latency**: content served from a nearby edge\n- **Reduced origin load**: cache absorbs repeated requests\n- **Availability & DDoS resilience**: distributes traffic\n\n**Use it for**: static assets (images, JS/CSS, video) and cacheable API responses. Manage **cache invalidation** (TTLs, versioned URLs) to avoid serving stale content."
+    },
+    {
+      "question": "What is the difference between strong and eventual consistency?",
+      "answer": "- **Strong consistency**: every read returns the **most recent write** — simpler to reason about, but costs latency and availability (per **CAP**).\n- **Eventual consistency**: replicas **converge over time**; a read may briefly return stale data — higher availability and performance.\n\n**Choose strong** for money/inventory where correctness is critical; **eventual** for feeds, counters, and caches where a short delay is acceptable."
     },
     {
       "question": "",
