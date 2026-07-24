@@ -1,0 +1,29 @@
+diff --git a/node_modules/cli-html/index.js b/node_modules/cli-html/index.js
+index 7996b8f..88b1b24 100644
+--- a/node_modules/cli-html/index.js
++++ b/node_modules/cli-html/index.js
+@@ -2,20 +2,15 @@ import { parse } from 'parse5';
+ 
+ import { getGlobalConfig } from './lib/utils/get-global-config.js';
+ import { renderTag } from './lib/utils/render-tag.js';
++import { indentify } from './lib/utils.js';
+ 
+ const htmlToCli = (rawHTML, theme = {}) => {
+   const document = parse(rawHTML);
+-
+-  // console.dir(
+-  //   filterAst(document).childNodes[0].childNodes[1].childNodes,
+-  //   { depth: null },
+-  // );
+-
+   const globalConfig = getGlobalConfig(document, theme);
+ 
+-  return `\n${
+-    (renderTag(document, globalConfig) || { value: '' }).value
+-  }\n\n`;
++  return `${indentify(' ', false)(
++    (renderTag(document, globalConfig) || { value: '' }).value,
++  )}\n\n`;
+ };
+ 
+ export default htmlToCli;
