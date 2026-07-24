@@ -27,7 +27,7 @@
     },
     {
       "question": "How does the Java Garbage Collector work, and what strategies can you use to optimize its performance?",
-      "answer": "The Garbage Collector reclaims memory by removing unreachable objects using strategies like:\n- Mark-and-Sweep\n- Generational GC\n\n- Optimize using proper JVM options (`-Xms`, `-Xmx`)\n- analyze GC logs\n- choose appropriate GC algorithms like G1GC."
+      "answer": "The Garbage Collector reclaims memory by removing unreachable objects using strategies like:\n- **Mark-and-Sweep**\n- **Generational GC**\n\n**Optimization strategies**:\n- Optimize using proper JVM options (`-Xms`, `-Xmx`)\n- Analyze GC logs\n- Choose appropriate GC algorithms like `G1GC`"
     },
     {
       "question": "What is the difference between `ExecutorService` and `ForkJoinPool`?",

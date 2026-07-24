@@ -19,99 +19,99 @@
     },
     {
       "question": "How do you handle API versioning in your applications?",
-      "answer": "Use URI versioning (`/v1/resource`) or query parameters."
+      "answer": "Use **URI versioning** (`/v1/resource`) or **query parameters**."
     },
     {
       "question": "What's your process for securing REST APIs?",
-      "answer": "Use:\n- `OAuth2`\n- `API Gateway`\n- Rate limiting\n- Encrypted communication (`HTTPS`)"
+      "answer": "Use:\n- `OAuth2`\n- **API Gateway**\n- **Rate limiting**\n- Encrypted communication (`HTTPS`)"
     },
     {
       "question": "Describe a situation where you identified a bug in a critical system. How did you approach debugging and resolving the issue?",
-      "answer": "Used step-by-step isolation, logging, and reproduced the bug in a controlled environment for resolution."
+      "answer": "Used **step-by-step isolation**, **logging**, and **reproduced the bug** in a controlled environment for resolution."
     },
     {
       "question": "Can you describe a time when you had to quickly learn a new framework or technology to meet a project deadline?",
-      "answer": "Learned AWS Lambda and integrated it with existing Java microservices in under two weeks for a tight project deadline."
+      "answer": "Learned **AWS Lambda** and integrated it with existing **Java microservices** in under two weeks for a tight project deadline."
     },
     {
       "question": "Suppose a data integration process you developed is failing intermittently in production. How would you debug and resolve the issue without compromising system availability?",
-      "answer": "Analyze logs, implement retries, and use circuit breakers to isolate and resolve failures."
+      "answer": "- **Analyze logs**\n- Implement **retries**\n- Use **circuit breakers** to isolate and resolve failures"
     },
     {
       "question": "How did you use GCP Cloud Run in your projects?",
-      "answer": "Situation: My team needed to migrate legacy Java applications to modern, scalable cloud infrastructure.\nTask: I was responsible for designing and deploying these applications in GCP using Cloud Run.\nAction: I containerized the applications with Docker, ensured statelessness for scalability, and automated deployments using Terraform. I also implemented CI/CD pipelines with Cloud Build to streamline updates.\nResult: The migration reduced operational costs by 25% and improved response times under high loads by 40%."
+      "answer": "**Situation**: My team needed to migrate legacy Java applications to modern, scalable cloud infrastructure.\n\n**Task**: I was responsible for designing and deploying these applications in GCP using Cloud Run.\n\n**Action**: I containerized the applications with **Docker**, ensured **statelessness** for scalability, and automated deployments using **Terraform**. I also implemented CI/CD pipelines with **Cloud Build** to streamline updates.\n\n**Result**: The migration **reduced operational costs by 25%** and **improved response times under high loads by 40%**."
     },
     {
       "question": "Can you explain your approach to migrating 15 legacy Java applications to Node.js?",
-      "answer": "`Situation`: We had 15 legacy Java applications that were expensive to maintain and lacked scalability.\n`Task`: My task was to migrate these applications to Node.js on GCP Cloud Run while preserving functionality and improving performance.\n`Action`: I rewrote critical components in Node.js, used containerization for consistent environments, and incorporated Redis for caching to reduce database load. I also conducted extensive load testing to ensure scalability.\n`Result`: The migration led to a 30% improvement in performance and a significant reduction in infrastructure costs."
+      "answer": "**Situation**: We had 15 legacy Java applications that were expensive to maintain and lacked scalability.\n\n**Task**: My task was to migrate these applications to Node.js on GCP Cloud Run while preserving functionality and improving performance.\n\n**Action**: I rewrote critical components in Node.js, used **containerization** for consistent environments, and incorporated **Redis** for caching to reduce database load. I also conducted extensive **load testing** to ensure scalability.\n\n**Result**: The migration led to a **30% improvement in performance** and a significant reduction in infrastructure costs."
     },
     {
       "question": "How did you ensure data security when developing SMS and MMS APIs?",
-      "answer": "- I implemented OAuth2 authentication, ensured encryption of sensitive data, and followed secure coding practices to mitigate vulnerabilities like injection attacks.\n- I also incorporated rate-limiting to prevent abuse."
+      "answer": "- I implemented **OAuth2 authentication**, ensured **encryption** of sensitive data, and followed **secure coding practices** to mitigate vulnerabilities like injection attacks.\n- I also incorporated **rate-limiting** to prevent abuse."
     },
     {
       "question": "What were the key benefits of the reusable Cloud Run template you developed?",
-      "answer": "The Cloud Run template:\n- Reduced data handling time by 30%\n- Provided a standardized approach to deploying high-volume data processing tasks\n- Simplified integration with Pub/Sub for event-driven architectures"
+      "answer": "The Cloud Run template:\n- **Reduced data handling time by 30%**\n- Provided a **standardized approach** to deploying high-volume data processing tasks\n- Simplified integration with **Pub/Sub** for event-driven architectures"
     },
     {
       "question": "What strategies did you use to automate infrastructure with Terraform and Terragrunt?",
-      "answer": "- I used Terraform to define resources like Cloud Run services and Pub/Sub topics as code.\n- Terragrunt allowed me to manage configurations across multiple environments, ensuring consistency while reducing errors during deployments."
+      "answer": "- I used **Terraform** to define resources like Cloud Run services and Pub/Sub topics as code.\n- **Terragrunt** allowed me to manage configurations across multiple environments, ensuring consistency while reducing errors during deployments."
     },
     {
       "question": "How did you use Node.js to process high-volume data streams?",
-      "answer": "- I used Node.js for its event-driven architecture and non-blocking I/O to efficiently process high-volume data streams.\n- The application utilized streams to process data incrementally and integrated with GCP Pub/Sub for event handling, ensuring scalability."
+      "answer": "- I used Node.js for its **event-driven architecture** and **non-blocking I/O** to efficiently process high-volume data streams.\n- The application utilized **streams** to process data incrementally and integrated with **GCP Pub/Sub** for event handling, ensuring scalability."
     },
     {
       "question": "What role did Redis play in your projects, and how did you integrate it?",
-      "answer": "- I used Redis as a caching layer to improve API performance by reducing redundant database calls\n- It was integrated using the Node.js Redis client, with structured caching policies to ensure consistency and freshness of data."
+      "answer": "- I used **Redis** as a **caching layer** to improve API performance by reducing redundant database calls.\n- It was integrated using the Node.js Redis client, with structured **caching policies** to ensure consistency and freshness of data."
     },
     {
       "question": "How did you ensure the reliability of automated unit tests for your Dialogflow tools?",
-      "answer": "`Situation`: Our team was frequently encountering regressions when updating Dialogflow agents due to insufficient testing coverage.\n`Task`: My goal was to create automated unit tests for Dialogflow tools to improve reliability.\n`Action`: I implemented Jest-based test suites, covering edge cases and integrating them into the CI/CD pipeline to ensure consistent execution. I also created detailed documentation for team adoption.\n`Result`: This reduced regressions by 50% and significantly accelerated development cycles."
+      "answer": "**Situation**: Our team was frequently encountering regressions when updating Dialogflow agents due to insufficient testing coverage.\n\n**Task**: My goal was to create automated unit tests for Dialogflow tools to improve reliability.\n\n**Action**: I implemented **Jest**-based test suites, covering edge cases and integrating them into the **CI/CD pipeline** to ensure consistent execution. I also created detailed documentation for team adoption.\n\n**Result**: This **reduced regressions by 50%** and significantly accelerated development cycles."
     },
     {
       "question": "What techniques did you use to optimize message handling in your SMS/MMS APIs?",
-      "answer": "I optimized message handling by:\n- Implementing asynchronous processing with message queues\n- Using UUIDs for efficient tracking\n- Adding retry mechanisms to handle failures gracefully\n- Monitoring throughput and scaling as needed"
+      "answer": "I optimized message handling by:\n- Implementing **asynchronous processing** with message queues\n- Using **UUIDs** for efficient tracking\n- Adding **retry mechanisms** to handle failures gracefully\n- **Monitoring throughput** and scaling as needed"
     },
     {
       "question": "How did you address challenges in designing multi-environment Terragrunt configurations?",
-      "answer": "- I structured the Terragrunt configurations to share common templates while isolating environment-specific variables.\n- Using modular Terraform files allowed consistent resource definitions while enabling flexibility for environment overrides."
+      "answer": "- I structured the Terragrunt configurations to **share common templates** while isolating **environment-specific variables**.\n- Using **modular Terraform files** allowed consistent resource definitions while enabling flexibility for environment overrides."
     },
     {
       "question": "What is the advantage of using GCP Pub/Sub in your event-driven architecture?",
-      "answer": "GCP Pub/Sub offers:\n- Scalability to handle large volumes of events\n- Asynchronous processing for decoupling services\n- Built-in retries for ensuring event delivery reliability"
+      "answer": "GCP Pub/Sub offers:\n- **Scalability** to handle large volumes of events\n- **Asynchronous processing** for decoupling services\n- **Built-in retries** for ensuring event delivery reliability"
     },
     {
       "question": "What performance metrics did you monitor in your microservices, and why?",
-      "answer": "I monitored:\n- Latency to measure response times\n- Throughput to understand request handling capacity\n- Error rates to identify issues in the system\n- Resource utilization (CPU, memory) to optimize scaling"
+      "answer": "I monitored:\n- **Latency** to measure response times\n- **Throughput** to understand request handling capacity\n- **Error rates** to identify issues in the system\n- **Resource utilization** (CPU, memory) to optimize scaling"
     },
     {
       "question": "How did you ensure backward compatibility when enhancing APIs?",
-      "answer": "- I ensured backward compatibility by versioning APIs and maintaining existing functionality while adding new features.\n- Extensive regression testing was performed to confirm that existing clients were unaffected by changes."
+      "answer": "- I ensured backward compatibility by **versioning APIs** and maintaining existing functionality while adding new features.\n- Extensive **regression testing** was performed to confirm that existing clients were unaffected by changes."
     },
     {
       "question": "How did you handle scalability challenges in your cloud-native applications?",
-      "answer": "Scalability challenges were addressed by:\n- Using containerized applications with auto-scaling in Cloud Run\n- Implementing horizontal scaling for microservices\n- Optimizing resource configurations to minimize costs while maintaining performance"
+      "answer": "Scalability challenges were addressed by:\n- Using **containerized applications** with auto-scaling in Cloud Run\n- Implementing **horizontal scaling** for microservices\n- **Optimizing resource configurations** to minimize costs while maintaining performance"
     },
     {
       "question": "How would you describe your approach to software development?",
-      "answer": "- My approach to software development is driven by clean code principles and test-driven development (TDD).\n- I believe in building scalable, maintainable systems with proper architecture.\n- I also focus on collaboration and open communication within the team to ensure we are aligned with the project goals."
+      "answer": "- My approach to software development is driven by **clean code principles** and **test-driven development (TDD)**.\n- I believe in building **scalable, maintainable systems** with proper architecture.\n- I also focus on **collaboration** and open communication within the team to ensure we are aligned with the project goals."
     },
     {
       "question": "What experience do you have of designing multi-threaded applications?",
-      "answer": "- I've designed multi-threaded applications in Java using concepts like thread pools, synchronization, and locks to manage concurrent tasks\n- One example is a task scheduler I built, which needed to handle multiple jobs running in parallel while maintaining thread safety."
+      "answer": "- I've designed multi-threaded applications in Java using concepts like **thread pools**, **synchronization**, and **locks** to manage concurrent tasks.\n- One example is a **task scheduler** I built, which needed to handle multiple jobs running in parallel while maintaining thread safety."
     },
     {
       "question": "Can you name someone, not necessarily someone well-known, who has influenced the way you approach software development?",
-      "answer": "One person who greatly influenced my approach to software development is a former colleague, Minal, who was an exceptional backend engineer.\n- She taught me the importance of breaking up complex problems into small manageable tasks.\n- She taught me that if I do not understand something, I should try writing documentation and share it with the owner of what I am trying to understand.\n- Her focus on simplicity and pragmatism when solving problems has stayed with me throughout my career.\n- She taught me to be patient with those who I help, as someone will surely need to help me in the future."
+      "answer": "One person who greatly influenced my approach to software development is a former colleague, **Minal**, who was an exceptional backend engineer.\n- She taught me the importance of **breaking up complex problems** into small manageable tasks.\n- She taught me that if I do not understand something, I should try **writing documentation** and share it with the owner of what I am trying to understand.\n- Her focus on **simplicity and pragmatism** when solving problems has stayed with me throughout my career.\n- She taught me to be **patient with those who I help**, as someone will surely need to help me in the future."
     },
     {
       "question": "What is your most-used command-line tool or utility?",
-      "answer": "- My most-used command-line utilities are `git` and `mvn`.\n- `git` is essential managing code changes, branching, and collaborating with team members.\n- `mvn` is essential for building projects, running tests, and installing dependencies."
+      "answer": "- My most-used command-line utilities are `git` and `mvn`.\n- `git` is essential for managing code changes, branching, and collaborating with team members.\n- `mvn` is essential for building projects, running tests, and installing dependencies."
     },
     {
       "question": "What is a shuffle() method? Explain with an example.",
-      "answer": "The **`shuffle()`** method is commonly used to randomize the order of elements in an array. In JavaScript, you can shuffle an array using the **Fisher-Yates** algorithm:\n\n```javascript\nfunction shuffle(array) {\n  for (let i = array.length - 1; i > 0; i--) {\n    const j = Math.floor(Math.random() * (i + 1));\n    [array[i], array[j]] = [array[j], array[i]]; // Swap elements\n  }\n  return array;\n}\nconst arr = [1, 2, 3, 4, 5];\nconsole.log(shuffle(arr)); // Output: [2, 5, 1, 4, 3] (randomized)\n```"
+      "answer": "The `shuffle()` method is commonly used to randomize the order of elements in an array. In JavaScript, you can shuffle an array using the **Fisher-Yates** algorithm:\n\n```javascript\nfunction shuffle(array) {\n  for (let i = array.length - 1; i > 0; i--) {\n    const j = Math.floor(Math.random() * (i + 1));\n    [array[i], array[j]] = [array[j], array[i]]; // Swap elements\n  }\n  return array;\n}\nconst arr = [1, 2, 3, 4, 5];\nconsole.log(shuffle(arr)); // Output: [2, 5, 1, 4, 3] (randomized)\n```"
     }
   ]
 }

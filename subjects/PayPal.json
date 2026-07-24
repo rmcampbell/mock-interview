@@ -3,19 +3,19 @@
   "questions": [
     {
       "question": "Why do you want to work at PayPal?",
-      "answer": "I admire PayPal's commitment to innovation, particularly its efforts in financial technology. The opportunity to work with cutting-edge tech to create secure, scalable solutions for millions of users is a motivating factor for me. I'm also passionate about PayPal's mission to democratize financial services, and I want to contribute to that vision."
+      "answer": "I admire PayPal's commitment to **innovation**, particularly its efforts in **financial technology**. The opportunity to work with cutting-edge tech to create **secure, scalable solutions** for millions of users is a motivating factor for me. I'm also passionate about PayPal's mission to **democratize financial services**, and I want to contribute to that vision."
     },
     {
       "question": "What aspects of your experience make you a good fit for this job?",
-      "answer": "My experience in full-stack development, expertise in both backend and frontend technologies, and strong problem-solving abilities make me a good fit for this role. Additionally, my focus on writing clean, maintainable code aligns well with PayPal’s values."
+      "answer": "- **Full-stack development** experience with expertise in both backend and frontend technologies\n- Strong **problem-solving** abilities\n- A focus on writing **clean, maintainable code**, which aligns well with PayPal's values"
     },
     {
       "question": "What do you know about this company?",
-      "answer": "PayPal is a global leader in online payment solutions. The company offers a variety of services, including digital wallets, online payment processing, and merchant services. PayPal is known for its focus on security, user experience, and innovation in the financial technology sector."
+      "answer": "PayPal is a **global leader in online payment solutions**.\n\n**Services**:\n- Digital wallets\n- Online payment processing\n- Merchant services\n\nPayPal is known for its focus on **security**, **user experience**, and **innovation** in the financial technology sector."
     },
     {
       "question": "At PayPal, we believe in our ability to stay ahead of our competitors. How do you think you will be able to contribute to this trend?",
-      "answer": "I can contribute by applying my expertise in both front-end and back-end technologies to build scalable and secure systems. I also have experience in identifying opportunities to streamline development processes, which can help improve the speed and quality of software delivery, keeping PayPal ahead of competitors."
+      "answer": "I can contribute by applying my expertise in both **front-end and back-end technologies** to build **scalable and secure systems**. I also have experience in identifying opportunities to **streamline development processes**, which can help improve the speed and quality of software delivery, keeping PayPal ahead of competitors."
     }
   ]
 }

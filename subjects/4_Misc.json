@@ -3,23 +3,23 @@
   "questions": [
     {
       "question": "What is Continuous Integration and Continuous Deployment (CI/CD)?",
-      "answer": "Continuous Integration (CI):\n- The practice of frequently integrating code changes into a shared repository. This allows teams to detect integration issues early.\n\nContinuous Deployment (CD):\n- The practice of automatically deploying code to production after passing tests and integration.\n\nBenefits:\n- Faster Releases: Automates testing and deployment pipelines.\n- Improved Quality: Continuous testing helps identify issues early in the development cycle.\n- Consistency: Automated deployment ensures environments are identical and deployments are consistent."
+      "answer": "**Continuous Integration (CI)**:\n- The practice of frequently integrating code changes into a shared repository. This allows teams to detect integration issues early.\n\n**Continuous Deployment (CD)**:\n- The practice of automatically deploying code to production after passing tests and integration.\n\n**Benefits**:\n- **Faster Releases**: Automates testing and deployment pipelines.\n- **Improved Quality**: Continuous testing helps identify issues early in the development cycle.\n- **Consistency**: Automated deployment ensures environments are identical and deployments are consistent."
     },
     {
       "question": "What is time complexity?",
-      "answer": "A measure of the efficiency of an algorithm based on input size."
+      "answer": "A measure of the **efficiency of an algorithm** based on **input size**."
     },
     {
       "question": "What is an associative array?",
-      "answer": "A data structure that maps keys to values, often implemented as a hash table."
+      "answer": "A data structure that maps **keys to values**, often implemented as a **hash table**."
     },
     {
       "question": "What is a stateless system?",
-      "answer": "A system where each request is processed independently without relying on previous interactions (e.g., REST APIs)."
+      "answer": "A system where each request is processed **independently** without relying on previous interactions (e.g., `REST` APIs)."
     },
     {
       "question": "What is the result of `1 XOR 1`?",
-      "answer": "- `0`: (Exclusive OR returns true only if inputs differ)"
+      "answer": "`0` — exclusive OR returns `true` only if the inputs **differ**.\n\n| A | B | A XOR B |\n|---|---|---------|\n| 0 | 0 | 0 |\n| 0 | 1 | 1 |\n| 1 | 0 | 1 |\n| 1 | 1 | 0 |"
     },
     {
       "question": "",

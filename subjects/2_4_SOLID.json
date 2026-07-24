@@ -19,7 +19,7 @@
     },
     {
       "question": "What is the `Liskov Substitution Principle` (`LSP`)?",
-      "answer": "Liskov Substitution Principle states that:\n- Objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program\n- Subtypes must behave in a way that the parent class expects."
+      "answer": "`Liskov Substitution Principle` states that:\n- Objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program\n- Subtypes must behave in a way that the parent class expects."
     },
     {
       "question": "Can you give an example of violating the `Liskov Substitution Principle` (`LSP`)?",
@@ -27,7 +27,7 @@
     },
     {
       "question": "What is the `Interface Segregation Principle` (`ISP`)?",
-      "answer": "`Interface Segregation Principle` states that:\n- No client should be forced to depend on methods it does not use\b- It's better to have many small, specific interfaces than a large, general-purpose interface"
+      "answer": "`Interface Segregation Principle` states that:\n- No client should be forced to depend on methods it does not use\n- It's better to have many small, specific interfaces than a large, general-purpose interface"
     },
     {
       "question": "Example of violating the `Interface Segregation Principle` (`ISP`)?",
@@ -63,7 +63,7 @@
     },
     {
       "question": "What is SOLID in software design?",
-      "answer": "`SOLID`:\n- A set of five principles for writing maintainable and scalable code:\n\n**S** (Single Responsibility Principle):\n– A class should have only one reason to change.\n\n**O** (Open/Closed Principle):\n– Classes should be open for extension but closed for modification\n\n**L** (Liskov Substitution Principle):\n– Subtypes should be substitutable for their base types\n\n**I** (Interface Segregation Principle):\n– Clients should not be forced to implement interfaces they don't use\n\n**D** (Dependency Inversion Principle):\n – High-level modules should not depend on low-level modules\n- Both should depend on abstractions"
+      "answer": "`SOLID`:\n- A set of five principles for writing maintainable and scalable code:\n\n**S** (`Single Responsibility Principle`):\n- A class should have only one reason to change\n\n**O** (`Open/Closed Principle`):\n- Classes should be open for extension but closed for modification\n\n**L** (`Liskov Substitution Principle`):\n- Subtypes should be substitutable for their base types\n\n**I** (`Interface Segregation Principle`):\n- Clients should not be forced to implement interfaces they don't use\n\n**D** (`Dependency Inversion Principle`):\n- High-level modules should not depend on low-level modules\n- Both should depend on abstractions"
     },
     {
       "question": "What are the key principles of the SOLID design principles?",
