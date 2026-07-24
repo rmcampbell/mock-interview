@@ -154,24 +154,24 @@
       "answer": "A security vulnerability where an attacker manipulates SQL queries to access or alter the database."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What are the ACID properties of a transaction?",
+      "answer": "- **Atomicity**: all statements in a transaction succeed or none do (all-or-nothing).\n- **Consistency**: a transaction moves the database from one **valid state** to another, respecting constraints.\n- **Isolation**: concurrent transactions don't interfere; results are as if run serially.\n- **Durability**: once committed, changes **survive crashes** (persisted to disk/log).\n\nTogether they guarantee **reliable** transaction processing."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What are transaction isolation levels?",
+      "answer": "From weakest to strongest, they control which concurrency anomalies are allowed:\n- **Read Uncommitted**: allows **dirty reads**.\n- **Read Committed**: no dirty reads; allows **non-repeatable reads**.\n- **Repeatable Read**: no non-repeatable reads; may allow **phantom reads**.\n- **Serializable**: fully isolated — no anomalies, lowest concurrency.\n\n**Trade-off**: stronger isolation = fewer anomalies but more locking/contention."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is a window function, and how does it differ from GROUP BY?",
+      "answer": "A **window function** performs a calculation across a set of rows **related to the current row**, **without collapsing** them into one.\n\n**Difference**: `GROUP BY` returns **one row per group**; a window function keeps **every row** and adds the aggregate alongside.\n\n```sql\nSELECT name, department,\n       AVG(salary) OVER (PARTITION BY department) AS dept_avg\nFROM employees;\n```\n\nCommon functions: `ROW_NUMBER()`, `RANK()`, `LAG()`, `LEAD()`, `SUM() OVER (...)`."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is a Common Table Expression (CTE)?",
+      "answer": "A **CTE** is a named, temporary result set defined with `WITH` that exists for a single query — improving **readability** and enabling **recursion**.\n\n```sql\nWITH recent_orders AS (\n  SELECT * FROM orders WHERE created_at > NOW() - INTERVAL '7 days'\n)\nSELECT customer_id, COUNT(*)\nFROM recent_orders\nGROUP BY customer_id;\n```\n\n**Recursive CTEs** (`WITH RECURSIVE`) can walk hierarchies like org charts or category trees."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "How do you read and use a query execution plan?",
+      "answer": "`EXPLAIN` (or `EXPLAIN ANALYZE`) shows **how** the database will execute a query.\n\n**What to look for**:\n- **Full table scans** (`Seq Scan`) on large tables → consider an index\n- **Join type** (nested loop vs hash vs merge) and row estimates vs actuals\n- **Index usage** — is the intended index being hit?\n- High-cost sort/aggregate steps\n\nUse it to find where to add indexes or rewrite the query."
     },
     {
       "question": "",

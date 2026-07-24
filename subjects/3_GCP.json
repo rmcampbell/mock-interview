@@ -6,44 +6,44 @@
       "answer": "`BigQuery` is a **serverless data warehouse** by Google Cloud for **processing data at large-scale**.\n\n**Benefits**:\n- SQL-based queries\n- Highly scalable\n- Supports real-time analytics\n- Integration with GCP ecosystem\n\nExample Query:\n```sql\nSELECT name, age FROM users WHERE age > 30;\n```"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is `Cloud Run`, and when would you use it?",
+      "answer": "`Cloud Run` is a **fully managed serverless platform** that runs **stateless containers** and scales automatically — including **scale-to-zero**.\n\n**Use it when**:\n- You have a containerized app and don't want to manage servers or a cluster\n- Traffic is spiky and you want to pay only for what you use\n- You want a simple request/response or event-driven service\n\n**Key traits**:\n- Any language, as long as it's in a container listening on `$PORT`\n- Autoscaling based on concurrent requests\n- Integrates with Pub/Sub, Eventarc, and IAM"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is `Pub/Sub`, and what problem does it solve?",
+      "answer": "`Pub/Sub` is a **fully managed, asynchronous messaging** service for **decoupling** producers and consumers.\n\n**Model**:\n- **Publishers** send messages to a **topic**\n- **Subscribers** receive them via a **subscription** (push or pull)\n\n**Benefits**:\n- Decouples services so they scale and fail independently\n- **At-least-once** delivery with retries and dead-letter topics\n- Buffers traffic spikes for downstream consumers"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is `Cloud Storage` (GCS), and what are storage classes?",
+      "answer": "`Cloud Storage` is **object storage** for unstructured data (files, backups, media), organized into **buckets**.\n\n**Storage classes** (by access frequency / cost):\n- `Standard`: hot data, frequent access\n- `Nearline`: accessed ~monthly\n- `Coldline`: accessed ~quarterly\n- `Archive`: rarely accessed, lowest cost\n\n**Features**: lifecycle rules, versioning, and signed URLs for temporary access."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is IAM in GCP, and what is the principle of least privilege?",
+      "answer": "**IAM** (Identity and Access Management) controls **who** (identity) can do **what** (role) on **which resource**.\n\n**Core pieces**:\n- **Members**: users, groups, or **service accounts**\n- **Roles**: bundles of permissions (`primitive`, `predefined`, `custom`)\n- **Policy**: binds members to roles on a resource\n\n**Least privilege**: grant only the permissions needed for the task — prefer **predefined/custom roles** over broad primitive roles like `Owner`."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is a `service account`, and how is it used?",
+      "answer": "A **service account** is a special identity used by **applications and workloads** (not humans) to authenticate to GCP APIs.\n\n**Usage**:\n- Attach it to a resource (e.g., a Cloud Run service) so code runs **as** that account\n- Grant it only the IAM roles it needs\n- Prefer **attached/workload identity** over exporting long-lived JSON keys, which are a security risk"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is `Cloud Functions`, and how does it differ from Cloud Run?",
+      "answer": "`Cloud Functions` is **event-driven FaaS** — you deploy a single function triggered by an event (HTTP, Pub/Sub, GCS change).\n\n**Cloud Functions vs Cloud Run**:\n- **Functions**: per-function deploy, less packaging, best for small event handlers\n- **Cloud Run**: full container, any runtime/binary, more control over concurrency and dependencies\n\nBoth are serverless and scale to zero; choose Functions for glue code, Cloud Run for full services."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "How do you build a CI/CD pipeline on GCP?",
+      "answer": "Typically with **Cloud Build**:\n- Triggers on a Git push (Cloud Source Repos, GitHub, GitLab)\n- Steps defined in `cloudbuild.yaml`: **build → test → containerize → push to Artifact Registry → deploy** (e.g., to Cloud Run or GKE)\n\n**Complementary tools**:\n- **Artifact Registry** stores images/packages\n- **Terraform/Terragrunt** provision infrastructure as code\n- Deployments can be gated by approvals or run per environment"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the difference between `Cloud SQL` and `Firestore`?",
+      "answer": "`Cloud SQL`:\n- **Managed relational** database (MySQL, PostgreSQL, SQL Server)\n- Strong consistency, SQL joins, transactions\n- Best for structured, relational data\n\n`Firestore`:\n- **Managed NoSQL** document database\n- Flexible schema, real-time listeners, horizontal scaling\n- Best for semi-structured data and mobile/web apps"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "How do you monitor and observe applications on GCP?",
+      "answer": "Google Cloud's **Operations suite** (formerly Stackdriver):\n- **Cloud Logging**: centralized logs, queryable and exportable\n- **Cloud Monitoring**: metrics, dashboards, and **alerting** policies\n- **Cloud Trace**: distributed request latency tracing\n- **Error Reporting**: aggregates and surfaces exceptions\n\nTogether they give you the **logs, metrics, and traces** needed to debug and set SLOs."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is `Dataflow`, and when would you use it?",
+      "answer": "`Dataflow` is a **managed service for Apache Beam** pipelines, handling both **batch and streaming** data processing.\n\n**Use it when**:\n- You need to transform, enrich, or aggregate large data streams (e.g., from Pub/Sub) before landing in BigQuery/GCS\n- You want autoscaling and a unified batch/stream programming model\n\n**Traits**: serverless, exactly-once processing, and windowing for streaming aggregations."
     }
   ]
 }

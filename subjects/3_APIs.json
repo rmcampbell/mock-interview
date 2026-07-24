@@ -18,44 +18,44 @@
       "answer": "**WebSockets**:\n- **Full-Duplex Communication**: Allows two-way communication between client and server.\n- **Persistent Connection**: Once established, the connection stays open, allowing continuous data flow.\n- **Efficient for Real-Time Data**: Ideal for applications like chat, notifications, or gaming.\n\n**HTTP**:\n- **Request-Response Model**: Client sends a request and waits for a response.\n- **Stateless**: Each request is independent, and the connection is closed after each request."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What do the common HTTP status code ranges mean?",
+      "answer": "- **1xx Informational**: request received, continuing.\n- **2xx Success**: `200 OK`, `201 Created`, `204 No Content`.\n- **3xx Redirection**: `301 Moved Permanently`, `304 Not Modified`.\n- **4xx Client Error**: `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, `409 Conflict`, `429 Too Many Requests`.\n- **5xx Server Error**: `500 Internal Server Error`, `502 Bad Gateway`, `503 Service Unavailable`.\n\n**Rule of thumb**: 4xx means *the client did something wrong*; 5xx means *the server failed*."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is idempotency, and which HTTP methods are idempotent?",
+      "answer": "**Idempotency**: making the same request **multiple times** has the **same effect** as making it once.\n\n**Idempotent**: `GET`, `PUT`, `DELETE`, `HEAD` — repeating them doesn't change the result beyond the first call.\n\n**Not idempotent**: `POST` — each call typically creates a new resource.\n\n**Why it matters**: clients and gateways can safely **retry** idempotent requests after a timeout. For safe `POST` retries, use an **idempotency key**."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the difference between `PUT` and `PATCH`?",
+      "answer": "- `PUT`: **replaces the entire resource** with the payload — a full update. Idempotent.\n- `PATCH`: applies a **partial update** — only the fields you send change.\n\n**Example**: to change only a user's email, `PATCH /users/1` with `{ \"email\": \"new@x.com\" }` rather than resending the whole user object with `PUT`."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "How do you handle pagination in a REST API?",
+      "answer": "Common strategies:\n- **Offset/limit**: `GET /items?offset=40&limit=20` — simple, but slow and inconsistent on large, changing datasets.\n- **Cursor/keyset**: `GET /items?after=<cursor>` — stable and efficient for large datasets; the cursor points to the last seen record.\n- **Page number**: `GET /items?page=3&size=20` — user-friendly.\n\nReturn metadata (total count, next/prev links) so clients can navigate."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "How do you secure a REST API?",
+      "answer": "- **Authentication**: verify identity — `OAuth2`/`OIDC`, JWTs, or API keys.\n- **Authorization**: enforce permissions — role-based (`RBAC`) or scope-based checks per endpoint.\n- **Transport security**: always **HTTPS/TLS**.\n- **Input validation**: reject malformed input; prevent injection.\n- **Rate limiting & throttling**: protect against abuse and DoS.\n- **Least data exposure**: return only needed fields; never leak secrets in errors."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the difference between authentication and authorization?",
+      "answer": "- **Authentication (AuthN)**: *Who are you?* — verifying identity (login, token validation).\n- **Authorization (AuthZ)**: *What are you allowed to do?* — checking permissions for a resource or action.\n\nAuthentication always comes **first**; a user can be authenticated but still **not authorized** for a specific operation (→ `403 Forbidden`)."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "How do you version a REST API, and why?",
+      "answer": "**Why**: to evolve the API without breaking existing clients.\n\n**Strategies**:\n- **URI versioning**: `/v1/users` — most common and visible.\n- **Header versioning**: `Accept: application/vnd.api.v2+json` — keeps URLs clean.\n- **Query param**: `/users?version=2` — simple but less RESTful.\n\n**Best practice**: version only on **breaking** changes; add fields backward-compatibly whenever possible."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is HATEOAS?",
+      "answer": "**HATEOAS** (Hypermedia As The Engine Of Application State) is a REST constraint where responses include **links** to related actions and resources.\n\n**Example**: a `GET /orders/1` response embeds links like `{ \"self\": \"/orders/1\", \"cancel\": \"/orders/1/cancel\" }`, so the client discovers what it can do next **without hardcoding URLs**.\n\nIt makes APIs more self-descriptive, though many practical REST APIs omit it."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the difference between REST and GraphQL?",
+      "answer": "**REST**:\n- Multiple endpoints, each returning a fixed shape\n- Can **over-fetch** (extra fields) or **under-fetch** (needing multiple round trips)\n\n**GraphQL**:\n- A **single endpoint**; the client specifies exactly which fields it wants in one query\n- Avoids over/under-fetching, but adds server complexity and makes caching harder\n\n**Choose REST** for simple, cacheable resources; **GraphQL** for rich, client-driven data needs."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "How do you handle errors consistently in a REST API?",
+      "answer": "- Use **appropriate status codes** (4xx vs 5xx) rather than always returning `200`.\n- Return a **consistent error body**, e.g., `{ \"error\": { \"code\": \"NOT_FOUND\", \"message\": \"...\", \"traceId\": \"...\" } }`.\n- Include a **correlation/trace ID** so clients and logs can be matched.\n- **Never leak** stack traces, SQL, or secrets in error responses.\n- Document error shapes so clients can handle them programmatically."
     }
   ]
 }

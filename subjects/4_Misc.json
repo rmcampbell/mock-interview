@@ -10,8 +10,16 @@
       "answer": "A measure of the **efficiency of an algorithm** based on **input size**."
     },
     {
+      "question": "What is Big-O notation, and what are common complexities?",
+      "answer": "**Big-O** describes how an algorithm's time or space grows as input size `n` grows — the **worst-case** upper bound.\n\n**Common complexities (best → worst)**:\n- `O(1)`: constant — hash lookup\n- `O(log n)`: logarithmic — binary search\n- `O(n)`: linear — scanning a list\n- `O(n log n)`: merge/quick sort\n- `O(n²)`: quadratic — nested loops\n- `O(2ⁿ)`: exponential — brute-force subsets"
+    },
+    {
       "question": "What is an associative array?",
       "answer": "A data structure that maps **keys to values**, often implemented as a **hash table**."
+    },
+    {
+      "question": "How does a hash table work, and what is a collision?",
+      "answer": "A **hash table** stores key-value pairs by running the key through a **hash function** to pick a bucket index, giving **average `O(1)`** lookups.\n\n**Collision**: two keys hash to the same bucket. Resolved by:\n- **Chaining**: each bucket holds a list (or tree) of entries\n- **Open addressing**: probe for the next free slot\n\nToo many collisions degrade performance toward `O(n)`, which is why load factor and a good hash function matter."
     },
     {
       "question": "What is a stateless system?",
@@ -22,68 +30,40 @@
       "answer": "`0` — exclusive OR returns `true` only if the inputs **differ**.\n\n| A | B | A XOR B |\n|---|---|---------|\n| 0 | 0 | 0 |\n| 0 | 1 | 1 |\n| 1 | 0 | 1 |\n| 1 | 1 | 0 |"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the difference between a process and a thread?",
+      "answer": "- **Process**: an independent program with its **own memory space**. Processes are isolated; communication requires IPC.\n- **Thread**: a unit of execution **within** a process that **shares** the process's memory.\n\n**Trade-off**: threads are lighter and share data easily, but shared state introduces **race conditions** and requires synchronization."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is a race condition, and how do you prevent it?",
+      "answer": "A **race condition** occurs when the correctness of a program depends on the **timing/interleaving** of concurrent threads accessing shared state.\n\n**Prevention**:\n- **Locks/mutexes** or `synchronized` blocks to serialize access\n- **Atomic** operations (e.g., `AtomicInteger`, compare-and-swap)\n- **Immutable** data or thread-confinement (no sharing)\n- Higher-level concurrent data structures"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is a deadlock, and what conditions cause it?",
+      "answer": "A **deadlock** is when two or more threads each wait forever for a resource the other holds.\n\n**Coffman conditions** (all four required):\n1. **Mutual exclusion**\n2. **Hold and wait**\n3. **No preemption**\n4. **Circular wait**\n\n**Avoidance**: acquire locks in a **consistent global order**, use timeouts/`tryLock`, or reduce lock scope."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the difference between Git merge and rebase?",
+      "answer": "- **Merge**: combines branches with a **merge commit**, preserving the true history (non-linear).\n- **Rebase**: **replays** your commits on top of another branch, producing a **linear** history.\n\n**Rule of thumb**: rebase local/unshared work for a clean history; **avoid rebasing shared branches**, since it rewrites commit hashes others may depend on."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the difference between a container and a virtual machine?",
+      "answer": "- **VM**: virtualizes **hardware**; each VM runs a **full guest OS**. Strong isolation, heavier (GBs, slow boot).\n- **Container**: virtualizes the **OS**; shares the host kernel, packaging just the app and its dependencies. Lightweight (MBs, fast start).\n\n**Use containers** for portable, dense, fast-scaling microservices; **VMs** when you need full OS isolation or a different kernel."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the difference between synchronous and asynchronous processing?",
+      "answer": "- **Synchronous**: the caller **waits (blocks)** for the operation to finish before continuing.\n- **Asynchronous**: the caller **continues** and is notified later (callback, promise/`async-await`, or event).\n\n**Async** improves throughput and responsiveness for I/O-bound work (network, disk), at the cost of more complex control flow and error handling."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is caching, and what problems must you manage with it?",
+      "answer": "**Caching** stores frequently used data in fast storage (memory, `Redis`, CDN) to reduce latency and load.\n\n**Challenges**:\n- **Invalidation**: keeping cached data fresh (\"one of the two hard problems\")\n- **Eviction**: choosing what to drop when full (LRU, LFU, TTL)\n- **Staleness vs consistency**: trading freshness for speed\n- **Stampede**: many misses hitting the origin at once"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the difference between a stack and a queue?",
+      "answer": "- **Stack**: **LIFO** (Last In, First Out) — `push`/`pop` at the same end. Used for recursion, undo, expression evaluation.\n- **Queue**: **FIFO** (First In, First Out) — enqueue at the back, dequeue from the front. Used for scheduling, buffering, BFS.\n\nA **deque** allows insertion/removal at both ends and can act as either."
     },
     {
-      "question": "",
-      "answer": ""
-    },
-    {
-      "question": "",
-      "answer": ""
-    },
-    {
-      "question": "",
-      "answer": ""
-    },
-    {
-      "question": "",
-      "answer": ""
-    },
-    {
-      "question": "",
-      "answer": ""
-    },
-    {
-      "question": "",
-      "answer": ""
-    },
-    {
-      "question": "",
-      "answer": ""
-    },
-    {
-      "question": "",
-      "answer": ""
+      "question": "What are unit, integration, and end-to-end tests?",
+      "answer": "- **Unit tests**: test a single function/class in isolation (dependencies mocked). Fast, numerous.\n- **Integration tests**: verify multiple components work together (e.g., service + real database).\n- **End-to-end (E2E)**: exercise the whole system as a user would, through the real UI/API.\n\n**Test pyramid**: many unit tests, fewer integration, fewest (slow, brittle) E2E."
     }
   ]
 }
