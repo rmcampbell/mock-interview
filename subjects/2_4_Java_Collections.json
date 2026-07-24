@@ -2,224 +2,224 @@
   "topic": "Java Collections",
   "questions": [
     {
-      "question": "What is the difference between 'ArrayList' and 'LinkedList' in Java?",
-      "answer": "'ArrayList' uses a dynamic array to store elements, providing fast random access but slow insertions and deletions. 'LinkedList' uses a doubly linked list, offering fast insertions and deletions but slower random access."
+      "question": "What is the difference between `ArrayList` and `LinkedList` in Java?",
+      "answer": "`ArrayList` uses a dynamic array to store elements, providing fast random access but slow insertions and deletions. `LinkedList` uses a doubly linked list, offering fast insertions and deletions but slower random access."
     },
     {
-      "question": "What is the internal implementation of 'ArrayList' in Java?",
-      "answer": "'ArrayList' is backed by an array, and it dynamically resizes itself when elements are added or removed. The array grows automatically by 50% when it exceeds its capacity."
+      "question": "What is the internal implementation of `ArrayList` in Java?",
+      "answer": "`ArrayList` is backed by an array, and it dynamically resizes itself when elements are added or removed. The array grows automatically by 50% when it exceeds its capacity."
     },
     {
-      "question": "What is the difference between 'HashMap' and 'TreeMap'?",
-      "answer": "'HashMap' is an unordered collection that stores key-value pairs using a hash table, allowing constant-time complexity for basic operations. 'TreeMap', on the other hand, stores key-value pairs in a sorted order based on the natural ordering of the keys or a provided comparator."
+      "question": "What is the difference between `HashMap` and `TreeMap`?",
+      "answer": "`HashMap` is an unordered collection that stores key-value pairs using a hash table, allowing constant-time complexity for basic operations. `TreeMap`, on the other hand, stores key-value pairs in a sorted order based on the natural ordering of the keys or a provided comparator."
     },
     {
-      "question": "How does 'HashMap' work internally in Java?",
-      "answer": "'HashMap' uses a hash table internally. It stores entries as key-value pairs, with the key's hash code determining the index in the underlying array. When collisions occur, the map uses linked lists or trees (from Java 8 onwards) to store multiple entries in the same bucket."
+      "question": "How does `HashMap` work internally in Java?",
+      "answer": "`HashMap` uses a hash table internally. It stores entries as key-value pairs, with the key's hash code determining the index in the underlying array. When collisions occur, the map uses linked lists or trees (from Java 8 onwards) to store multiple entries in the same bucket."
     },
     {
-      "question": "What is the time complexity of common operations in 'HashMap'?",
-      "answer": "The time complexity for basic operations (insertion, deletion, and access) in 'HashMap' is O(1) on average. However, it can degrade to O(n) in case of hash collisions."
+      "question": "What is the time complexity of common operations in `HashMap`?",
+      "answer": "The time complexity for basic operations (insertion, deletion, and access) in `HashMap` is O(1) on average. However, it can degrade to O(n) in case of hash collisions."
     },
     {
-      "question": "What is the purpose of 'TreeSet' in Java?",
-      "answer": "'TreeSet' is a set implementation that stores elements in a sorted order. It uses a red-black tree for storage, providing O(log n) time complexity for operations like 'add()', 'remove()', and 'contains()'."
+      "question": "What is the purpose of `TreeSet` in Java?",
+      "answer": "`TreeSet` is a set implementation that stores elements in a sorted order. It uses a red-black tree for storage, providing O(log n) time complexity for operations like `add()`, `remove()`, and `contains()`."
     },
     {
-      "question": "How does 'LinkedList' differ from 'ArrayList' in terms of performance for adding elements?",
-      "answer": "'LinkedList' offers faster performance for insertions and deletions, especially in the middle of the list, as it only requires adjusting the pointers of nodes. 'ArrayList', on the other hand, may require shifting elements when inserting or deleting in the middle."
+      "question": "How does `LinkedList` differ from `ArrayList` in terms of performance for adding elements?",
+      "answer": "`LinkedList` offers faster performance for insertions and deletions, especially in the middle of the list, as it only requires adjusting the pointers of nodes. `ArrayList`, on the other hand, may require shifting elements when inserting or deleting in the middle."
     },
     {
-      "question": "What is the 'containsKey()' method in 'HashMap' used for?",
-      "answer": "The 'containsKey()' method is used to check if a 'HashMap' contains a specific key. It returns 'true' if the key exists, otherwise 'false'."
+      "question": "What is the `containsKey()` method in `HashMap` used for?",
+      "answer": "The `containsKey()` method is used to check if a `HashMap` contains a specific key. It returns `true` if the key exists, otherwise `false`."
     },
     {
-      "question": "Can 'ArrayList' hold 'null' values in Java?",
-      "answer": "Yes, 'ArrayList' can hold 'null' values, and it allows multiple 'null' values to be stored in the list."
+      "question": "Can `ArrayList` hold `null` values in Java?",
+      "answer": "Yes, `ArrayList` can hold `null` values, and it allows multiple `null` values to be stored in the list."
     },
     {
-      "question": "What is the difference between 'HashMap' and 'Hashtable' in Java?",
-      "answer": "'HashMap' is not synchronized, which makes it faster but not thread-safe. 'Hashtable', on the other hand, is synchronized and thread-safe, but it is slower compared to 'HashMap'."
+      "question": "What is the difference between `HashMap` and `Hashtable` in Java?",
+      "answer": "`HashMap` is not synchronized, which makes it faster but not thread-safe. `Hashtable`, on the other hand, is synchronized and thread-safe, but it is slower compared to `HashMap`."
     },
     {
-      "question": "What is the order of elements in 'TreeSet'?",
-      "answer": "The elements in a 'TreeSet' are ordered according to their natural ordering (if they implement 'Comparable') or by a 'Comparator' provided at the time of set creation."
+      "question": "What is the order of elements in `TreeSet`?",
+      "answer": "The elements in a `TreeSet` are ordered according to their natural ordering (if they implement `Comparable`) or by a `Comparator` provided at the time of set creation."
     },
     {
-      "question": "What is the capacity and size of an 'ArrayList' in Java?",
-      "answer": "The capacity of an 'ArrayList' is the number of elements the list can hold before resizing. The size is the actual number of elements present in the list. The default initial capacity is 10, but it grows dynamically as needed."
+      "question": "What is the capacity and size of an `ArrayList` in Java?",
+      "answer": "The capacity of an `ArrayList` is the number of elements the list can hold before resizing. The size is the actual number of elements present in the list. The default initial capacity is 10, but it grows dynamically as needed."
     },
     {
-      "question": "What happens when the 'HashMap' exceeds its capacity?",
-      "answer": "When the capacity of a 'HashMap' is exceeded, the internal array is resized (usually doubled) to accommodate more entries. This resizing operation can be costly in terms of time complexity."
+      "question": "What happens when the `HashMap` exceeds its capacity?",
+      "answer": "When the capacity of a `HashMap` is exceeded, the internal array is resized (usually doubled) to accommodate more entries. This resizing operation can be costly in terms of time complexity."
     },
     {
-      "question": "Can you store custom objects as keys in 'HashMap'?",
-      "answer": "Yes, custom objects can be used as keys in a 'HashMap'. However, it is important to override both 'hashCode()' and 'equals()' methods for custom keys to ensure proper functioning of the hash-based operations."
+      "question": "Can you store custom objects as keys in `HashMap`?",
+      "answer": "Yes, custom objects can be used as keys in a `HashMap`. However, it is important to override both `hashCode()` and `equals()` methods for custom keys to ensure proper functioning of the hash-based operations."
     },
     {
-      "question": "How can you iterate over a 'HashMap'?",
-      "answer": "You can iterate over a 'HashMap' using various methods: by using 'forEach()' with a lambda expression, 'keySet()' for keys, 'values()' for values, or 'entrySet()' to get both keys and values."
+      "question": "How can you iterate over a `HashMap`?",
+      "answer": "You can iterate over a `HashMap` using various methods: by using `forEach()` with a lambda expression, `keySet()` for keys, `values()` for values, or `entrySet()` to get both keys and values."
     },
     {
-      "question": "What is the difference between 'add()' and 'offer()' in 'LinkedList'?",
-      "answer": "'add()' adds an element to the list and throws an exception if it fails, whereas 'offer()' adds an element and returns 'false' if it fails (useful for queue operations)."
+      "question": "What is the difference between `add()` and `offer()` in `LinkedList`?",
+      "answer": "`add()` adds an element to the list and throws an exception if it fails, whereas `offer()` adds an element and returns `false` if it fails (useful for queue operations)."
     },
     {
-      "question": "What are the key differences between 'ArrayList' and 'LinkedList'?",
-      "answer": "'ArrayList' uses an array to store elements and provides constant-time access for indexed operations, but slower insertions and deletions. 'LinkedList' uses a doubly linked list, providing faster insertions and deletions but slower access by index."
+      "question": "What are the key differences between `ArrayList` and `LinkedList`?",
+      "answer": "`ArrayList` uses an array to store elements and provides constant-time access for indexed operations, but slower insertions and deletions. `LinkedList` uses a doubly linked list, providing faster insertions and deletions but slower access by index."
     },
     {
-      "question": "How does the 'size()' method work in a 'HashMap'?",
-      "answer": "The 'size()' method returns the number of key-value mappings in the map. It is an O(1) operation."
+      "question": "How does the `size()` method work in a `HashMap`?",
+      "answer": "The `size()` method returns the number of key-value mappings in the map. It is an O(1) operation."
     },
     {
-      "question": "What is the difference between 'HashSet' and 'TreeSet'?",
-      "answer": "'HashSet' is an unordered collection that does not maintain any specific order of elements, while 'TreeSet' stores elements in a sorted order according to their natural ordering or by a specified comparator."
+      "question": "What is the difference between `HashSet` and `TreeSet`?",
+      "answer": "`HashSet` is an unordered collection that does not maintain any specific order of elements, while `TreeSet` stores elements in a sorted order according to their natural ordering or by a specified comparator."
     },
     {
-      "question": "What is the role of the 'Comparator' interface in sorting collections?",
-      "answer": "The 'Comparator' interface allows defining custom sorting logic for objects in a collection. It is used when the natural ordering is not sufficient or for sorting based on different attributes of objects."
+      "question": "What is the role of the `Comparator` interface in sorting collections?",
+      "answer": "The `Comparator` interface allows defining custom sorting logic for objects in a collection. It is used when the natural ordering is not sufficient or for sorting based on different attributes of objects."
     },
     {
-      "question": "What is the difference between 'LinkedHashMap' and 'HashMap'?",
-      "answer": "'LinkedHashMap' maintains the insertion order of keys, while 'HashMap' does not guarantee any order. 'LinkedHashMap' has slightly lower performance compared to 'HashMap' due to the overhead of maintaining the order."
+      "question": "What is the difference between `LinkedHashMap` and `HashMap`?",
+      "answer": "`LinkedHashMap` maintains the insertion order of keys, while `HashMap` does not guarantee any order. `LinkedHashMap` has slightly lower performance compared to `HashMap` due to the overhead of maintaining the order."
     },
     {
-      "question": "What is the purpose of 'ListIterator' in Java?",
-      "answer": "'ListIterator' is an iterator that can traverse a list in both directions (forward and backward) and allows modification of the list while iterating, which is not possible with a regular 'Iterator'."
+      "question": "What is the purpose of `ListIterator` in Java?",
+      "answer": "`ListIterator` is an iterator that can traverse a list in both directions (forward and backward) and allows modification of the list while iterating, which is not possible with a regular `Iterator`."
     },
     {
-      "question": "What is the difference between 'Iterator' and 'ListIterator'?",
-      "answer": "'Iterator' can only traverse the collection in the forward direction, whereas 'ListIterator' can traverse in both directions and provides additional methods such as 'add()', 'set()', and 'previous()'."
+      "question": "What is the difference between `Iterator` and `ListIterator`?",
+      "answer": "`Iterator` can only traverse the collection in the forward direction, whereas `ListIterator` can traverse in both directions and provides additional methods such as `add()`, `set()`, and `previous()`."
     },
     {
-      "question": "What is the difference between 'ArrayList' and 'Vector'?",
-      "answer": "'ArrayList' is not synchronized and offers better performance in single-threaded environments. 'Vector' is synchronized, making it thread-safe but slower than 'ArrayList'. 'Vector' also grows by doubling its size, while 'ArrayList' grows by 50%."
+      "question": "What is the difference between `ArrayList` and `Vector`?",
+      "answer": "`ArrayList` is not synchronized and offers better performance in single-threaded environments. `Vector` is synchronized, making it thread-safe but slower than `ArrayList`. `Vector` also grows by doubling its size, while `ArrayList` grows by 50%."
     },
     {
-      "question": "What are the key differences between 'PriorityQueue' and 'Queue'?",
-      "answer": "'PriorityQueue' is a special type of queue where elements are ordered based on their priority rather than the order of insertion. 'Queue', in general, follows the FIFO (First In, First Out) principle."
+      "question": "What are the key differences between `PriorityQueue` and `Queue`?",
+      "answer": "`PriorityQueue` is a special type of queue where elements are ordered based on their priority rather than the order of insertion. `Queue`, in general, follows the FIFO (First In, First Out) principle."
     },
     {
-      "question": "What are 'NavigableMap' and 'NavigableSet'?",
-      "answer": "'NavigableMap' is a map that provides methods for navigating the map in both directions (forward and backward), such as 'lowerKey()', 'higherKey()'. Similarly, 'NavigableSet' is a set that provides methods to navigate the set in both directions, such as 'lower()' and 'higher()'."
+      "question": "What are `NavigableMap` and `NavigableSet`?",
+      "answer": "`NavigableMap` is a map that provides methods for navigating the map in both directions (forward and backward), such as `lowerKey()`, `higherKey()`. Similarly, `NavigableSet` is a set that provides methods to navigate the set in both directions, such as `lower()` and `higher()`."
     },
     {
-      "question": "What are the different types of 'Map' implementations in Java?",
-      "answer": "The main implementations of the 'Map' interface in Java are 'HashMap', 'LinkedHashMap', 'TreeMap', and 'Hashtable'. Each offers different characteristics such as ordering, synchronization, and sorting."
+      "question": "What are the different types of `Map` implementations in Java?",
+      "answer": "The main implementations of the `Map` interface in Java are `HashMap`, `LinkedHashMap`, `TreeMap`, and `Hashtable`. Each offers different characteristics such as ordering, synchronization, and sorting."
     },
     {
-      "question": "How does 'TreeMap' work internally?",
-      "answer": "'TreeMap' is backed by a red-black tree, which is a balanced binary search tree. It stores the keys in a sorted order according to their natural ordering or a custom comparator provided during instantiation."
+      "question": "How does `TreeMap` work internally?",
+      "answer": "`TreeMap` is backed by a red-black tree, which is a balanced binary search tree. It stores the keys in a sorted order according to their natural ordering or a custom comparator provided during instantiation."
     },
     {
-      "question": "What is the difference between 'HashMap' and 'Hashtable' regarding synchronization?",
-      "answer": "'HashMap' is not synchronized, making it faster for single-threaded access. 'Hashtable', however, is synchronized, making it thread-safe but slower in performance due to the overhead of synchronization."
+      "question": "What is the difference between `HashMap` and `Hashtable` regarding synchronization?",
+      "answer": "`HashMap` is not synchronized, making it faster for single-threaded access. `Hashtable`, however, is synchronized, making it thread-safe but slower in performance due to the overhead of synchronization."
     },
     {
-      "question": "Can 'HashMap' store 'null' keys and values?",
-      "answer": "Yes, 'HashMap' can store one 'null' key and multiple 'null' values. However, 'Hashtable' does not allow 'null' keys or values."
+      "question": "Can `HashMap` store `null` keys and values?",
+      "answer": "Yes, `HashMap` can store one `null` key and multiple `null` values. However, `Hashtable` does not allow `null` keys or values."
     },
     {
-      "question": "What is the difference between 'Iterator''s 'remove()' method and 'ListIterator''s 'remove()' method?",
-      "answer": "Both 'Iterator' and 'ListIterator' have a 'remove()' method, but 'ListIterator' can remove elements during forward or backward iteration, while 'Iterator' can only remove elements during forward iteration."
+      "question": "What is the difference between `Iterator`'s `remove()` method and `ListIterator`'s `remove()` method?",
+      "answer": "Both `Iterator` and `ListIterator` have a `remove()` method, but `ListIterator` can remove elements during forward or backward iteration, while `Iterator` can only remove elements during forward iteration."
     },
     {
-      "question": "What is 'CopyOnWriteArrayList' and when is it used?",
-      "answer": "'CopyOnWriteArrayList' is a thread-safe variant of 'ArrayList' where modifications like 'add()', 'remove()' create a copy of the underlying array to prevent concurrency issues. It is ideal for scenarios where the list is frequently read and infrequently modified."
+      "question": "What is `CopyOnWriteArrayList` and when is it used?",
+      "answer": "`CopyOnWriteArrayList` is a thread-safe variant of `ArrayList` where modifications like `add()`, `remove()` create a copy of the underlying array to prevent concurrency issues. It is ideal for scenarios where the list is frequently read and infrequently modified."
     },
     {
-      "question": "What are 'Set', 'SortedSet', and 'NavigableSet'?",
-      "answer": "'Set' is an interface that defines a collection of unique elements. 'SortedSet' extends 'Set' and maintains the order of elements. 'NavigableSet' extends 'SortedSet' and provides additional methods to navigate the set, such as 'lower()', 'higher()', 'pollFirst()', and 'pollLast()'."
+      "question": "What are `Set`, `SortedSet`, and `NavigableSet`?",
+      "answer": "`Set` is an interface that defines a collection of unique elements. `SortedSet` extends `Set` and maintains the order of elements. `NavigableSet` extends `SortedSet` and provides additional methods to navigate the set, such as `lower()`, `higher()`, `pollFirst()`, and `pollLast()`."
     },
     {
-      "question": "What is the difference between 'TreeSet' and 'HashSet'?",
-      "answer": "'TreeSet' stores elements in a sorted order (according to natural ordering or a comparator), while 'HashSet' does not guarantee any specific order. 'TreeSet' is slower than 'HashSet' because of the sorting process."
+      "question": "What is the difference between `TreeSet` and `HashSet`?",
+      "answer": "`TreeSet` stores elements in a sorted order (according to natural ordering or a comparator), while `HashSet` does not guarantee any specific order. `TreeSet` is slower than `HashSet` because of the sorting process."
     },
     {
-      "question": "How does the 'forEach()' method work in collections?",
-      "answer": "The 'forEach()' method is a default method in 'Iterable' interface that allows iterating over the elements of a collection using a lambda expression or method reference."
+      "question": "How does the `forEach()` method work in collections?",
+      "answer": "The `forEach()` method is a default method in `Iterable` interface that allows iterating over the elements of a collection using a lambda expression or method reference."
     },
     {
-      "question": "What is the difference between 'hashCode()' and 'equals()'?",
-      "answer": "'hashCode()' returns an integer representation of an object, which is used by hash-based collections (e.g., 'HashMap', 'HashSet'). 'equals()' compares two objects for logical equality. These methods are used together for proper functioning of hash-based collections."
+      "question": "What is the difference between `hashCode()` and `equals()`?",
+      "answer": "`hashCode()` returns an integer representation of an object, which is used by hash-based collections (e.g., `HashMap`, `HashSet`). `equals()` compares two objects for logical equality. These methods are used together for proper functioning of hash-based collections."
     },
     {
-      "question": "When would you use 'ArrayList' over 'LinkedList'?",
-      "answer": "'ArrayList' is ideal when you need fast random access to elements and the number of insertions and deletions is minimal. Use 'LinkedList' if your application requires frequent insertions and deletions in the middle of the list, as 'ArrayList' has to shift elements."
+      "question": "When would you use `ArrayList` over `LinkedList`?",
+      "answer": "`ArrayList` is ideal when you need fast random access to elements and the number of insertions and deletions is minimal. Use `LinkedList` if your application requires frequent insertions and deletions in the middle of the list, as `ArrayList` has to shift elements."
     },
     {
-      "question": "When would you use 'HashMap' over 'TreeMap'?",
-      "answer": "Use 'HashMap' when you need fast access and do not care about the ordering of keys. If you need to store key-value pairs in a sorted order, then use 'TreeMap' since it maintains the keys in natural order or a specified comparator."
+      "question": "When would you use `HashMap` over `TreeMap`?",
+      "answer": "Use `HashMap` when you need fast access and do not care about the ordering of keys. If you need to store key-value pairs in a sorted order, then use `TreeMap` since it maintains the keys in natural order or a specified comparator."
     },
     {
-      "question": "When would you use 'LinkedHashMap' instead of 'HashMap'?",
-      "answer": "Use 'LinkedHashMap' when you need to maintain the insertion order or access order of entries. 'LinkedHashMap' provides the same performance as 'HashMap' but maintains the order in which keys are inserted."
+      "question": "When would you use `LinkedHashMap` instead of `HashMap`?",
+      "answer": "Use `LinkedHashMap` when you need to maintain the insertion order or access order of entries. `LinkedHashMap` provides the same performance as `HashMap` but maintains the order in which keys are inserted."
     },
     {
-      "question": "When should you use 'TreeSet'?",
-      "answer": "Use 'TreeSet' when you need to store a collection of unique elements and maintain them in sorted order. It is useful when you need efficient retrieval of elements in a natural order or according to a custom comparator."
+      "question": "When should you use `TreeSet`?",
+      "answer": "Use `TreeSet` when you need to store a collection of unique elements and maintain them in sorted order. It is useful when you need efficient retrieval of elements in a natural order or according to a custom comparator."
     },
     {
-      "question": "When should you use 'HashSet' over 'TreeSet'?",
-      "answer": "Use 'HashSet' when you need a collection of unique elements and do not care about their order. It offers constant-time complexity for basic operations. Use 'TreeSet' when you need to keep the elements in a sorted order, but it has higher overhead than 'HashSet'."
+      "question": "When should you use `HashSet` over `TreeSet`?",
+      "answer": "Use `HashSet` when you need a collection of unique elements and do not care about their order. It offers constant-time complexity for basic operations. Use `TreeSet` when you need to keep the elements in a sorted order, but it has higher overhead than `HashSet`."
     },
     {
-      "question": "When is it appropriate to use 'EnumSet'?",
-      "answer": "Use 'EnumSet' when you are working with an enum type. It is a highly optimized set implementation for storing and operating on enums, offering better performance than 'HashSet' or 'TreeSet' for enum values."
+      "question": "When is it appropriate to use `EnumSet`?",
+      "answer": "Use `EnumSet` when you are working with an enum type. It is a highly optimized set implementation for storing and operating on enums, offering better performance than `HashSet` or `TreeSet` for enum values."
     },
     {
-      "question": "When would you use 'ConcurrentHashMap' over 'HashMap'?",
-      "answer": "Use 'ConcurrentHashMap' in multi-threaded applications where multiple threads need to access and modify the map concurrently. 'ConcurrentHashMap' allows thread-safe operations without locking the entire map, providing better scalability than 'HashMap'."
+      "question": "When would you use `ConcurrentHashMap` over `HashMap`?",
+      "answer": "Use `ConcurrentHashMap` in multi-threaded applications where multiple threads need to access and modify the map concurrently. `ConcurrentHashMap` allows thread-safe operations without locking the entire map, providing better scalability than `HashMap`."
     },
     {
-      "question": "When is it appropriate to use 'CopyOnWriteArrayList'?",
-      "answer": "Use 'CopyOnWriteArrayList' in situations where the list is frequently read but infrequently modified (e.g., adding or removing elements). It is thread-safe, and modifications create a copy of the underlying array, ensuring safe concurrent reads without synchronization."
+      "question": "When is it appropriate to use `CopyOnWriteArrayList`?",
+      "answer": "Use `CopyOnWriteArrayList` in situations where the list is frequently read but infrequently modified (e.g., adding or removing elements). It is thread-safe, and modifications create a copy of the underlying array, ensuring safe concurrent reads without synchronization."
     },
     {
-      "question": "When should you use 'PriorityQueue'?",
-      "answer": "Use 'PriorityQueue' when you need a queue where elements are ordered by priority. It is suitable for implementing scenarios like scheduling tasks or processing data in order of priority."
+      "question": "When should you use `PriorityQueue`?",
+      "answer": "Use `PriorityQueue` when you need a queue where elements are ordered by priority. It is suitable for implementing scenarios like scheduling tasks or processing data in order of priority."
     },
     {
-      "question": "When should you use 'ArrayDeque' over 'LinkedList'?",
-      "answer": "Use 'ArrayDeque' when you need a fast, memory-efficient deque implementation for adding or removing elements from both ends of the queue. 'LinkedList' has more overhead and is typically slower for these operations."
+      "question": "When should you use `ArrayDeque` over `LinkedList`?",
+      "answer": "Use `ArrayDeque` when you need a fast, memory-efficient deque implementation for adding or removing elements from both ends of the queue. `LinkedList` has more overhead and is typically slower for these operations."
     },
     {
-      "question": "When would you use 'Vector' over 'ArrayList'?",
-      "answer": "Use 'Vector' if you need synchronization for thread-safe operations. However, 'ArrayList' is usually preferred because it is more efficient in single-threaded scenarios. 'Vector' has been largely replaced by 'ArrayList' in most modern Java applications."
+      "question": "When would you use `Vector` over `ArrayList`?",
+      "answer": "Use `Vector` if you need synchronization for thread-safe operations. However, `ArrayList` is usually preferred because it is more efficient in single-threaded scenarios. `Vector` has been largely replaced by `ArrayList` in most modern Java applications."
     },
     {
-      "question": "When should you use 'HashTable' instead of 'HashMap'?",
-      "answer": "Use 'Hashtable' if you need thread-safe operations and are working in older codebases that still use it. However, 'HashMap' is generally preferred in new applications because it provides better performance and is not synchronized by default."
+      "question": "When should you use `HashTable` instead of `HashMap`?",
+      "answer": "Use `Hashtable` if you need thread-safe operations and are working in older codebases that still use it. However, `HashMap` is generally preferred in new applications because it provides better performance and is not synchronized by default."
     },
     {
-      "question": "When is 'LinkedHashSet' preferred over 'HashSet'?",
-      "answer": "Use 'LinkedHashSet' when you need a 'Set' that maintains the order of elements as they were inserted. It’s particularly useful when order matters, but uniqueness of elements is still required."
+      "question": "When is `LinkedHashSet` preferred over `HashSet`?",
+      "answer": "Use `LinkedHashSet` when you need a `Set` that maintains the order of elements as they were inserted. It’s particularly useful when order matters, but uniqueness of elements is still required."
     },
     {
-      "question": "When should you use 'WeakHashMap'?",
-      "answer": "Use 'WeakHashMap' when you want to store entries that are not strongly referenced and should be garbage-collected when no other references exist to the key. It's useful for caches or managing non-essential metadata."
+      "question": "When should you use `WeakHashMap`?",
+      "answer": "Use `WeakHashMap` when you want to store entries that are not strongly referenced and should be garbage-collected when no other references exist to the key. It's useful for caches or managing non-essential metadata."
     },
     {
-      "question": "When should you use 'IdentityHashMap'?",
-      "answer": "Use 'IdentityHashMap' when you need to compare keys based on their reference identity rather than their equality (i.e., using '==' instead of '.equals()' for key comparison). It is useful in situations like tracking object identity during object management."
+      "question": "When should you use `IdentityHashMap`?",
+      "answer": "Use `IdentityHashMap` when you need to compare keys based on their reference identity rather than their equality (i.e., using `==` instead of `.equals()` for key comparison). It is useful in situations like tracking object identity during object management."
     },
     {
-      "question": "When would you use 'Deque' over 'Queue'?",
-      "answer": "Use 'Deque' (Double-Ended Queue) when you need to add or remove elements from both ends of the collection efficiently. 'Queue' is used when you need to follow FIFO (First In, First Out) order but only require operations at one end."
+      "question": "When would you use `Deque` over `Queue`?",
+      "answer": "Use `Deque` (Double-Ended Queue) when you need to add or remove elements from both ends of the collection efficiently. `Queue` is used when you need to follow FIFO (First In, First Out) order but only require operations at one end."
     },
     {
-      "question": "When should you use 'Stack' in Java?",
-      "answer": "Use 'Stack' when you need to implement Last-In-First-Out (LIFO) behavior, such as when dealing with recursion, undo functionality, or expression evaluation. However, 'Stack' has been largely replaced by 'Deque' and 'ArrayDeque'."
+      "question": "When should you use `Stack` in Java?",
+      "answer": "Use `Stack` when you need to implement Last-In-First-Out (LIFO) behavior, such as when dealing with recursion, undo functionality, or expression evaluation. However, `Stack` has been largely replaced by `Deque` and `ArrayDeque`."
     },
     {
       "question": "How have you used Java Collections in your projects? Can you explain the differences between ArrayList, LinkedList, and HashMap?",
-      "answer": "Used Collections for dynamic data storage.\n- ArrayList is better for frequent reads\nLinkedList for frequent inserts/deletes\nHashMap for key-value lookups."
+      "answer": "Used Collections for **dynamic data storage**.\n- `ArrayList` is better for frequent reads\n- `LinkedList` for frequent inserts/deletes\n- `HashMap` for key-value lookups"
     },
     {
-      "question": "When is 'SortedMap' used in Java?",
-      "answer": "Use 'SortedMap' when you need to store key-value pairs in a sorted order. 'TreeMap' is a common implementation of 'SortedMap', which allows efficient searching, insertion, and deletion of entries in a sorted manner."
+      "question": "When is `SortedMap` used in Java?",
+      "answer": "Use `SortedMap` when you need to store key-value pairs in a sorted order. `TreeMap` is a common implementation of `SortedMap`, which allows efficient searching, insertion, and deletion of entries in a sorted manner."
     }
   ]
 }

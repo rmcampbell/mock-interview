@@ -3,11 +3,11 @@
   "questions": [
     {
       "question": "What is the `Diamond Problem`?",
-      "answer": "- The `diamond problem` in Java occurs when multiple inheritance leads to ambiguity in method resolution.\n- However, Java does not support multiple inheritance of classes, which prevents this issue at the class level.\n- The problem can still arise with interfaces that have default methods.\n\n**Diamond Problem with Classes (Prevented in Java)** <br/>\n In languages that support multiple inheritance (like C++), the diamond problem occurs when a class inherits from two classes that both inherit from a common base class:\n\n```text\n    A\n   / \\\n  B   C\n   \\ /\n    D\n```\n\nIf:\n - Both B and C override a method from A\n- D inherits from both B and C\n- Then which method should D inherit?\n- This is the ambiguity known as the diamond problem.\n\nJava avoids this issue by disallowing multiple inheritance of classes. You cannot have `class D extends B, C` in Java."
+      "answer": "- The `diamond problem` in Java occurs when multiple inheritance leads to ambiguity in method resolution.\n- However, Java does not support multiple inheritance of classes, which prevents this issue at the class level.\n- The problem can still arise with interfaces that have default methods.\n\n**Diamond Problem with Classes (Prevented in Java)**\n\nIn languages that support multiple inheritance (like C++), the diamond problem occurs when a class inherits from two classes that both inherit from a common base class:\n\n```text\n    A\n   / \\\n  B   C\n   \\ /\n    D\n```\n\nIf:\n- Both `B` and `C` override a method from `A`\n- `D` inherits from both `B` and `C`\n- Then which method should `D` inherit?\n- This is the ambiguity known as the **diamond problem**.\n\nJava avoids this issue by **disallowing multiple inheritance of classes**. You cannot have `class D extends B, C` in Java."
     },
     {
       "question": "Show an example of the `Diamond Problem` in Java?",
-      "answer": "**Diamond Problem with Interfaces**\nJava does allow multiple inheritance of interfaces:\n- Can lead to a similar issue if two interfaces define the same default method.\n\n**Example of the Diamond Problem with Default Methods**\n```java\ninterface A {\n    default void show() {\n        System.out.println(\"A's show\");\n    }\n}\n\ninterface B extends A {\n    default void show() {\n        System.out.println(\"B's show\");\n    }\n}\n\ninterface C extends A {\n    default void show() {\n        System.out.println(\"C's show\");\n    }\n}\n\nclass D implements B, C {\n    // Compilation error: show() is inherited from both B and C\n}\n```\n\n**Solution: Override the Method in D**\nTo resolve the ambiguity, D must explicitly override the `show()` method:\n\n```java\nclass D implements B, C {\n    @Override\n    public void show() {\n        // Choose explicitly which show() to use\n        B.super.show(); // or C.super.show();\n    }\n}\n```\n\n- `B.super.show();` → Calls `show()` from `B`\n- `C.super.show();` → Calls `show()` from `C`\n\n**Key Takeaways**:\n- Java does not support multiple inheritance of classes, preventing the diamond problem at the class level.\n- Java allows multiple inheritance of interfaces, which can cause conflicts when default methods are involved.\n- The compiler forces the implementing class to override conflicting default methods, making the choice explicit."
+      "answer": "**Diamond Problem with Interfaces**\n\nJava does allow multiple inheritance of interfaces:\n- Can lead to a similar issue if two interfaces define the same default method.\n\n**Example of the Diamond Problem with Default Methods**:\n\n```java\ninterface A {\n    default void show() {\n        System.out.println(\"A's show\");\n    }\n}\n\ninterface B extends A {\n    default void show() {\n        System.out.println(\"B's show\");\n    }\n}\n\ninterface C extends A {\n    default void show() {\n        System.out.println(\"C's show\");\n    }\n}\n\nclass D implements B, C {\n    // Compilation error: show() is inherited from both B and C\n}\n```\n\n**Solution: Override the Method in D**\n\nTo resolve the ambiguity, `D` must explicitly override the `show()` method:\n\n```java\nclass D implements B, C {\n    @Override\n    public void show() {\n        // Choose explicitly which show() to use\n        B.super.show(); // or C.super.show();\n    }\n}\n```\n\n- `B.super.show();` → Calls `show()` from `B`\n- `C.super.show();` → Calls `show()` from `C`\n\n**Key Takeaways**:\n- Java does not support multiple inheritance of classes, preventing the diamond problem at the class level.\n- Java allows multiple inheritance of interfaces, which can cause conflicts when default methods are involved.\n- The compiler forces the implementing class to override conflicting default methods, making the choice explicit."
     },
     {
       "question": "What is an association?",
@@ -15,7 +15,7 @@
     },
     {
       "question": "Write an interface `Animal` with methods `makeSound()` and `move()`. Create two classes, `Dog` and `Bird`, that implement this interface.",
-      "answer": "interface Animal {\n\tvoid makeSound();\n\tvoid move();\n}\n\nclass Dog implements Animal {\n\tpublic void makeSound() {\n\t\tSystem.out.println(\"Bark\");\n\t}\n\n\tpublic void move() {\n\t\tSystem.out.println(\"Runs\");\n\t}\n}\n\nclass Bird implements Animal {\n\tpublic void makeSound() {\n\t\tSystem.out.println(\"Chirp\");\n\t}\n\n\tpublic void move() {\n\t\tSystem.out.println(\"Flies\");\n\t}\n}"
+      "answer": "```java\ninterface Animal {\n    void makeSound();\n    void move();\n}\n\nclass Dog implements Animal {\n    public void makeSound() {\n        System.out.println(\"Bark\");\n    }\n\n    public void move() {\n        System.out.println(\"Runs\");\n    }\n}\n\nclass Bird implements Animal {\n    public void makeSound() {\n        System.out.println(\"Chirp\");\n    }\n\n    public void move() {\n        System.out.println(\"Flies\");\n    }\n}\n```"
     },
     {
       "question": "How does abstraction reduce complexity?",
@@ -27,7 +27,7 @@
     },
     {
       "question": "How would you use OOP principles in designing a payment system?",
-      "answer": "Abstract Class:\n- Payment (common methods like `processPayment()`).\n\nSubclasses:\n- CreditCardPayment\n- PayPalPayment\n\nEncapsulation:\n- Keep payment details secure.\n\nPolymorphism:\n- Handle different payment methods dynamically."
+      "answer": "**Abstract Class**:\n- `Payment` (common methods like `processPayment()`)\n\n**Subclasses**:\n- `CreditCardPayment`\n- `PayPalPayment`\n\n**Encapsulation**:\n- Keep payment details secure\n\n**Polymorphism**:\n- Handle different payment methods dynamically"
     },
     {
       "question": "Why use an interface if we already have abstract classes?",
@@ -39,7 +39,7 @@
     },
     {
       "question": "Write a program that demonstrates method overriding using a `Shape` superclass and `Circle` and `Rectangle` subclasses.",
-      "answer": "class Shape {\n public void draw() {\n\t\tSystem.out.println(\"Drawing a shape\");\n\t}\n}\n\nclass Circle extends Shape {\n\t@Override\n\tpublic void draw() {\n\t\tSystem.out.println(\"Drawing a circle\");\n\t}\n}\n\nclass Rectangle extends Shape {\n\t@Override\n\tpublic void draw() {\n\t\tSystem.out.println(\"Drawing a rectangle\");\n\t}\n}\n\npublic class Main {\n\tpublic static void main(String[] args) {\n\t\tShape shape1 = new Circle();\n\t\tShape shape2 = new Rectangle();\n\t\tshape1.draw(); // Drawing a circle\n\t\tshape2.draw(); // Drawing a rectangle\n\t}\n}"
+      "answer": "```java\nclass Shape {\n    public void draw() {\n        System.out.println(\"Drawing a shape\");\n    }\n}\n\nclass Circle extends Shape {\n    @Override\n    public void draw() {\n        System.out.println(\"Drawing a circle\");\n    }\n}\n\nclass Rectangle extends Shape {\n    @Override\n    public void draw() {\n        System.out.println(\"Drawing a rectangle\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Shape shape1 = new Circle();\n        Shape shape2 = new Rectangle();\n        shape1.draw(); // Drawing a circle\n        shape2.draw(); // Drawing a rectangle\n    }\n}\n```"
     },
     {
       "question": "How does polymorphism enhance flexibility?",
@@ -119,7 +119,7 @@
     },
     {
       "question": "Can you define `encapsulation`, `inheritance`, and `abstraction`, and give examples of how you’ve used each in your projects?",
-      "answer": "`Encapsulation`:\n- restricts access to class members.\n\n`Inheritance`:\n- Reuses code by extending classes.\n`Abstraction`:\n- Defines interfaces for implementation.\n\nExample:\n- Payment gateway systems."
+      "answer": "`Encapsulation`:\n- Restricts access to class members\n\n`Inheritance`:\n- Reuses code by extending classes\n\n`Abstraction`:\n- Defines interfaces for implementation\n\n**Example**:\n- Payment gateway systems"
     },
     {
       "question": "What is dependency injection in the context of OOP?",
@@ -127,7 +127,7 @@
     },
     {
       "question": "How would you design a system for a library?",
-      "answer": "Key Classes:\n- `Book` (title, author, ISBN, etc.)\n- `Member` (name, ID, borrowed books)\n- `Librarian` (manage inventory, issue books)\n\nRelationships:\n- A `Member` can borrow multiple `Books`.\n- A `Librarian` interacts with `Book` and `Member`."
+      "answer": "**Key Classes**:\n- `Book` (title, author, ISBN, etc.)\n- `Member` (name, ID, borrowed books)\n- `Librarian` (manage inventory, issue books)\n\n**Relationships**:\n- A `Member` can borrow multiple `Books`.\n- A `Librarian` interacts with `Book` and `Member`."
     },
     {
       "question": "What is dynamic method dispatch in Java?",
@@ -135,7 +135,7 @@
     },
     {
       "question": "What is the role of the `final` keyword in inheritance?",
-      "answer": "final `class`:\n- Cannot be extended\n\nfinal `method`:\n- Cannot be overridden."
+      "answer": "`final` **class**:\n- Cannot be extended\n\n`final` **method**:\n- Cannot be overridden"
     },
     {
       "question": "Can you extend multiple classes in Java? Why or why not?",

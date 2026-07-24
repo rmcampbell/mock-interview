@@ -27,7 +27,7 @@
     },
     {
       "question": "What are the different types of SQL commands?",
-      "answer": "1. `DDL` (Data Definition Language): `CREATE`, `ALTER`, `DROP`.\n2. DML (Data Manipulation Language): `SELECT`, `INSERT`, `UPDATE`, `DELETE`.\n3. DQL (Data Query Language): `SELECT`.\n4. DCL (Data Control Language): `GRANT`, `REVOKE`.\n5. TCL (Transaction Control Language): `COMMIT`, `ROLLBACK`, `SAVEPOINT`."
+      "answer": "1. `DDL` (**Data Definition Language**): `CREATE`, `ALTER`, `DROP`\n2. `DML` (**Data Manipulation Language**): `SELECT`, `INSERT`, `UPDATE`, `DELETE`\n3. `DQL` (**Data Query Language**): `SELECT`\n4. `DCL` (**Data Control Language**): `GRANT`, `REVOKE`\n5. `TCL` (**Transaction Control Language**): `COMMIT`, `ROLLBACK`, `SAVEPOINT`"
     },
     {
       "question": "What is the difference between `DELETE` and `TRUNCATE`?",
@@ -47,7 +47,7 @@
     },
     {
       "question": "What is the difference between `WHERE` and `HAVING` clauses?",
-      "answer": "`WHERE`: filters rows before grouping\n- `HAVING`: filters groups after the `GROUP BY` clause."
+      "answer": "- `WHERE`: filters rows **before** grouping\n- `HAVING`: filters groups **after** the `GROUP BY` clause"
     },
     {
       "question": "What is normalization?",
@@ -63,7 +63,7 @@
     },
     {
       "question": "What is an index?",
-      "answer": "An index is a database object that improves the speed of data retrieval operations on a table.\n\nTypes include:\n- clustered\n- non-clustered\n- unique\n- full-text indexes."
+      "answer": "An **index** is a database object that improves the **speed of data retrieval** operations on a table.\n\n**Types include**:\n- Clustered\n- Non-clustered\n- Unique\n- Full-text"
     },
     {
       "question": "What is a view in SQL?",
@@ -83,7 +83,7 @@
     },
     {
       "question": "What is the difference between `COUNT`, `SUM`, `AVG`, `MIN`, and `MAX`?",
-      "answer": "- `COUNT`: counts rows\n- `SUM` calculates the total of a column\n- `AVG`: finds the average value\n- `MIN` returns the smallest value\n- `MAX`: returns the largest value in a column"
+      "answer": "- `COUNT`: counts rows\n- `SUM`: calculates the total of a column\n- `AVG`: finds the average value\n- `MIN`: returns the smallest value\n- `MAX`: returns the largest value in a column"
     },
     {
       "question": "What are aggregate functions in SQL?",
@@ -135,19 +135,19 @@
     },
     {
       "question": "How do you optimize SQL queries for performance?",
-      "answer": "**Best Practices**:\n- Use Indexing: Speed up data retrieval.\n- Avoid `SELECT *`: Fetch only required columns.\n- Use Joins Efficiently: Prefer `INNER JOIN` over `OUTER JOIN` when possible.\n- Optimize `WHERE` Conditions: Use indexed columns in filters.\n- Use Pagination: `LIMIT` and `OFFSET` for large datasets."
+      "answer": "**Best Practices**:\n- **Use Indexing**: Speed up data retrieval.\n- **Avoid `SELECT *`**: Fetch only required columns.\n- **Use Joins Efficiently**: Prefer `INNER JOIN` over `OUTER JOIN` when possible.\n- **Optimize `WHERE` Conditions**: Use indexed columns in filters.\n- **Use Pagination**: `LIMIT` and `OFFSET` for large datasets."
     },
     {
       "question": "What are the advantages and disadvantages of using a NoSQL database?",
-      "answer": "**Advantages**:\n- Scalability: NoSQL databases can handle massive amounts of data and can scale horizontally.\n- Flexible Schema: Supports dynamic data models (e.g., document, key-value, graph).\n- High Availability: Typically provide built-in replication and fault tolerance.\n\n**Disadvantages**:\n- Eventual Consistency: Data consistency can be delayed, leading to temporary inconsistencies.\n- Limited Querying: NoSQL may not support complex queries or joins like relational databases.\n- Lack of Standardization: Each NoSQL database has a different query language and approach."
+      "answer": "**Advantages**:\n- **Scalability**: NoSQL databases can handle massive amounts of data and can scale horizontally.\n- **Flexible Schema**: Supports dynamic data models (e.g., document, key-value, graph).\n- **High Availability**: Typically provide built-in replication and fault tolerance.\n\n**Disadvantages**:\n- **Eventual Consistency**: Data consistency can be delayed, leading to temporary inconsistencies.\n- **Limited Querying**: NoSQL may not support complex queries or joins like relational databases.\n- **Lack of Standardization**: Each NoSQL database has a different query language and approach."
     },
     {
       "question": "What is the importance of database normalization, and what are its forms?",
-      "answer": "**Importance**:\n- Reduces Data Redundancy: Ensures data is only stored once.\n- Improves Data Integrity: Prevents anomalies (insert, update, delete).\n- Increases Query Efficiency: Optimizes data access.\n\n**Forms**:\n1. First Normal Form (`1NF`): Eliminate duplicate data by ensuring each column contains only atomic values.\n2. Second Normal Form (`2NF`): Remove partial dependencies (non-key attributes should depend on the entire primary key).\n3. Third Normal Form (`3NF`): Remove transitive dependencies (non-key attributes should depend only on the primary key)."
+      "answer": "**Importance**:\n- **Reduces Data Redundancy**: Ensures data is only stored once.\n- **Improves Data Integrity**: Prevents anomalies (insert, update, delete).\n- **Increases Query Efficiency**: Optimizes data access.\n\n**Forms**:\n1. **First Normal Form** (`1NF`): Eliminate duplicate data by ensuring each column contains only atomic values.\n2. **Second Normal Form** (`2NF`): Remove partial dependencies (non-key attributes should depend on the entire primary key).\n3. **Third Normal Form** (`3NF`): Remove transitive dependencies (non-key attributes should depend only on the primary key)."
     },
     {
       "question": "What is SQL Injection, and how can you prevent it?",
-      "answer": "SQL Injection:\n- **Definition**: A code injection technique where an attacker exploits a vulnerability in an application’s software by manipulating SQL queries.\n- **Risk**: Allows attackers to view, modify, or delete data.\n\nPrevention:\n- **Use Prepared Statements**: Avoid concatenating user input directly into SQL queries.\n- **Use ORM**: Use an Object-Relational Mapping (ORM) tool that abstracts direct SQL query execution.\n- **Input Validation**: Sanitize user input to ensure it is safe.\n\nExample of Prepared Statement:\n```java\nPreparedStatement stmt = connection.prepareStatement(\"SELECT * FROM users WHERE username = ?\");\nstmt.setString(1, username);  // Prevents injection by escaping user input\nResultSet rs = stmt.executeQuery();\n```"
+      "answer": "**SQL Injection**:\n- **Definition**: A code injection technique where an attacker exploits a vulnerability in an application's software by manipulating SQL queries.\n- **Risk**: Allows attackers to view, modify, or delete data.\n\n**Prevention**:\n- **Use Prepared Statements**: Avoid concatenating user input directly into SQL queries.\n- **Use ORM**: Use an Object-Relational Mapping (ORM) tool that abstracts direct SQL query execution.\n- **Input Validation**: Sanitize user input to ensure it is safe.\n\n**Example of Prepared Statement**:\n```java\nPreparedStatement stmt = connection.prepareStatement(\"SELECT * FROM users WHERE username = ?\");\nstmt.setString(1, username);  // Prevents injection by escaping user input\nResultSet rs = stmt.executeQuery();\n```"
     },
     {
       "question": "What is SQL injection?",

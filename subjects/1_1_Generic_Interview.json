@@ -11,11 +11,11 @@
     },
     {
       "question": "How do you build rapport with new team members?",
-      "answer": "1. Keep open communication:\n- Engage in casual conversations\n\n2. Actively Listen:\n- Pay attention to their ideas\n- Seek and listen to feedback\n\n3. Collaboration:\n- Look for opportunities to pair on tasks\n- Review each other’s code\n- Discuss technical challenges to build mutual respect \n\n4. Offer Help:\n- Proactively offer assistance where I can\n\n5. Learning from Them:\n- Ask questions about team processes, best practices, and historical context\n\n6. Show Reliability:\n- Follow through on commitments, deadlines\n- Delivering top quality work"
+      "answer": "1. **Keep open communication**:\n- Engage in casual conversations\n\n2. **Actively Listen**:\n- Pay attention to their ideas\n- Seek and listen to feedback\n\n3. **Collaboration**:\n- Look for opportunities to pair on tasks\n- Review each other's code\n- Discuss technical challenges to build mutual respect\n\n4. **Offer Help**:\n- Proactively offer assistance where I can\n\n5. **Learning from Them**:\n- Ask questions about team processes, best practices, and historical context\n\n6. **Show Reliability**:\n- Follow through on commitments, deadlines\n- Delivering top quality work"
     },
     {
       "question": "Tell me about a time you took initiative to improve a process or tool?",
-      "answer": "`Situation`:\n- Manual, time consuming, creation of Dialogflow agents for client verticals\n- Often resulted in buggy inconsistent Agents\n\n`Task`:\n- Create Dialogflow agents and prompts through the web UI\n- Often took over a day for a single agent.\n\n`Action`:\n- I created a testing library for personal use so that I could catch bugs in agents my team created before marking them as done\n- Saw potential for further automation\n- Converted the testing lib to an automation application\n\n`Result`:\n- Eliminated the repetitive tasks\n- Fully automated the creation process\n- Eliminated typo bugs\n- Reduced agent creation time by 80% for 5 migration teams, totaling ~50 developers"
+      "answer": "**Situation**:\n- Manual, time consuming, creation of Dialogflow agents for client verticals\n- Often resulted in buggy inconsistent Agents\n\n**Task**:\n- Create Dialogflow agents and prompts through the web UI\n- Often took over a day for a single agent.\n\n**Action**:\n- I created a testing library for personal use so that I could catch bugs in agents my team created before marking them as done\n- Saw potential for further automation\n- Converted the testing lib to an automation application\n\n**Result**:\n- Eliminated the repetitive tasks\n- Fully automated the creation process\n- Eliminated typo bugs\n- Reduced agent creation time by 80% for 5 migration teams, totaling ~50 developers"
     },
     {
       "question": "Describe the last project you worked on including, any obstacles and your contributions to its success.",
@@ -47,15 +47,15 @@
     },
     {
       "question": "Can you describe a time when you had to resolve a conflict within a team?",
-      "answer": "`Situation`:\n- During a project milestone, two team members disagreed on the design approach for a critical feature.\n\n`Task`:\n- My role as the team lead was to mediate and align everyone on a unified solution.\n\n`Action`:\n- I organized a meeting, listened to both perspectives, and facilitated a discussion to weigh the pros and cons of each approach against project goals. We agreed on a compromise that combined elements of both solutions.\n\n`Result`:\n- The conflict was resolved within a day, and the team successfully delivered the feature on schedule."
+      "answer": "**Situation**:\n- During a project milestone, two team members disagreed on the design approach for a critical feature.\n\n**Task**:\n- My role as the team lead was to mediate and align everyone on a unified solution.\n\n**Action**:\n- I organized a meeting, listened to both perspectives, and facilitated a discussion to weigh the pros and cons of each approach against project goals. We agreed on a compromise that combined elements of both solutions.\n\n**Result**:\n- The conflict was resolved within a day, and the team successfully delivered the feature on schedule."
     },
     {
       "question": "How have you managed competing priorities across multiple projects?",
-      "answer": "`Situation`:\n- At Mosaicx, I was simultaneously responsible for leading the development of an SMS API and automating a data processing pipeline.\n\n`Task`:\n- My task was to ensure both projects progressed without compromising quality or deadlines.\n\n`Action`:\n- I prioritized tasks using MoSCoW, delegated work where appropriate, and scheduled daily check-ins to monitor progress and address blockers.\n\n`Result`:\n- Both projects were delivered successfully, with the pipeline reducing data processing time by 30% and the API achieving on-time deployment."
+      "answer": "**Situation**:\n- At Mosaicx, I was simultaneously responsible for leading the development of an SMS API and automating a data processing pipeline.\n\n**Task**:\n- My task was to ensure both projects progressed without compromising quality or deadlines.\n\n**Action**:\n- I prioritized tasks using MoSCoW, delegated work where appropriate, and scheduled daily check-ins to monitor progress and address blockers.\n\n**Result**:\n- Both projects were delivered successfully, with the pipeline reducing data processing time by 30% and the API achieving on-time deployment."
     },
     {
       "question": "Can you give an example of how you improved efficiency in a workflow?",
-      "answer": "`Situation`:\n- Our data handling workflow involved manual decryption and decompression, leading to delays.\n\n`Task`:\n- I was tasked with automating this process to improve efficiency.\n\n`Action`:\n- I developed a Java-based tool that automated decryption, decompression, and data transfer between GCP buckets. This tool was integrated into our pipeline to eliminate manual intervention.\n\n`Result`:\n- This reduced processing time by 50%, improved accuracy, and allowed team members to focus on higher-value tasks."
+      "answer": "**Situation**:\n- Our data handling workflow involved manual decryption and decompression, leading to delays.\n\n**Task**:\n- I was tasked with automating this process to improve efficiency.\n\n**Action**:\n- I developed a Java-based tool that automated decryption, decompression, and data transfer between GCP buckets. This tool was integrated into our pipeline to eliminate manual intervention.\n\n**Result**:\n- This reduced processing time by 50%, improved accuracy, and allowed team members to focus on higher-value tasks."
     },
     {
       "question": "How do you stay motivated when working on long-term projects?",
@@ -71,7 +71,7 @@
     },
     {
       "question": "Do you prefer to work on the front-end or back-end of applications?",
-      "answer": "Back-end - Allows me to focus on:\n- Scalability\n- Business logic\n- Managing data flows\n\nEnjoy working on the front-end:\n- Especially with modern frameworks like React and Angular\n- Working towards becoming a full-stack developer"
+      "answer": "**Back-end** — allows me to focus on:\n- Scalability\n- Business logic\n- Managing data flows\n\nEnjoy working on the **front-end**:\n- Especially with modern frameworks like React and Angular\n- Working towards becoming a full-stack developer"
     },
     {
       "question": "Give me an example of a good coding standard for the ___ programming language.",
@@ -79,11 +79,11 @@
     },
     {
       "question": "How Would You Handle a Situation Where a Project You're Working on Is Behind Schedule?",
-      "answer": "1. Assess Causes of Delay\n2. Talk to a Manager\n3. Be a Team Player"
+      "answer": "1. **Assess Causes of Delay**\n2. **Talk to a Manager**\n3. **Be a Team Player**"
     },
     {
       "question": "What is the difference between functional and non-functional requirements? Do you focus more on one over the other?",
-      "answer": "`Functional requirements`:\n- Determine how the software or application operates\n\n`Non-functional requirements`:\n- Relate to user experience, security and performance. \n\nIf you fail to meet non-functional requirements, the software or application will still work.\n So if I had to choose one over the other, it would be functional requirements, but the two go hand in hand and are both important to create a safe, functional program."
+      "answer": "`Functional requirements`:\n- Determine how the software or application operates\n\n`Non-functional requirements`:\n- Relate to user experience, security and performance\n\nIf you fail to meet non-functional requirements, the software or application will still work.\n\nSo if I had to choose one over the other, it would be **functional requirements**, but the two go hand in hand and are both important to create a safe, functional program."
     },
     {
       "question": "What would you do if you found a small bug in your application the night before it was supposed to launch?",
@@ -91,7 +91,7 @@
     },
     {
       "question": "What do you look for when reviewing your team member's code?",
-      "answer": "I look for things such as:\n- Security Issues\n- Overall functionality\n- Readability\n\n- Always look through each line to ensure no unnecessary logic\n- Make sure the code meets requirements"
+      "answer": "I look for things such as:\n- **Security issues**\n- **Overall functionality**\n- **Readability**\n\nAdditionally:\n- Always look through each line to ensure no unnecessary logic\n- Make sure the code meets requirements"
     },
     {
       "question": "What were your day-to-day tasks in your previous role?",
@@ -123,7 +123,7 @@
     },
     {
       "question": "Why did you choose to pursue a career in software engineering?",
-      "answer": "- Passionate about problem-solving and technology\n- Allows me to create impactful solutions\n- Challenge of:\n  - Building scalable systems\n  - Workflow utomation\n  - Improve efficiency"
+      "answer": "- Passionate about problem-solving and technology\n- Allows me to create impactful solutions\n- Challenge of:\n  - Building scalable systems\n  - Workflow automation\n  - Improve efficiency"
     },
     {
       "question": "What do you value most in a work environment?",
@@ -131,7 +131,7 @@
     },
     {
       "question": "How do you handle stressful situations or tight deadlines?",
-      "answer": "`Situation`:\n- Migration of legacy applications\n- Tight deadlines\n- Significant performance requirements\n\n`Task`:\n- Ensure timely delivery\n- No  quality compromise\n\n`Action`:\n- Broke the project into smaller milestones\n- Prioritized tasks based on impact\n- Maintained close communication with stakeholders to manage expectations\n\n`Result`:\n- On time delivery\n- Met all performance benchmarks\n- Reduced operational costs by 25%"
+      "answer": "**Situation**:\n- Migration of legacy applications\n- Tight deadlines\n- Significant performance requirements\n\n**Task**:\n- Ensure timely delivery\n- No quality compromise\n\n**Action**:\n- Broke the project into smaller milestones\n- Prioritized tasks based on impact\n- Maintained close communication with stakeholders to manage expectations\n\n**Result**:\n- On time delivery\n- Met all performance benchmarks\n- Reduced operational costs by 25%"
     },
     {
       "question": "What is an example of a project where you went above and beyond?",
@@ -143,7 +143,7 @@
     },
     {
       "question": "What motivates you in your daily work?",
-      "answer": "- `Situation`: At Mosaicx, I worked on a project where we built APIs for real-time messaging.\n- `Task`: Knowing that my work could directly impact users' ability to communicate effectively motivated me to deliver my best every day.\n- `Action`: I focused on optimizing the APIs for reliability and scalability, ensuring they handled high-volume traffic seamlessly.\n- `Result`: The project was a success, handling millions of messages daily with minimal latency."
+      "answer": "- **Situation**: At Mosaicx, I worked on a project where we built APIs for real-time messaging.\n- **Task**: Knowing that my work could directly impact users' ability to communicate effectively motivated me to deliver my best every day.\n- **Action**: I focused on optimizing the APIs for reliability and scalability, ensuring they handled high-volume traffic seamlessly.\n- **Result**: The project was a success, handling millions of messages daily with minimal latency."
     },
     {
       "question": "What is your approach to setting and achieving goals?",

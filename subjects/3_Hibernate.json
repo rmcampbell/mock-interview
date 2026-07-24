@@ -3,147 +3,147 @@
   "questions": [
     {
       "question": "What is lazy loading in Hibernate?",
-      "answer": "Lazy loading in Hibernate is a technique where associations are not loaded from the database until they are explicitly accessed. This helps optimize performance by avoiding unnecessary database queries. However, it may lead to issues like `LazyInitializationException` if accessed outside of an active session."
+      "answer": "**Lazy loading** is a technique where associations are **not loaded from the database until they are explicitly accessed**.\n\n- Helps optimize performance by avoiding unnecessary database queries\n- May lead to issues like `LazyInitializationException` if accessed outside of an active session"
     },
     {
       "question": "What is the difference between `Session.save()` and `Session.persist()` in Hibernate?",
-      "answer": "`Session.save()`:\n- Used to insert an object into the database\n- Generates an identifier (primary key) immediately\n\n`Session.persist()`:\n- Makes a transient object persistent\n- Does not immediately generate the identifier (this may be done later depending on the flush mode)"
+      "answer": "`Session.save()`:\n- Used to insert an object into the database\n- Generates an identifier (primary key) **immediately**\n\n`Session.persist()`:\n- Makes a transient object persistent\n- Does **not** immediately generate the identifier (this may be done later depending on the flush mode)"
     },
     {
-      "question": "What is the purpose of @ManyToOne and @OneToMany annotations in Hibernate?",
-      "answer": "`@ManyToOne` defines a many-to-one relationship between two entities, where multiple instances of the source entity are linked to a single instance of the target entity.\n`@OneToMany` defines a one-to-many relationship, where a single instance of the source entity is linked to multiple instances of the target entity."
+      "question": "What is the purpose of `@ManyToOne` and `@OneToMany` annotations in Hibernate?",
+      "answer": "`@ManyToOne`:\n- Defines a **many-to-one** relationship between two entities\n- Multiple instances of the source entity are linked to a **single** instance of the target entity\n\n`@OneToMany`:\n- Defines a **one-to-many** relationship\n- A single instance of the source entity is linked to **multiple** instances of the target entity"
     },
     {
       "question": "How does Hibernate handle transactions?",
-      "answer": "Hibernate manages transactions by integrating with JTA (Java Transaction API) or JDBC. It provides a session-bound transaction model, where transactions are initiated with `session.beginTransaction()`, and changes are committed or rolled back using `session.getTransaction().commit()` or `session.getTransaction().rollback()`. Hibernate ensures atomicity and consistency of transactions."
+      "answer": "Hibernate manages transactions by integrating with **JTA** (Java Transaction API) or **JDBC**.\n\nIt provides a **session-bound transaction model**:\n- Transactions are initiated with `session.beginTransaction()`\n- Changes are committed or rolled back using `session.getTransaction().commit()` or `session.getTransaction().rollback()`\n- Hibernate ensures **atomicity** and **consistency** of transactions"
     },
     {
       "question": "What is second-level caching in Hibernate, and how does it work?",
-      "answer": "Second-level cache in Hibernate stores entity and collection data across sessions, making it available to multiple sessions. It improves performance by reducing database access. It works by storing entity data in cache (such as EhCache, Infinispan, or OSCache), which is then retrieved if the same data is needed by other sessions. It is session-factory scoped."
+      "answer": "**Second-level cache** stores entity and collection data **across sessions**, making it available to multiple sessions.\n\n- Improves performance by **reducing database access**\n- Stores entity data in a cache provider (such as `EhCache`, `Infinispan`, or `OSCache`), which is retrieved if the same data is needed by other sessions\n- It is **session-factory scoped**"
     },
     {
       "question": "What are the different types of caching in Hibernate?",
-      "answer": "Hibernate provides:\n- First-level cache (session cache): Stores objects for the duration of a session.\n- Second-level cache (session-factory cache): Stores objects beyond the session scope and requires external configuration with a cache provider.\n- Query cache: Caches results of queries."
+      "answer": "Hibernate provides:\n- **First-level cache** (session cache): Stores objects for the duration of a session.\n- **Second-level cache** (session-factory cache): Stores objects beyond the session scope and requires external configuration with a cache provider.\n- **Query cache**: Caches results of queries."
     },
     {
-      "question": "What is the difference between ``@Entity`` and `@Embeddable` annotations?",
-      "answer": "``@Entity`` defines a persistent entity, representing a table in the database.\n`@Embeddable` defines a component that can be embedded within an entity. `@Embeddable` components are typically used for value types, such as address or phone numbers, and are included in an entity using the @Embedded annotation."
+      "question": "What is the difference between `@Entity` and `@Embeddable` annotations?",
+      "answer": "`@Entity`:\n- Defines a persistent entity, representing a **table** in the database\n\n`@Embeddable`:\n- Defines a **component** that can be embedded within an entity\n- Typically used for value types, such as address or phone numbers\n- Included in an entity using the `@Embedded` annotation"
     },
     {
       "question": "What is the role of `@JoinColumn` in Hibernate?",
-      "answer": "`@JoinColumn` specifies the column used to join two entities in a relationship. It is often used with `@ManyToOne`, `@OneToMany`, `@OneToOne`, and `@ManyToMany` annotations to specify the foreign key column in the target entity's table."
+      "answer": "`@JoinColumn`:\n- Specifies the **column used to join two entities** in a relationship\n- Often used with `@ManyToOne`, `@OneToMany`, `@OneToOne`, and `@ManyToMany` annotations\n- Specifies the **foreign key column** in the target entity's table"
     },
     {
       "question": "What is `flush()` in Hibernate, and when should it be used?",
-      "answer": "`flush()` is used to synchronize the in-memory state of the session with the database. It ensures that changes made to entities in the session are written to the database. It is typically used before a query or transaction commit, but Hibernate automatically flushes when necessary (e.g., before a query or commit)."
+      "answer": "`flush()`:\n- Synchronizes the **in-memory state** of the session with the **database**\n- Ensures that changes made to entities in the session are written to the database\n- Typically used before a query or transaction commit\n- Hibernate automatically flushes when necessary (e.g., before a query or commit)"
     },
     {
-      "question": "What is the @Transactional annotation, and how does it work with Hibernate?",
-      "answer": "`@Transactional` is used to declare that a method should be wrapped in a transaction. It works with Hibernate to manage the transaction boundaries. Spring manages the transaction, ensuring that it is committed or rolled back depending on the method's outcome. If the method throws an exception, the transaction is automatically rolled back."
+      "question": "What is the `@Transactional` annotation, and how does it work with Hibernate?",
+      "answer": "`@Transactional`:\n- Declares that a method should be **wrapped in a transaction**\n- Works with Hibernate to manage the **transaction boundaries**\n- **Spring** manages the transaction, ensuring that it is committed or rolled back depending on the method's outcome\n- If the method throws an exception, the transaction is **automatically rolled back**"
     },
     {
       "question": "What is the role of `SessionFactory` in Hibernate?",
-      "answer": "`SessionFactory` is a thread-safe object used to create Session objects. It is responsible for managing the configuration, including connection pools, caching, and transaction management. Typically, it is created once and reused throughout the application lifecycle."
+      "answer": "`SessionFactory`:\n- A **thread-safe** object used to create `Session` objects\n- Responsible for managing the configuration, including **connection pools**, **caching**, and **transaction management**\n- Typically created **once** and reused throughout the application lifecycle"
     },
     {
       "question": "What is the difference between fetch and load in Hibernate?",
-      "answer": "fetch is the general term used for fetching data from the database in Hibernate, while load is a method that retrieves an entity by its primary key and provides a proxy object. The load() method uses lazy loading by default, meaning the data is not fetched from the database until the proxy is accessed."
+      "answer": "**fetch**:\n- The general term used for fetching data from the database in Hibernate\n\n`load()`:\n- Retrieves an entity by its primary key and provides a **proxy object**\n- Uses **lazy loading** by default — the data is not fetched from the database until the proxy is accessed"
     },
     {
       "question": "What are the types of fetching strategies in Hibernate?",
-      "answer": "There are two main types of fetching strategies in Hibernate:\n- Eager fetching: Retrieves the associated entity or collection at the same time as the parent entity.\n- Lazy fetching: Retrieves the associated entity only when it is accessed for the first time."
+      "answer": "There are two main fetching strategies:\n- **Eager fetching**: Retrieves the associated entity or collection **at the same time** as the parent entity.\n- **Lazy fetching**: Retrieves the associated entity **only when it is accessed** for the first time."
     },
     {
       "question": "What is the difference between Criteria and HQL in Hibernate?",
-      "answer": "Criteria is a type-safe, object-oriented approach for querying the database, and it allows for building dynamic queries.\nHQL (Hibernate Query Language) is a string-based query language similar to SQL, but it operates on persistent objects rather than database tables."
+      "answer": "**Criteria**:\n- A **type-safe, object-oriented** approach for querying the database\n- Allows for building **dynamic queries**\n\n**HQL** (Hibernate Query Language):\n- A **string-based** query language similar to SQL\n- Operates on **persistent objects** rather than database tables"
     },
     {
-      "question": "What is the purpose of @Transactional in Spring and its integration with Hibernate?",
-      "answer": "@Transactional in Spring is used to demarcate a transaction, ensuring that all operations within the method are executed as a single unit. When integrated with Hibernate, it handles session management, automatic flushing of changes, and rollbacks in case of exceptions."
+      "question": "What is the purpose of `@Transactional` in Spring and its integration with Hibernate?",
+      "answer": "`@Transactional` in Spring:\n- Demarcates a transaction, ensuring all operations within the method are executed as a **single unit**\n\nWhen integrated with Hibernate, it handles:\n- **Session management**\n- Automatic **flushing** of changes\n- **Rollbacks** in case of exceptions"
     },
     {
       "question": "How do you implement batch processing in Hibernate?",
-      "answer": "Batch processing in Hibernate is used to perform bulk insert, update, or delete operations. It can be configured by enabling JDBC batching in the Hibernate configuration and using the batch-size property. Additionally, the session should be flushed and cleared periodically to avoid memory overflow."
+      "answer": "**Batch processing** is used to perform bulk insert, update, or delete operations.\n\n- Enable **JDBC batching** in the Hibernate configuration\n- Use the `batch-size` property\n- **Flush and clear** the session periodically to avoid memory overflow"
     },
     {
       "question": "What are the limitations of Hibernate's first-level cache?",
-      "answer": "The first-level cache in Hibernate is session-scoped, meaning it only exists for the duration of the session. It is not shared across multiple sessions, so if the same entity is fetched in different sessions, it results in additional database queries."
+      "answer": "The first-level cache is **session-scoped**:\n- It only exists for the duration of the session\n- It is **not shared** across multiple sessions\n- If the same entity is fetched in different sessions, it results in **additional database queries**"
     },
     {
       "question": "What is Hibernate in Java?",
-      "answer": "Hibernate is an object-relational mapping (ORM) framework for Java. It simplifies database interactions by mapping Java objects to database tables and vice versa, allowing developers to work with persistent data using Java objects."
+      "answer": "Hibernate is an **object-relational mapping** (`ORM`) framework for Java.\n\n- Simplifies database interactions by **mapping Java objects to database tables** and vice versa\n- Allows developers to work with persistent data using Java objects"
     },
     {
       "question": "What are the main advantages of using Hibernate?",
-      "answer": "Hibernate provides advantages like:\n- Automatic table creation\n- Simplified object-relational mapping\n- Caching\n- Automatic dirty checking\n- The ability to work with different databases without changing the Java code."
+      "answer": "Hibernate provides advantages like:\n- **Automatic table creation**\n- Simplified **object-relational mapping**\n- **Caching**\n- Automatic **dirty checking**\n- The ability to work with **different databases** without changing the Java code"
     },
     {
       "question": "What is the difference between `Session` and `SessionFactory` in Hibernate?",
-      "answer": "- `SessionFactory` is a thread-safe object responsible for creating\n- `Session` objects and managing the Hibernate configuration.\n- `Session` is a single-threaded object used to interact with the database, retrieve, save, update, and delete entities."
+      "answer": "`SessionFactory`:\n- A **thread-safe** object responsible for creating `Session` objects and managing the Hibernate configuration\n\n`Session`:\n- A **single-threaded** object used to interact with the database\n- Retrieve, save, update, and delete entities"
     },
     {
       "question": "What is the purpose of the `@Entity` annotation in Hibernate?",
-      "answer": "`@Entity` is used to mark a class as an entity, which means it will be mapped to a table in the database. Every entity must have a primary key field marked with the `@Id` annotation."
+      "answer": "`@Entity`:\n- Marks a class as an **entity**, meaning it will be mapped to a **table** in the database\n- Every entity must have a primary key field marked with the `@Id` annotation"
     },
     {
       "question": "What is the role of the `@Id` annotation in Hibernate?",
-      "answer": "`@Id` is used to define the primary key field of an entity. This field uniquely identifies each record in the corresponding table in the database."
+      "answer": "`@Id`:\n- Defines the **primary key** field of an entity\n- This field **uniquely identifies** each record in the corresponding table in the database"
     },
     {
       "question": "What is the difference between `get()` and `load()` methods in Hibernate?",
-      "answer": "`get()` method retrieves an object by its primary key, returning null if the entity is not found. It hits the database immediately. The load() method, on the other hand, also retrieves an entity by its primary key but returns a proxy if the entity is not found (which may cause an exception when accessed). It uses lazy loading and doesn’t hit the database until the object is accessed."
+      "answer": "`get()`:\n- Retrieves an object by its primary key\n- Returns `null` if the entity is not found\n- Hits the database **immediately**\n\n`load()`:\n- Also retrieves an entity by its primary key, but returns a **proxy** if the entity is not found (which may cause an exception when accessed)\n- Uses **lazy loading** and doesn't hit the database until the object is accessed"
     },
     {
-      "question": "What is the difference between `flush()` and `clear(`) methods in Hibernate?",
-      "answer": "`flush()` synchronizes the session’s in-memory state with the database by writing changes to the database. `clear()` clears the session cache, removing all objects, but does not write changes to the database. They are typically used in batch processing and large transactions."
+      "question": "What is the difference between `flush()` and `clear()` methods in Hibernate?",
+      "answer": "`flush()`:\n- Synchronizes the session's in-memory state with the database by **writing changes** to the database\n\n`clear()`:\n- **Clears the session cache**, removing all objects\n- Does **not** write changes to the database\n\nBoth are typically used in **batch processing** and large transactions."
     },
     {
       "question": "What is SessionFactory in Hibernate?",
-      "answer": "SessionFactory is a thread-safe object responsible for creating Session instances and managing the Hibernate configuration. It is typically created once and shared throughout the application lifecycle to provide efficient session management."
+      "answer": "`SessionFactory`:\n- A **thread-safe** object responsible for creating `Session` instances and managing the Hibernate configuration\n- Typically created **once** and shared throughout the application lifecycle to provide efficient session management"
     },
     {
       "question": "What is the difference between Criteria and HQL in Hibernate?",
-      "answer": "Criteria is an object-oriented approach to querying the database in Hibernate, providing type-safe queries. HQL (Hibernate Query Language) is a string-based query language similar to SQL but operates on Java objects instead of database tables."
+      "answer": "**Criteria**:\n- An **object-oriented** approach to querying the database, providing **type-safe** queries\n\n**HQL** (Hibernate Query Language):\n- A **string-based** query language similar to SQL but operates on **Java objects** instead of database tables"
     },
     {
-      "question": "What is the purpose of @Embeddable annotation in Hibernate?",
-      "answer": "@Embeddable is used to define a class that can be embedded within another entity. It is typically used for value types, like address or phone number, that are part of an entity but do not have their own identity."
+      "question": "What is the purpose of `@Embeddable` annotation in Hibernate?",
+      "answer": "`@Embeddable`:\n- Defines a class that can be **embedded within another entity**\n- Typically used for **value types**, like address or phone number, that are part of an entity but do not have their own identity"
     },
     {
       "question": "What is the `@GeneratedValue` annotation in Hibernate?",
-      "answer": "`@GeneratedValue` is used to specify how the primary key should be generated for an entity. Common strategies include AUTO (let Hibernate choose the strategy), IDENTITY (use an auto-increment column), SEQUENCE (use a sequence generator), and TABLE (use a table for key generation)."
+      "answer": "`@GeneratedValue` specifies how the **primary key** should be generated for an entity.\n\n**Common strategies**:\n- `AUTO`: Let Hibernate choose the strategy\n- `IDENTITY`: Use an auto-increment column\n- `SEQUENCE`: Use a sequence generator\n- `TABLE`: Use a table for key generation"
     },
     {
       "question": "What is Hibernate's first-level cache?",
-      "answer": "Hibernate’s first-level cache is associated with a session and stores objects that have been read or written during the current session. It helps to avoid multiple database queries for the same object within a session, ensuring that objects are fetched from the cache."
+      "answer": "The **first-level cache**:\n- Associated with a **session**\n- Stores objects that have been read or written during the current session\n- Helps avoid multiple database queries for the same object within a session, ensuring objects are fetched from the cache"
     },
     {
       "question": "What are `@OneToOne`, `@ManyToOne`, `@OneToMany`, and `@ManyToMany` relationships in Hibernate?",
-      "answer": "@OneToOne defines a one-to-one relationship between two entities, where each instance of one entity is associated with exactly one instance of the other.\n`@ManyToOne` represents a many-to-one relationship, where many instances of one entity are associated with a single instance of another.\n@OneToMany represents a one-to-many relationship, and @ManyToMany defines a relationship where multiple instances of one entity are associated with multiple instances of another."
+      "answer": "- `@OneToOne`: A **one-to-one** relationship — each instance of one entity is associated with exactly one instance of the other.\n- `@ManyToOne`: A **many-to-one** relationship — many instances of one entity are associated with a single instance of another.\n- `@OneToMany`: A **one-to-many** relationship — one instance of an entity is associated with multiple instances of another.\n- `@ManyToMany`: Multiple instances of one entity are associated with **multiple** instances of another."
     },
     {
       "question": "What are the main advantages of using Hibernate?",
-      "answer": "Hibernate provides advantages like:\n- Automatic table creation\n- Simplified object-relational mapping\n- Caching\n- Automatic dirty checking\n- The ability to work with different databases without changing the Java code."
+      "answer": "Hibernate provides advantages like:\n- **Automatic table creation**\n- Simplified **object-relational mapping**\n- **Caching**\n- Automatic **dirty checking**\n- The ability to work with **different databases** without changing the Java code"
     },
     {
       "question": "What is the difference between Session and SessionFactory in Hibernate?",
-      "answer": "SessionFactory is a thread-safe object responsible for creating Session objects and managing the Hibernate configuration. Session is a single-threaded object used to interact with the database, retrieve, save, update, and delete entities."
+      "answer": "`SessionFactory`:\n- A **thread-safe** object responsible for creating `Session` objects and managing the Hibernate configuration\n\n`Session`:\n- A **single-threaded** object used to interact with the database\n- Retrieve, save, update, and delete entities"
     },
     {
       "question": "How do you fetch data using JPQL in Hibernate?",
-      "answer": "JPQL (Java Persistence Query Language) is similar to SQL but operates on entities rather than database tables. You can fetch data using JPQL with the EntityManager.createQuery() method to execute a query. For example: `SELECT e FROM Employee e WHERE e.department = :dept` fetches all employees in a specific department."
+      "answer": "**JPQL** (Java Persistence Query Language) is similar to SQL but operates on **entities** rather than database tables.\n\nFetch data with the `EntityManager.createQuery()` method:\n\n```sql\nSELECT e FROM Employee e WHERE e.department = :dept\n```\n\nThis fetches all employees in a specific department."
     },
     {
       "question": "What is the difference between Session and EntityManager in Hibernate?",
-      "answer": "Session is native to Hibernate. EntityManager is JPA-compliant and used for persistence."
+      "answer": "- `Session` is **native to Hibernate**.\n- `EntityManager` is **JPA-compliant** and used for persistence."
     },
     {
       "question": "How does JPQL differ from SQL?",
-      "answer": "JPQL is object-oriented and operates on entities (Java classes) instead of database tables. It uses entity field names rather than column names and does not directly reference database-specific features such as joins and column aliases. For example, JPQL queries use FROM Employee e instead of FROM employees."
+      "answer": "**JPQL**:\n- **Object-oriented** — operates on entities (Java classes) instead of database tables\n- Uses **entity field names** rather than column names\n- Does not directly reference database-specific features such as joins and column aliases\n\n**Example**: JPQL queries use `FROM Employee e` instead of `FROM employees`."
     },
     {
-      "question": "What is Session.createQuery() in Hibernate?",
-      "answer": "`Session.createQuery()` is used to create and execute HQL (Hibernate Query Language) queries. It returns a Query object that can be used to configure and execute the query, providing results in the form of entities or other data."
+      "question": "What is `Session.createQuery()` in Hibernate?",
+      "answer": "`Session.createQuery()`:\n- Creates and executes **HQL** (Hibernate Query Language) queries\n- Returns a `Query` object that can be used to configure and execute the query\n- Provides results in the form of entities or other data"
     }
   ]
 }

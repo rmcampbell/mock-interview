@@ -8,9 +8,8 @@
   "private": true,
   "license": "ISC",
   "scripts": {
-    "generate": "node src/genFlashQuiz.js",
     "postinstall": "patch-package",
-    "run": "node index.js"
+    "interview": "node index.js"
   },
   "dependencies": {
     "@inquirer/checkbox": "^5.2.1",

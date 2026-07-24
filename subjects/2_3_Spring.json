@@ -3,7 +3,7 @@
   "questions": [
     {
       "question": "What are the main modules of the Spring Framework?",
-      "answer": "The main modules of the Spring Framework include:\n- Core Container:\n  - Bean\n  - Core\n  - Context\n  - Expression Language\n\n- AOP (Aspect-Oriented Programming)\n- Data Access/Integration:\n\n  - JDBC\n  - ORM\n  - JMS\n\n- Web:\n\n  - Web\n  - WebSocket\n  - Servlet\n\n- Test modules"
+      "answer": "The main modules of the Spring Framework include:\n- **Core Container**:\n  - Bean\n  - Core\n  - Context\n  - Expression Language\n- **AOP** (Aspect-Oriented Programming)\n- **Data Access/Integration**:\n  - JDBC\n  - ORM\n  - JMS\n- **Web**:\n  - Web\n  - WebSocket\n  - Servlet\n- **Test modules**"
     },
     {
       "question": "What is AOP in Spring?",
@@ -31,7 +31,7 @@
     },
     {
       "question": "What are the key features of Spring Boot?",
-      "answer": "- `auto-configuration`\n- `embedded servers` (e.g., Tomcat, Jetty)\n- production-ready tools like `Actuator`\n- an opinionated starter dependency system\n- No requirement for XML configuration"
+      "answer": "- **Auto-configuration**\n- **Embedded servers** (e.g., Tomcat, Jetty)\n- Production-ready tools like `Actuator`\n- An opinionated **starter dependency** system\n- No requirement for XML configuration"
     },
     {
       "question": "What is the difference between `@Component`, `@Service`, `@Repository`, and `@Controller`?",
@@ -123,7 +123,7 @@
     },
     {
       "question": "What is the difference between `@Controller` and `@RestController`?",
-      "answer": "`@Controller`:\n- Used in MVC applications to handle web requests and returns `views` (HTML, JSP)\n\n`@RestController`\n- A specialization of `@Controller` that combines it with `@ResponseBody`\n- Returns JSON or XML data directly instead of a view"
+      "answer": "`@Controller`:\n- Used in MVC applications to handle web requests and returns `views` (HTML, JSP)\n\n`@RestController`:\n- A specialization of `@Controller` that combines it with `@ResponseBody`\n- Returns JSON or XML data directly instead of a view"
     },
     {
       "question": "What is the purpose of the `@PostConstruct` annotation?",
@@ -179,11 +179,11 @@
     },
     {
       "question": "What is the purpose of `@ConditionalOnClass` and `@ConditionalOnMissingBean`?",
-      "answer": "`@ConditionalOnClass`:\n- Registers a bean only if a specific class is present on the classpath\n`@ConditionalOnMissingBean`:\n- Registers a bean only if a bean of the specified type is not already registered in the application context"
+      "answer": "`@ConditionalOnClass`:\n- Registers a bean only if a specific class is present on the classpath\n\n`@ConditionalOnMissingBean`:\n- Registers a bean only if a bean of the specified type is not already registered in the application context"
     },
     {
       "question": "What is the role of `Spring Cloud` in a Spring Boot application?",
-      "answer": "`Spring Cloud`:\n- Provides tools for building distributed systems\n- Eureka (Service discovery)\n- Ribbon(load balancing)\n- Spring Cloud Gateway (API gateway)\n- Resilience4j/Hystrix (circuit breakers)."
+      "answer": "`Spring Cloud`:\n- Provides tools for building **distributed systems**\n\n**Includes**:\n- `Eureka` (service discovery)\n- `Ribbon` (load balancing)\n- `Spring Cloud Gateway` (API gateway)\n- `Resilience4j`/`Hystrix` (circuit breakers)"
     },
     {
       "question": "What is the purpose of `@PathVariable` in Spring MVC?",
@@ -243,7 +243,7 @@
     },
     {
       "question": "What is the purpose of the `ContextLoaderListener`?",
-      "answer": "`ContextLoaderListener`\n- Used to initialize the Spring application context in a web application\n- It loads the root `ApplicationContext`\n- Manages its lifecycle"
+      "answer": "`ContextLoaderListener`:\n- Used to initialize the Spring application context in a web application\n- It loads the root `ApplicationContext`\n- Manages its lifecycle"
     },
     {
       "question": "How does Spring Boot simplify dependency management?",
@@ -291,19 +291,19 @@
     },
     {
       "question": "How do you handle exceptions in a Spring Boot application?",
-      "answer": "**Exception Handling Approaches**:\n1. Global Exception Handling using `@ControllerAdvice`:\n```java\n@ControllerAdvice\npublic class GlobalExceptionHandler {\n    @ExceptionHandler(ResourceNotFoundException.class)\n    public ResponseEntity<String> handleResourceNotFound(ResourceNotFoundException ex) {\n        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);\n    }\n}\n```\n2. Using `@ResponseStatus`:\n```java\n@ResponseStatus(HttpStatus.NOT_FOUND)\npublic class ResourceNotFoundException extends RuntimeException {\n    public ResourceNotFoundException(String message) {\n        super(message);\n    }\n}\n```"
+      "answer": "**Exception Handling Approaches**:\n\n1. **Global Exception Handling** using `@ControllerAdvice`:\n```java\n@ControllerAdvice\npublic class GlobalExceptionHandler {\n    @ExceptionHandler(ResourceNotFoundException.class)\n    public ResponseEntity<String> handleResourceNotFound(ResourceNotFoundException ex) {\n        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);\n    }\n}\n```\n\n2. **Using `@ResponseStatus`**:\n```java\n@ResponseStatus(HttpStatus.NOT_FOUND)\npublic class ResourceNotFoundException extends RuntimeException {\n    public ResourceNotFoundException(String message) {\n        super(message);\n    }\n}\n```"
     },
     {
       "question": "What is Dependency Injection, and why is it important?",
-      "answer": "**Definition**:\nDependency Injection (DI) is a design pattern used to achieve Inversion of Control (IoC) by injecting dependencies into a class rather than the class creating them itself.\n\n**Benefits**:\n- **Loose Coupling:** Improves testability and maintainability.\n- **Easier Unit Testing:** Mocks can replace actual dependencies.\n- **Improved Code Organization:** Encourages modular code design.\n\n**Example**:\n```java\n@Service\npublic class UserService {\n    private final UserRepository userRepository;\n\n    @Autowired\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}\n```"
+      "answer": "**Definition**:\n\nDependency Injection (`DI`) is a design pattern used to achieve **Inversion of Control** (`IoC`) by injecting dependencies into a class rather than the class creating them itself.\n\n**Benefits**:\n- **Loose Coupling:** Improves testability and maintainability.\n- **Easier Unit Testing:** Mocks can replace actual dependencies.\n- **Improved Code Organization:** Encourages modular code design.\n\n**Example**:\n```java\n@Service\npublic class UserService {\n    private final UserRepository userRepository;\n\n    @Autowired\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}\n```"
     },
     {
       "question": "How do you perform unit testing in Java using JUnit?",
-      "answer": "JUnit is a popular Java testing framework.\n\nExample Test:\n```java\nimport static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\npublic class CalculatorTest {\n    @Test\n    public void testAddition() {\n        Calculator calc = new Calculator();\n        assertEquals(5, calc.add(2, 3));\n    }\n}\n```"
+      "answer": "**JUnit** is a popular Java testing framework.\n\n**Example Test**:\n```java\nimport static org.junit.jupiter.api.Assertions.*;\nimport org.junit.jupiter.api.Test;\n\npublic class CalculatorTest {\n    @Test\n    public void testAddition() {\n        Calculator calc = new Calculator();\n        assertEquals(5, calc.add(2, 3));\n    }\n}\n```"
     },
     {
       "question": "What is Dependency Injection (DI) and why is it used in modern software development?",
-      "answer": "`Dependency Injection (DI)`:\n- A design pattern that allows a class to receive its dependencies (objects or services) from an external source rather than creating them itself.\n\n**Benefits**:\n- Loose Coupling: Components are decoupled, making the system more flexible and easier to test.\n- Reusability: Easily swap dependencies without affecting the class using them.\n- Testability: Dependencies can be easily mocked during unit testing.\n\nExample in Java (using Spring):\n```java\n@Component\npublic class UserService {\n    private final UserRepository userRepository;\n\n    @Autowired\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}\n```"
+      "answer": "`Dependency Injection (DI)`:\n- A design pattern that allows a class to receive its dependencies (objects or services) from an external source rather than creating them itself.\n\n**Benefits**:\n- **Loose Coupling**: Components are decoupled, making the system more flexible and easier to test.\n- **Reusability**: Easily swap dependencies without affecting the class using them.\n- **Testability**: Dependencies can be easily mocked during unit testing.\n\n**Example in Java (using Spring)**:\n```java\n@Component\npublic class UserService {\n    private final UserRepository userRepository;\n\n    @Autowired\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}\n```"
     },
     {
       "question": "What is the purpose of `@ConditionalOnClass` and `@ConditionalOnMissingBean`?",

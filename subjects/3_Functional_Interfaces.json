@@ -3,7 +3,7 @@
   "questions": [
     {
       "question": "What is the role of functional programming in streams?",
-      "answer": "Functional programming enables declarative operations like:\n- `map`\n- `filter`\n- `forEach`\n\nOn streams using functional interfaces such as `Function`, `Predicate`, and `Consumer`."
+      "answer": "Functional programming enables **declarative operations** on streams like:\n- `map`\n- `filter`\n- `forEach`\n\nUsing functional interfaces such as `Function`, `Predicate`, and `Consumer`.\n\n```java\nnames.stream()\n    .filter(n -> n.length() > 3)   // Predicate\n    .map(String::toUpperCase)      // Function\n    .forEach(System.out::println); // Consumer\n```"
     },
     {
       "question": "What are the key methods provided by the `Function` interface?",
@@ -35,7 +35,7 @@
     },
     {
       "question": "What is the use case of a `Supplier`?",
-      "answer": "`Supplier`:\n- Commonly used when you want to delay or defer the production of a result\n\nSuch As:\n- Lazy initialization\n- Fetching data on demand"
+      "answer": "`Supplier`:\n- Commonly used when you want to **delay or defer** the production of a result\n\n**Such as**:\n- Lazy initialization\n- Fetching data on demand"
     },
     {
       "question": "Can a `Consumer` interface return a result?",

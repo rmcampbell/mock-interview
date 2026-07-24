@@ -1,4 +1,3 @@
-const { v4: uuid } = require('uuid');
 const path = require('node:path');
 const { readdir } = require('node:fs/promises');
 
@@ -15,7 +14,11 @@ async function getAllTopics() {
       // Read the content of each JSON file
       try {
         const { topic, questions } = require(filePath);
-        topics[topic] = questions;
+        if (topic && Array.isArray(questions)) {
+          topics[topic] = questions.filter((q) => q && q.question && q.answer);
+        } else {
+          console.error(`Skipping ${file}: expected { topic, questions[] }`);
+        }
       } catch (error) {
         if (error instanceof SyntaxError) {
           console.error(`You have a syntax error in your Question file: ${filePath}`);
@@ -40,10 +43,15 @@ function shuffle(arr) {
 function handleError(err, returnValue = null) {
   if (err.name === 'AbortPromptError') {
     return returnValue;
-  } else if (err.name === 'ExitPromptError') {
+  }
+
+  if (err.name === 'ExitPromptError') {
     console.log('\n👋 until next time!');
     process.exit(0);
   }
+
+  // anything else is a real bug — surface it instead of returning undefined
+  throw err;
 }
 
 

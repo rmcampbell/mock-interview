@@ -1,10 +1,12 @@
-const { confirm, checkbox } = require('./src/cli');
-const { getAllTopics, handleError } = require('./src/util');
+const { confirm, checkbox, mdReady } = require('./src/cli');
+const { getAllTopics } = require('./src/util');
 const { startQuiz } = require('./src/startQuiz');
 
 (async () => {
   console.clear();
 
+  // Markdown renderer must be loaded before anything renders
+  await mdReady;
   const allTopics = await getAllTopics();
   const choices = Object.keys(allTopics).map((topic) => ({ value: topic }));
 

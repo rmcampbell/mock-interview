@@ -3,7 +3,7 @@
   "questions": [
     {
       "question": "What is the difference between `StringBuilder` and `StringBuffer`?",
-      "answer": "`StringBuilder`: Faster, NOT thread-safe\n\n`StringBuffer`: Thread-safe because its methods are synchronized."
+      "answer": "`StringBuilder`:\n- Faster, **not** thread-safe\n\n`StringBuffer`:\n- **Thread-safe** because its methods are synchronized"
     },
     {
       "question": "How does the `ConcurrentHashMap` differ from `HashMap`?",
@@ -11,7 +11,7 @@
     },
     {
       "question": "What are soft and weak references in Java?",
-      "answer": "SoftReferences:\n- Cleared only when memory is low.\n\nWeakReferences:\n- Cleared as soon as the object is weakly reachable."
+      "answer": "`SoftReference`:\n- Cleared only when **memory is low**.\n\n`WeakReference`:\n- Cleared as soon as the object is **weakly reachable**."
     },
     {
       "question": "What is the difference between `Collection` and `Collections` in Java?",
@@ -43,7 +43,7 @@
     },
     {
       "question": "What is the purpose of the `Optional` class?",
-      "answer": "- A container object that may or may not contain a non-null value\n- It helps to avoid NullPointerException by providing methods like:\n\t- isPresent()\n\t- ifPresent()\n\t- orElse()\n  to handle potential null values safely."
+      "answer": "- A container object that may or may not contain a **non-null value**\n- It helps to avoid `NullPointerException` by providing methods like:\n  - `isPresent()`\n  - `ifPresent()`\n  - `orElse()`\n\nThese handle potential `null` values safely."
     },
     {
       "question": "How does Java handle multiple inheritance?",
@@ -71,7 +71,7 @@
     },
     {
       "question": "What are the different ways to create threads in Java?",
-      "answer": "- Threads can be created by extending the Thread class or implementing the Runnable interface\n- Additionally, you can use the ExecutorService framework introduced in Java 5."
+      "answer": "- Threads can be created by extending the `Thread` class or implementing the `Runnable` interface\n- Additionally, you can use the `ExecutorService` framework introduced in Java 5"
     },
     {
       "question": "What is a `WeakHashMap` in Java?",
@@ -139,7 +139,7 @@
     },
     {
       "question": "Why should you consider providing `toString()`, `equals()`, and `hashCode()` methods?",
-      "answer": "- These methods are essential for object comparison, debugging, and efficient storage or retrieval in collections.\n\n- `toString()`: provides a string representation of an object\n-  `equals()`: compares objects\n- `hashCode()`: provides an integer hash value."
+      "answer": "- These methods are essential for object comparison, debugging, and efficient storage or retrieval in collections.\n\n- `toString()`: provides a string representation of an object\n- `equals()`: compares objects\n- `hashCode()`: provides an integer hash value"
     },
     {
       "question": "Why should exceptions be used for exceptional conditions and not for normal control flow?",
@@ -187,7 +187,7 @@
     },
     {
       "question": "What are access modifiers in Java?",
-      "answer": "Access modifiers determine the visibility of a class, method, or variable.\nJava provides four access modifiers:\n- `public`: Accessible from anywhere.\n- `protected`: Accessible within the same package and subclasses.\n- `default` (no modifier): Accessible within the same package.\n- `private`: Accessible only within the defining class."
+      "answer": "Access modifiers determine the **visibility** of a class, method, or variable.\n\nJava provides four access modifiers:\n- `public`: Accessible from anywhere.\n- `protected`: Accessible within the same package and subclasses.\n- `default` (no modifier): Accessible within the same package.\n- `private`: Accessible only within the defining class."
     },
     {
       "question": "What is garbage collection in Java?",
@@ -203,7 +203,7 @@
     },
     {
       "question": "What is the purpose of the synchronized keyword in Java?",
-      "answer": "The synchronized keyword is used to:\n- Control access to critical sections of code or objects.\n- Ensure thread safety by allowing only one thread at a time to execute the synchronized block or method."
+      "answer": "The `synchronized` keyword is used to:\n- Control access to critical sections of code or objects.\n- Ensure thread safety by allowing only one thread at a time to execute the synchronized block or method."
     },
     {
       "question": "What are Java annotations?",
@@ -215,11 +215,11 @@
     },
     {
       "question": "What is the transient keyword in Java?",
-      "answer": "The transient keyword is used to:\n- Indicate that a field should not be serialized when an object is serialized."
+      "answer": "The `transient` keyword is used to:\n- Indicate that a field should not be serialized when an object is serialized."
     },
     {
       "question": "What is the volatile keyword in Java?",
-      "answer": "The volatile keyword ensures that:\n- Changes to a variable are visible to all threads.\n- Threads do not cache stale values of the variable."
+      "answer": "The `volatile` keyword ensures that:\n- Changes to a variable are visible to all threads.\n- Threads do not cache stale values of the variable."
     },
     {
       "question": "What is the purpose of the instanceof operator?",
@@ -243,7 +243,7 @@
     },
     {
       "question": "What is a try-with-resources statement?",
-      "answer": "A try-with-resources statement is used to:\n- Automatically close resources such as files, streams, or sockets.\n- It requires the resource to implement the AutoCloseable interface."
+      "answer": "A try-with-resources statement is used to:\n- Automatically close resources such as files, streams, or sockets.\n- It requires the resource to implement the `AutoCloseable` interface."
     },
     {
       "question": "What is the difference between ArrayList and LinkedList?",
