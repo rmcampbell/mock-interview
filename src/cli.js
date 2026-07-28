@@ -31,7 +31,7 @@ async function askQuestions(questions) {
   const numQuestions = questions.length;
 
   for await (const [index, { question, answer }] of questions.entries()) {
-
+    console.clear();
     if (await confirm({ message: `(${index + 1}/${numQuestions}) ${md(question)} → View Answer?` })) {
       console.log(`\n${md(answer)}`);
     }
@@ -39,7 +39,6 @@ async function askQuestions(questions) {
     // timeout at 15 seconds
     if (numQuestions > 1 && index + 1 < numQuestions) {
       if (!await confirm({ message: `Next Question?`})) break;
-      console.clear();
     }
   }
 }
