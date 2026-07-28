@@ -1,0 +1,58 @@
+{
+  "topic": "Spring Testing",
+  "enabled": true,
+  "questions": [
+    {
+      "question": "What does `@SpringBootTest` actually load, and why can it make a suite slow?",
+      "answer": "`@SpringBootTest` loads the **entire application context** — every bean, configuration class, repository, service, controller, filter, interceptor, scheduled task, and cache config.\n\nThat means startup work like:\n- Initialising all beans\n- Setting up the datasource connection pool\n- Connecting to Redis\n- Running Flyway migrations\n- Registering the security filter chain\n\n**The cost**: seconds of setup per distinct context, before the first assertion runs. Multiply that across many test classes and CI time balloons.\n\nIt isn't wrong — it's the right tool for full wiring checks. It's just a sledgehammer where Spring also gives you a scalpel."
+    },
+    {
+      "question": "What is a Spring test slice?",
+      "answer": "A **test slice** is a pre-built, narrowly-scoped application context that loads **only the layer under test**.\n\nInstead of the whole app, you get just the web layer, or just JPA, or just JSON serialization.\n\n**Benefits**:\n- Smaller context → **faster tests**\n- **Clearer intent** — the annotation documents what the test covers\n- Better failure messages, because less unrelated wiring can break\n\n**Rule of thumb**: choose the smallest context that can verify the behaviour confidently."
+    },
+    {
+      "question": "Which Spring test slice should you use for each layer?",
+      "answer": "| Testing | Use |\n| --- | --- |\n| Controller | `@WebMvcTest` |\n| Repository | `@DataJpaTest` |\n| JSON contract | `@JsonTest` |\n| Outbound HTTP client | `@RestClientTest` |\n| Redis component | `@DataRedisTest` |\n| Reactive controller | `@WebFluxTest` |\n| Complete wiring | `@SpringBootTest` |\n| Business logic | Plain unit test (no Spring) |\n\nThe goal is **not** to eliminate `@SpringBootTest` — it's the right choice for integration flows and smoke tests."
+    },
+    {
+      "question": "What does `@WebMvcTest` load, and what belongs in such a test?",
+      "answer": "**Loads**: controllers, filters, `@ControllerAdvice`, `WebMvcConfigurer`, Jackson configuration.\n\n**Does not load**: services, repositories, security config, scheduled tasks — anything below the web layer.\n\n**Test**: request/response mapping, status codes, validation, exception handling.\n\n```java\n@WebMvcTest(OrderController.class)\nclass OrderControllerTest {\n    @Autowired private MockMvc mockMvc;\n    @MockBean private OrderService orderService; // mock the dependency\n\n    @Test\n    void shouldReturnOrderById() throws Exception {\n        given(orderService.findById(1L)).willReturn(mockOrder);\n\n        mockMvc.perform(get(\"/api/orders/1\"))\n            .andExpect(status().isOk())\n            .andExpect(jsonPath(\"$.status\").value(\"DELIVERED\"));\n    }\n}\n```\n\n**Not for**: business logic — use plain unit tests for that."
+    },
+    {
+      "question": "What does `@DataJpaTest` load, and what should you watch out for?",
+      "answer": "**Loads**: JPA repositories, entity classes, `EntityManager`, datasource config.\n\n**Does not load**: services, controllers, security, the web layer.\n\nEach test runs in a **transaction that rolls back** after completion, so tests stay isolated and clean.\n\n```java\n@DataJpaTest\nclass OrderRepositoryTest {\n    @Autowired private OrderRepository orderRepository;\n    @Autowired private TestEntityManager entityManager;\n}\n```\n\n**Watch out**: it uses an **in-memory H2** database by default. If your app relies on database-specific behaviour (PostgreSQL JSONB, native functions, custom types), H2 will not catch the bug — pair it with **Testcontainers**:\n\n```java\n@DataJpaTest\n@Testcontainers\n@AutoConfigureTestDatabase(replace = NONE)\nclass OrderRepositoryTest { /* ... */ }\n```"
+    },
+    {
+      "question": "What is `@JsonTest` used for?",
+      "answer": "**Loads**: Jackson `ObjectMapper` and JSON components only.\n\n**Does not load**: web layer, JPA, services, your application beans.\n\n**Great for** verifying the serialization contract without booting the app:\n- Date formats\n- Property names\n- Null handling\n- Custom serializers and deserialization rules\n\n```java\n@JsonTest\nclass OrderDtoJsonTest {\n    @Autowired private ObjectMapper objectMapper;\n\n    @Test\n    void shouldSerializeOrderDto() throws Exception {\n        String json = objectMapper.writeValueAsString(dto);\n        assertThat(json).contains(\"DELIVERED\");\n    }\n}\n```"
+    },
+    {
+      "question": "What is `@RestClientTest` used for?",
+      "answer": "It tests an **outbound HTTP client** without calling the real external service.\n\n```java\n@RestClientTest(PaymentGatewayClient.class)\nclass PaymentGatewayClientTest {\n    @Autowired private PaymentGatewayClient client;\n    @Autowired private MockRestServiceServer server;\n}\n```\n\n**Verifies**:\n- URL construction\n- Headers\n- Request serialization\n- Response mapping\n- Error handling\n\nThis keeps tests fast and deterministic — no network, no third-party downtime."
+    },
+    {
+      "question": "What is `@DataRedisTest` used for?",
+      "answer": "It creates a **Redis-focused test slice**, loading Redis repositories and templates without the rest of the application.\n\nWhen the test needs **real Redis behaviour** — TTL expiration, key serialization, repository operations — combine it with a **Redis Testcontainer** rather than an embedded fake, which often diverges from real semantics."
+    },
+    {
+      "question": "How do you test the security layer in Spring Boot?",
+      "answer": "Load the security configuration and exercise it through `MockMvc`:\n\n```java\n@SpringBootTest\n@AutoConfigureMockMvc\nclass SecurityConfigTest {\n    @Autowired private MockMvc mockMvc;\n\n    @Test\n    void shouldRequireAuthForProtectedEndpoint() throws Exception {\n        mockMvc.perform(get(\"/api/orders\"))\n            .andExpect(status().isUnauthorized());\n    }\n}\n```\n\n**Use for**: auth rules, roles/permissions, security filters.\n\nHelpers like `@WithMockUser` set up an authenticated principal for role-based cases."
+    },
+    {
+      "question": "What is `@WebFluxTest` used for?",
+      "answer": "The **reactive** equivalent of `@WebMvcTest`.\n\n**Loads**: `@Controller`/`@ControllerAdvice` and WebFlux config.\n**Does not load**: services, JPA, other layers.\n\n```java\n@WebFluxTest(OrderHandler.class)\nclass OrderHandlerTest {\n    @Autowired private WebTestClient webTestClient;\n\n    @Test\n    void shouldReturnOrder() {\n        webTestClient.get().uri(\"/api/orders/1\")\n            .exchange()\n            .expectStatus().isOk();\n    }\n}\n```"
+    },
+    {
+      "question": "Does `@SpringBootTest` reload the application context for every test class?",
+      "answer": "**No** — Spring **caches and reuses** compatible application contexts across test classes, so the cost is not paid every time.\n\nBut extra context loads still happen when tests differ by:\n- Configuration or active **profiles**\n- `@MockBean` definitions (a different set of mocks = a different context)\n- `@DirtiesContext`\n- Different property overrides\n\nSo the real advice isn't \"never use `@SpringBootTest`\" — it's **keep contexts consistent** so caching works, and use a slice when you don't need full wiring."
+    },
+    {
+      "question": "When should you use a plain unit test instead of any Spring annotation?",
+      "answer": "For **business logic** — anything that doesn't need Spring to wire it.\n\nIf a service method is pure logic over its inputs, construct it directly with mocked collaborators (Mockito) and skip the container entirely. No context load, millisecond runtime.\n\nReach for Spring only when the thing under test **is** the framework integration: request mapping, transaction boundaries, serialization, security rules, or wiring."
+    },
+    {
+      "question": "How would you diagnose and fix a slow Spring Boot test suite?",
+      "answer": "Start by asking: **does every test really need the entire application context?**\n\n**Approach**:\n1. Look at how many tests use `@SpringBootTest` vs slices.\n2. Count **distinct context loads** — varying profiles/mocks defeat context caching.\n3. Move controller tests to `@WebMvcTest`, repository tests to `@DataJpaTest`, serialization to `@JsonTest`.\n4. Push pure business logic into plain unit tests.\n5. Keep `@SpringBootTest` for integration flows and smoke tests.\n\n**Note**: the fix usually isn't more CI hardware, more parallelism, or a different framework — it's choosing the smallest context that proves the behaviour. Faster feedback means developers actually run tests before pushing."
+    }
+  ]
+}
