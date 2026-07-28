@@ -1,5 +1,6 @@
 {
   "topic": "Java Collections",
+  "enabled": true,
   "questions": [
     {
       "question": "What is the difference between `ArrayList` and `LinkedList` in Java?",
@@ -220,6 +221,58 @@
     {
       "question": "When is `SortedMap` used in Java?",
       "answer": "Use `SortedMap` when you need to store key-value pairs in a sorted order. `TreeMap` is a common implementation of `SortedMap`, which allows efficient searching, insertion, and deletion of entries in a sorted manner."
+    },
+    {
+      "question": "Can you really use any object as a `HashMap` key?",
+      "answer": "Technically yes — any object can be a key. In practice, a key must satisfy **three requirements**:\n\n1. **Correct `hashCode()`** — determines the bucket.\n2. **Correct `equals()`** — resolves the exact match within a bucket.\n3. **Effective immutability** — the fields used by `hashCode()`/`equals()` must not change while the object is a key.\n\nThat third point is what disqualifies most mutable objects. A `List`, a mutable POJO, or an array (which uses identity hashing) are all legal but dangerous.\n\n**Safe keys**: `String`, boxed primitives, `enum`, records, and custom immutable classes.\n\n> An object with a poor `hashCode()` (e.g., returning a constant) is still \"valid\" but degrades the map toward `O(n)`."
+    },
+    {
+      "question": "What happens when a `HashMap` key is modified after insertion?",
+      "answer": "The entry becomes **unreachable** — a silent memory leak.\n\n**Why**: the bucket index was computed from the key's hash **at insertion time**. Mutating a field used by `hashCode()` changes the hash, so lookups compute a *different* bucket and find nothing. The entry still occupies memory but can't be retrieved — not even by iterating and calling `get()`.\n\n```java\nList<String> key = new ArrayList<>(List.of(\"hello\"));\nMap<List<String>, String> map = new HashMap<>();\nmap.put(key, \"value\");\nmap.get(key);        // \"value\"\n\nkey.add(\"world\");    // MUTATING THE KEY\nmap.get(key);        // null - entry is lost!\nmap.size();          // still 1 - it's still in there\n```\n\n**Rule**: always use immutable objects as keys. If you must use a mutable one, never modify it while it's in the map."
+    },
+    {
+      "question": "Why is `HashMap`'s capacity always a power of 2?",
+      "answer": "So the bucket index can be computed with a **bitwise AND** instead of modulo:\n\n```java\nindex = hash & (capacity - 1);   // fast\n// instead of: hash % capacity   // slower\n```\n\nThis only works when capacity is a power of 2, because `2ⁿ - 1` produces a **bitmask of all 1s**, which keeps the low bits of the hash and distributes entries uniformly.\n\nIf you pass a non-power-of-2 initial capacity, `HashMap` **rounds it up** to the next power of 2 internally."
+    },
+    {
+      "question": "What is the significance of `HashMap`'s load factor?",
+      "answer": "The **load factor** (default `0.75`) decides *when* the map resizes: once `size > capacity * loadFactor`, capacity doubles and all entries are rehashed.\n\nIt's a **time/space trade-off**:\n- **Higher** (e.g. `1.0`): less memory wasted, but more collisions and slower lookups.\n- **Lower** (e.g. `0.5`): fewer collisions and faster lookups, but more memory and earlier resizing.\n\n`0.75` is a well-tested compromise — you rarely need to change it.\n\n> Resizing is an **O(n)** operation, which is why `HashMap` can show occasional latency spikes. Pre-size the map if you know the expected entry count."
+    },
+    {
+      "question": "Explain the treeification threshold in `HashMap` (Java 8+).",
+      "answer": "When a single bucket's chain grows to **8 or more** nodes **and** total capacity is at least **64**, that linked list converts to a **red-black tree**, improving worst-case lookup from `O(n)` to `O(log n)`.\n\n```java\nstatic final int TREEIFY_THRESHOLD   = 8;\nstatic final int UNTREEIFY_THRESHOLD = 6;\nstatic final int MIN_TREEIFY_CAPACITY = 64;\n```\n\n**Why two different numbers?** The tree reverts to a list below **6** nodes, not 8. That gap prevents rapid flip-flopping between the two structures as entries are added and removed.\n\n> If capacity is under 64, `HashMap` **resizes instead of treeifying** — a small table with long chains usually just needs more buckets."
+    },
+    {
+      "question": "Why does `ConcurrentHashMap` not allow null keys or values?",
+      "answer": "Because `null` is **ambiguous** in a concurrent context.\n\nIf `map.get(key)` returns `null`, you can't tell whether:\n- The key is **absent**, or\n- The key is present and **mapped to `null`**\n\nIn a single-threaded `HashMap` you resolve this with `containsKey()`. In a concurrent map that check is **unreliable** — another thread could insert or remove the key between your `get()` and `containsKey()` calls.\n\nDisallowing `null` removes the ambiguity entirely, so a `null` return unambiguously means \"absent\"."
+    },
+    {
+      "question": "What is the difference between `Collections.synchronizedMap()` and `ConcurrentHashMap`?",
+      "answer": "`Collections.synchronizedMap()`:\n- Wraps a `HashMap` with a **single lock over the whole map**\n- Every operation — even reads — acquires that lock, so only one thread touches the map at a time\n\n`ConcurrentHashMap`:\n- **Fine-grained locking**: reads are lock-free, writes lock only the affected bucket\n- Java 8+ uses **CAS** for empty buckets and `synchronized` on the first node for collisions\n- Dramatically better throughput under contention\n\n**When to use which**:\n- `synchronizedMap`: retrofitting basic thread safety onto existing code with minimal change\n- `ConcurrentHashMap`: designing for concurrency from the start\n\n> Note: iteration over a `synchronizedMap` still requires **manual external synchronization**."
+    },
+    {
+      "question": "What happens if you override `equals()` but not `hashCode()`?",
+      "answer": "The object breaks in every hash-based collection (`HashMap`, `HashSet`, `Hashtable`).\n\nTwo logically equal objects inherit `Object.hashCode()` (identity-based), so they get **different hash codes** and land in **different buckets**. Consequences:\n- A `HashSet` can hold \"duplicates\" that are logically equal\n- `map.get(equalKey)` returns `null` even though an equal key is present\n\n```java\nclass BrokenKey {\n    int id;\n    public boolean equals(Object o) {\n        return o instanceof BrokenKey && ((BrokenKey) o).id == this.id;\n    }\n    // hashCode() NOT overridden\n}\n\nBrokenKey k1 = new BrokenKey(); k1.id = 1;\nBrokenKey k2 = new BrokenKey(); k2.id = 1;\nmap.put(k1, \"hello\");\nmap.get(k2);   // null! k1.equals(k2) but hashCodes differ\n```\n\nThis is one of the most common bugs in Java code — and a favourite interview question."
+    },
+    {
+      "question": "Why should the fields used in `equals()` also be used in `hashCode()`?",
+      "answer": "To uphold the contract: **equal objects must have equal hash codes**.\n\n- If `hashCode()` uses a field that `equals()` **ignores**, two \"equal\" objects can produce different hashes — a direct **contract violation** that breaks `HashMap`.\n- If `equals()` uses a field that `hashCode()` **ignores**, the contract still holds, but unequal objects collide more often — a performance problem, not a correctness one.\n\n**Safest practice**: use exactly the same set of fields in both methods.\n\n```java\n@Override public boolean equals(Object o) { /* id, name */ }\n@Override public int hashCode() { return Objects.hash(id, name); }\n```"
+    },
+    {
+      "question": "How does fail-fast iteration detect concurrent modification?",
+      "answer": "Via a **`modCount`** field on the collection.\n\n1. Every structural modification (add/remove) increments `modCount`.\n2. When you create an iterator, it snapshots that value as `expectedModCount`.\n3. On each `next()`, the iterator compares the two — if they differ, it throws `ConcurrentModificationException`.\n\n```java\nfinal void checkForComodification() {\n    if (modCount != expectedModCount)\n        throw new ConcurrentModificationException();\n}\n```\n\n**Important**: this is a **best-effort** check, not a guarantee — it exists to surface bugs, not to provide thread safety. Use `iterator.remove()` to remove safely during iteration."
+    },
+    {
+      "question": "What are Sequenced Collections (Java 21)?",
+      "answer": "Java 21 (**JEP 431**) added three interfaces giving ordered collections a **shared contract** for first/last access:\n\n- `SequencedCollection<E>` — any collection with a defined encounter order\n- `SequencedSet<E>` — the above, without duplicates\n- `SequencedMap<K,V>` — the map equivalent\n\n```java\n// SequencedCollection<E>\nE getFirst();  E getLast();\nvoid addFirst(E e);  void addLast(E e);\nE removeFirst();  E removeLast();\nSequencedCollection<E> reversed();\n\n// SequencedMap<K,V>\nMap.Entry<K,V> firstEntry();  lastEntry();\nMap.Entry<K,V> pollFirstEntry();  pollLastEntry();\nV putFirst(K k, V v);  putLast(K k, V v);\nSequencedMap<K,V> reversed();\n```\n\n`List`, `Deque`, `LinkedHashSet`, `SortedSet`/`TreeSet`, `LinkedHashMap`, and `SortedMap` all gain them."
+    },
+    {
+      "question": "Before Java 21, how did you get the first and last element of different collections?",
+      "answer": "Every type had its **own** API — the gap Sequenced Collections closed:\n\n```java\n// List\nlist.get(0);                    // first\nlist.get(list.size() - 1);      // last\n\n// Deque\ndeque.getFirst();  deque.getLast();\n\n// SortedSet\nsortedSet.first();  sortedSet.last();\n\n// LinkedHashSet - no direct access at all\nlinkedHashSet.iterator().next();                                  // first\nlinkedHashSet.stream().reduce((a, b) -> b).orElseThrow();         // last\n```\n\n**Problems**: different method names for the same concept, and generic code needed type-specific handling.\n\n**Java 21**: `collection.getFirst()` / `collection.getLast()` works across all of them — no casting, no `instanceof`, no `size() - 1`."
+    },
+    {
+      "question": "What does `reversed()` return on a Sequenced Collection — a copy or a view?",
+      "answer": "A **view**, not a copy.\n\n```java\nList<String> steps = List.of(\"validate\", \"process\", \"notify\");\nfor (String step : steps.reversed()) {\n    System.out.println(step);   // notify -> process -> validate\n}\n\nLinkedHashSet<String> events = new LinkedHashSet<>();\nevents.add(\"ORDER_CREATED\");\nevents.add(\"ORDER_SHIPPED\");\nevents.reversed().getFirst();   // \"ORDER_SHIPPED\" (last inserted)\n```\n\n**Key properties**:\n- Changes to the original are reflected in the view\n- It's **O(1)** — no allocation, no copying\n- Cleaner and safer than `Collections.reverse(list)`, which **mutates** the original in place"
     }
   ]
 }

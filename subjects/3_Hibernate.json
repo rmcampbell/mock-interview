@@ -1,5 +1,6 @@
 {
   "topic": "Hibernate",
+  "enabled": true,
   "questions": [
     {
       "question": "What is lazy loading in Hibernate?",

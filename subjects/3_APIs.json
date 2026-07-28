@@ -1,5 +1,6 @@
 {
   "topic": "APIs & RESTful Web Services",
+  "enabled": true,
   "questions": [
     {
       "question": "What are RESTful APIs, and how do they differ from SOAP?",

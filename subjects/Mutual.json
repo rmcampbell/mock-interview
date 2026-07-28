@@ -1,0 +1,178 @@
+{
+  "topic": "Mutual of Omaha",
+  "enabled": true,
+  "questions": [
+    {
+      "question": "Tell us about yourself.",
+      "answer": "Senior backend engineer, ~8 years building backend/middleware systems.\n\n**Core background**:\n- Java / Spring Boot\n- Cloud-native microservices & event-driven architectures\n- API integrations\n\n**Now — TEKsystems, Air Force Weather Systems**:\n- Build and maintain Java and Python applications\n- Reusable testing infrastructure and automated CI/CD pipelines\n- Apache Airflow workflows for large-scale data processing\n\n**Before — Mosaicx**:\n- Event-driven backend services on GCP (Spring Boot, Node.js, Pub/Sub, Cloud Run, Cloud Scheduler)\n- Processed millions of Pub/Sub messages for voice/SMS systems\n- Built reusable libraries and tooling used across teams; mentored during platform modernization\n\n**Fit**: my production cloud experience is mostly GCP, but the architectural principles translate directly to AWS — and I'm drawn to work where scalability, resilience, and reliability are critical."
+    },
+    {
+      "question": "Walk us through your Oracle-to-Postgres migration project.",
+      "answer": "**Goal**: migrate data workloads from Oracle to PostgreSQL to cut licensing costs and modernize the architecture.\n\n**What I built**: a **Spring Boot migration application** automating the full lifecycle — pre-migration checks, data movement, post-migration validation, audit logging, and rollback.\n\n**Challenge**: moving large datasets efficiently without sacrificing reliability. I used configurable **batch processing** and **multithreading**, tuned via load testing, plus **trigger-based auditing** for visibility into changes.\n\n**Result**: a repeatable migration process that cut manual effort and saved ~**$100K** in Oracle licensing."
+    },
+    {
+      "question": "Oracle-to-Postgres migration: why build a Spring Boot app instead of scripts?",
+      "answer": "Scripts could have done the initial move, but we needed something **repeatable, testable, and maintainable**.\n\nAn application gave us:\n- Separation of concerns and dependency management\n- Automated testing and configuration management\n- Structured logging\n- Room to add features as requirements evolved"
+    },
+    {
+      "question": "Your resume says you \"led migration of 15 legacy Java applications.\" What exactly did you do?",
+      "answer": "I was **heavily involved in the technical implementation**; the broader modernization was a team initiative owned by leadership.\n\nMy responsibility:\n- Converting legacy apps into **Node.js services on GCP Cloud Run**\n- Creating **reusable components** and deployment patterns\n- Helping teams adopt the new approach and reducing duplication through common libraries"
+    },
+    {
+      "question": "Describe your experience with event-driven architecture.",
+      "answer": "Most of my cloud work has been event-driven.\n\nAt **Mosaicx**, we used **Pub/Sub** architectures where events represented voice/SMS status changes; services consumed them, ran business logic, and triggered downstream actions.\n\nKey considerations are **reliability** and **operational visibility**:\n- Idempotent processing and duplicate handling\n- Retry strategies and **dead-letter** handling\n- Logging and monitoring\n- Eventual consistency\n\nGoal: individual failures don't break the whole workflow."
+    },
+    {
+      "question": "How would you design a service that processes millions of messages daily?",
+      "answer": "Start from the **processing requirements and SLAs**, then design for scalability and failure handling.\n\nLikely architecture:\n- Message broker (**Pub/Sub** or **Kafka**)\n- Horizontally scalable, **stateless** consumers\n- DB access optimized via **batching** and **indexing**\n- Retry handling and **dead-letter queues**\n- Monitoring and alerting\n\nHeavy emphasis on **idempotency** — assume messages can be delivered more than once."
+    },
+    {
+      "question": "Explain your Spring Boot experience.",
+      "answer": "I've used Spring Boot for REST APIs, backend services, migration apps, and event-driven systems.\n\nIncludes:\n- REST controllers, service/repository patterns, dependency injection\n- JPA/Hibernate and database integrations\n- Configuration, validation, exception handling\n- Testing with JUnit\n\nI've also worked through **Java and Spring ecosystem upgrades**."
+    },
+    {
+      "question": "Tell us about your database experience.",
+      "answer": "Extensive relational experience, primarily **Oracle** and **PostgreSQL**:\n- SQL development, schema design, migrations\n- Performance optimization, indexes, constraints\n- Application integration\n\nRecently migrated Oracle workloads to PostgreSQL and built tooling around it. Also some **NoSQL** (**MongoDB**) from GCP event-driven apps."
+    },
+    {
+      "question": "How do you approach working with legacy systems?",
+      "answer": "Understand the system before changing it — legacy code often holds **undocumented business rules**.\n\nMy approach:\n1. Understand current behavior\n2. Identify pain points and risks\n3. Add tests around existing functionality\n4. Make incremental improvements\n5. Modernize where the benefit justifies the risk\n\nGoal isn't modernization for its own sake — it's **reliability, maintainability, and business value**."
+    },
+    {
+      "question": "Tell us about a time you improved developer productivity.",
+      "answer": "At **Mosaicx**, multiple teams migrating to a new platform were duplicating work.\n\nI built **reusable libraries** for common functionality — API integration, configuration, validation, metrics — and drove adoption through documentation and technical sessions.\n\nThis cut repeated implementation work and gave teams a **consistent** development approach."
+    },
+    {
+      "question": "Describe a production issue you handled.",
+      "answer": "I start by understanding **impact** and gathering evidence before changing anything.\n\nI review logs, metrics, recent deployments, config changes, and dependencies.\n\nOnce the cause is clear, I fix the immediate problem **and** prevent recurrence — better logging, validation, monitoring, or automated testing."
+    },
+    {
+      "question": "Why are you interested in leaving your current role?",
+      "answer": "I've enjoyed the modernization and automation work, but I'm looking for a **long-term** opportunity with deeper ownership of systems and a team to grow with.\n\nMutual of Omaha stood out for its complex enterprise systems where **reliability, integration, and modernization** matter."
+    },
+    {
+      "question": "Your resume mentions Python and Java. Which do you prefer?",
+      "answer": "My strongest background is **Java**, especially enterprise backend with Spring Boot. I also enjoy **Python** for automation, data processing, and workflow orchestration.\n\nI choose based on the problem: **Java/Spring** for large enterprise services and APIs; **Python** for automation, data processing, and scripting."
+    },
+    {
+      "question": "What questions do you have for us?",
+      "answer": "**Architecture**: What does the current application landscape look like — mostly maintaining, modernizing, or building new?\n\n**Team**: How are responsibilities split between developers, architects, and business teams?\n\n**Role**: What would you want this person to accomplish in the first six months?\n\n**Technology**: What patterns or technologies is the team investing in?\n\n**Challenges**: What are the biggest technical challenges the team faces today?"
+    },
+    {
+      "question": "Why are you interested in this specific role?",
+      "answer": "It aligns with the work I enjoy — building backend services, improving existing systems, and integrating applications.\n\nMy background is **enterprise systems where reliability and maintainability matter**, and I like turning complex problems into solutions that make systems easier to operate.\n\nMutual of Omaha's mix of **established systems and modernization** matches much of my experience."
+    },
+    {
+      "question": "What do you consider your strongest technical skill?",
+      "answer": "**Designing and improving backend systems** — understanding existing applications, spotting areas to improve, and building maintainable, scalable solutions.\n\nMuch of my work has centered on **integration points**: APIs, messaging systems, database migrations, and cloud services."
+    },
+    {
+      "question": "What is an area you are currently improving?",
+      "answer": "Balancing the **ideal long-term solution** against **delivering incremental value**.\n\nEarlier on, I leaned toward the most complete solution possible. I've learned enterprise work means prioritizing business value, timelines, and risk — while still keeping good engineering practices."
+    },
+    {
+      "question": "How do you prioritize competing tasks?",
+      "answer": "By **business impact, urgency, dependencies, and risk**.\n\nA production issue affecting customers beats a feature enhancement. For planned work, I weigh dependencies — whether finishing one item unblocks other teams.\n\nAnd I **communicate** when priorities conflict rather than assume."
+    },
+    {
+      "question": "Tell me about a time you had incomplete requirements.",
+      "answer": "Enterprise requirements are rarely fully defined upfront. I identify what's known, clarify the **business goal**, and surface assumptions and risks early.\n\nI build something small enough to **gather feedback quickly** instead of making large assumptions — e.g., for migration/automation tooling, I start from the current process and pain points, then iterate."
+    },
+    {
+      "question": "How do you ensure code quality?",
+      "answer": "- Automated testing\n- Code reviews\n- Consistent coding standards\n- Meaningful logging\n- Static analysis where available\n- Maintainable design patterns\n\nQuality also includes **operability** — a system that works but is hard to troubleshoot or deploy isn't high quality."
+    },
+    {
+      "question": "Describe your code review process.",
+      "answer": "I treat reviews as **collaboration**, not just catching mistakes.\n\nI look for:\n- Correctness\n- Readability and maintainability\n- Security concerns\n- Performance\n- Consistency with existing patterns\n\nI explain the **reasoning** behind suggestions so the team improves collectively."
+    },
+    {
+      "question": "How do you handle technical debt?",
+      "answer": "Manage it **intentionally** — not all debt is bad; sometimes it's a reasonable tradeoff.\n\nThe priority is debt that creates **operational risk**, slows development, or raises maintenance cost.\n\nI prefer paying it down **incrementally** as part of normal work rather than waiting for a big rewrite."
+    },
+    {
+      "question": "Tell us about a time you disagreed with a technical approach.",
+      "answer": "I start by understanding the **reasoning** behind the other approach — usually it's tradeoffs, not right vs wrong.\n\nI compare options on maintainability, complexity, operational impact, and business need.\n\nOnce the decision is made, I **support the team's direction** even if it wasn't my preference."
+    },
+    {
+      "question": "How do you handle working with developers who have different skill levels?",
+      "answer": "I adjust to the person's experience — sometimes explaining concepts or patterns, other times giving them space to solve it independently.\n\nAsking questions and helping people **reason through** problems is usually more effective than just giving answers."
+    },
+    {
+      "question": "How do you communicate technical issues to non-technical stakeholders?",
+      "answer": "I lead with **impact**, not implementation.\n\nI explain what's happening, why it matters, the options, and my **recommendation** — so stakeholders can decide without needing every technical detail."
+    },
+    {
+      "question": "What is your experience with Agile/Scrum?",
+      "answer": "I've worked in Agile with sprint planning, standups, refinement, retrospectives, and product-owner collaboration.\n\nI see Agile as a way to **improve communication and deliver value incrementally**, not just running ceremonies."
+    },
+    {
+      "question": "How do you approach learning a new technology?",
+      "answer": "I start with the **problem it solves**, not just the API.\n\nDocs → small **proof-of-concept** → apply to a real problem. For example, with **Airflow** and **SQLAlchemy** I learned the concepts and patterns first, then applied them to production workflows."
+    },
+    {
+      "question": "Explain dependency injection and why Spring uses it.",
+      "answer": "**DI**: an object **receives** its dependencies instead of creating them.\n\nIn Spring it improves:\n- Testability\n- Separation of concerns\n- Maintainability\n- Flexibility\n\nInstead of a service creating its own database client, Spring manages and **injects** it."
+    },
+    {
+      "question": "How would you secure a REST API?",
+      "answer": "Security at multiple layers:\n- **Authentication** — OAuth2 or JWT\n- **Authorization** — roles/permissions\n- Input validation\n- HTTPS\n- Protecting sensitive data\n- Logging without exposing confidential info\n- Dependency vulnerability management\n\nSecurity should be **designed in**, not bolted on later."
+    },
+    {
+      "question": "What happens when a REST API call fails downstream?",
+      "answer": "I'd consider:\n- Timeout configuration\n- Retry strategy\n- **Circuit breakers**\n- Error handling\n- Logging and monitoring\n- Whether the operation is **safe to retry** (idempotency)\n\nIn distributed systems failures are expected, so services must **fail gracefully**."
+    },
+    {
+      "question": "Describe your experience with CI/CD.",
+      "answer": "Worked with **Jenkins, GitHub Actions, GitLab CI/CD**, and GCP deployment workflows.\n\n- **TEKsystems**: built Jenkins/Groovy **shared libraries** to standardize environment and artifact-metadata collection across projects.\n- **Mosaicx**: established deployment patterns with **Terragrunt** and GitHub Actions for containerized GCP deployments."
+    },
+    {
+      "question": "How do you approach performance problems?",
+      "answer": "Start with **measurement**, not assumptions.\n\nI look at application metrics, logs, database performance, resource utilization, and external dependencies, then fix the **bottleneck** with targeted changes.\n\nExample: in Cloud Scheduler work I analyzed processing behavior and optimized the batch approach, cutting compute time and cost."
+    },
+    {
+      "question": "What does \"senior engineer\" mean to you?",
+      "answer": "More than writing complex code — understanding the **broader impact** of technical decisions.\n\nA senior engineer solves ambiguous problems, communicates well, improves team practices, mentors others, and **balances technical quality with business needs**."
+    },
+    {
+      "question": "Why should we hire you?",
+      "answer": "A combination of **backend engineering, cloud, and enterprise modernization** experience.\n\nI've done both new development and improving existing applications — important in a large organization — and I'm comfortable **owning complex problems**, collaborating, and building reliable, maintainable solutions."
+    },
+    {
+      "question": "How does Kafka differ from Pub/Sub?",
+      "answer": "- **Kafka**: a distributed **log** — messages persist in ordered partitions and consumers track their own **offset**, so history can be replayed. You run/manage the cluster (or use a managed one).\n- **Pub/Sub**: a **fully managed** GCP service — no brokers to run, auto-scales, at-least-once delivery, no long-term replay by default.\n\n**Rule of thumb**: Kafka for high-throughput streaming, ordering, and replay; Pub/Sub for serverless, operationally simple messaging."
+    },
+    {
+      "question": "What are the advantages and disadvantages of microservices?",
+      "answer": "**Advantages**:\n- Independent deployment and scaling\n- Technology flexibility per service\n- Fault isolation\n- Smaller, focused codebases\n\n**Disadvantages**:\n- Distributed-system complexity (network, partial failure)\n- Harder debugging and testing\n- Data consistency across services\n- Operational overhead (deployment, monitoring)"
+    },
+    {
+      "question": "When would you NOT use microservices?",
+      "answer": "Avoid them when:\n- The team or domain is **small** — a well-structured monolith is simpler\n- The domain boundaries aren't understood yet\n- You lack the **operational maturity** (CI/CD, monitoring, on-call) to run many services\n\nPremature microservices add distributed-system cost without the benefit. **Start with a modular monolith** and split when a real scaling or team-boundary need appears."
+    },
+    {
+      "question": "How do you handle database transactions in distributed systems?",
+      "answer": "You usually can't hold a single ACID transaction across services. Options:\n- **Saga pattern**: a sequence of local transactions with **compensating actions** to undo on failure\n- **Outbox pattern**: write the change and an event in one local transaction, then publish reliably\n- **Idempotency** so retries are safe\n- Accept **eventual consistency** where strong isn't required\n\nAvoid distributed two-phase commit where possible — it's fragile and doesn't scale well."
+    },
+    {
+      "question": "Explain `@Transactional` in Spring.",
+      "answer": "`@Transactional` wraps a method in a database transaction — **commit** on success, **rollback** on a runtime exception.\n\nKey points:\n- Works via a **proxy**, so self-invocation within the same bean bypasses it\n- By default rolls back on unchecked exceptions, **not** checked ones (configurable)\n- Supports **propagation** (e.g., `REQUIRED`, `REQUIRES_NEW`) and **isolation** levels"
+    },
+    {
+      "question": "How do you test Spring Boot applications?",
+      "answer": "- **Unit tests**: plain JUnit + Mockito for services, no Spring context\n- **Slice tests**: `@WebMvcTest` for controllers, `@DataJpaTest` for repositories\n- **Integration tests**: `@SpringBootTest` for the full context; **Testcontainers** for a real database\n- **MockMvc** or `WebTestClient` to exercise endpoints\n\nAim for many fast unit tests and fewer, higher-value integration tests."
+    },
+    {
+      "question": "How would you migrate a monolith to microservices?",
+      "answer": "Incrementally, not a big-bang rewrite:\n1. Identify **bounded contexts** and seams in the domain\n2. Use the **strangler pattern** — route new/extracted functionality to new services while the monolith still runs\n3. Extract the highest-value or highest-pain capability first\n4. Separate its **data ownership**\n5. Add the supporting CI/CD, monitoring, and API contracts\n\nExtract only where it delivers real value; some parts can stay in the monolith."
+    },
+    {
+      "question": "How would you troubleshoot a slow API?",
+      "answer": "Measure first:\n- Break down **latency** — app time vs database vs downstream calls (tracing/APM)\n- Check the **database**: slow queries, missing indexes, N+1 queries\n- Look at payload size, serialization, and external dependency latency\n- Check resource limits (CPU, memory, connection pools) and GC pauses\n\nThen fix the biggest bottleneck — often an index, a query rewrite, caching, or a connection-pool tweak."
+    },
+    {
+      "question": "How would you design an insurance policy processing system?",
+      "answer": "Clarify requirements and SLAs first, then:\n- **API layer** for policy intake and status\n- **Async processing** (queue/broker) for underwriting, validation, and document steps — decoupled and scalable\n- **State machine** for the policy lifecycle (quote → underwrite → issue → active)\n- **Relational store** for policy data with strong consistency; an audit trail for compliance\n- **Idempotency** and retries for reliable processing\n- Monitoring, alerting, and clear error handling\n\nInsurance is compliance-heavy, so **auditability and data integrity** are first-class concerns."
+    }
+  ]
+}

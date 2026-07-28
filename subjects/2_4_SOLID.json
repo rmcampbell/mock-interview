@@ -1,5 +1,6 @@
 {
   "topic": "SOLID Principles",
+  "enabled": true,
   "questions": [
     {
       "question": "What is the Single Responsibility Principle (SRP)?",

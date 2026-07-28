@@ -1,5 +1,6 @@
 {
   "topic": "Miscellaneous Topics",
+  "enabled": true,
   "questions": [
     {
       "question": "What is Continuous Integration and Continuous Deployment (CI/CD)?",
@@ -64,6 +65,22 @@
     {
       "question": "What are unit, integration, and end-to-end tests?",
       "answer": "- **Unit tests**: test a single function/class in isolation (dependencies mocked). Fast, numerous.\n- **Integration tests**: verify multiple components work together (e.g., service + real database).\n- **End-to-end (E2E)**: exercise the whole system as a user would, through the real UI/API.\n\n**Test pyramid**: many unit tests, fewer integration, fewest (slow, brittle) E2E."
+    },
+    {
+      "question": "How do you approach debugging a problem you don't understand yet?",
+      "answer": "Strong engineers **reduce complexity until the problem solves itself** rather than memorizing everything:\n\n- **Read errors from the last line first** — the root cause is usually at the bottom of the stack trace, not the top.\n- **Reproduce in the smallest possible case** — strip away everything that isn't required to trigger it.\n- **Ask \"what changed?\"** — deploys, config, data, dependencies, traffic.\n- **Use logs and prints before guessing** — evidence beats intuition.\n- **Break it into input → process → output** — then determine which stage is wrong.\n- **Prefer simple solutions over clever ones.**\n- **Delete code to find what matters** — remove pieces until the behaviour changes.\n- **Keep functions small and readable** — easier to isolate.\n- **If stuck too long, change approach, not effort** — repeating the same attempt harder rarely works."
+    },
+    {
+      "question": "What is the fast and slow pointer technique?",
+      "answer": "Two pointers traverse a sequence at **different speeds** — `slow` moves one step, `fast` moves two. Also called **Floyd's Tortoise and Hare**.\n\n```java\nwhile (fast != null && fast.next != null) {\n    slow = slow.next;         // 1 step\n    fast = fast.next.next;    // 2 steps\n    if (slow == fast) { /* cycle detected */ }\n}\n```\n\n**Why it works**: if a cycle exists, `fast` laps `slow` and they must eventually meet. With no cycle, `fast` reaches the end first.\n\n- If `fast` reaches `null` → **no cycle**\n- If `fast` meets `slow` → **cycle exists**\n\n**Complexity**: `O(n)` time, `O(1)` space — the key advantage over using a `HashSet` of visited nodes."
+    },
+    {
+      "question": "How do you find the middle of a linked list in one pass?",
+      "answer": "Use fast/slow pointers: when `fast` reaches the end, `slow` is at the **middle**.\n\n```java\nListNode slow = head, fast = head;\nwhile (fast != null && fast.next != null) {\n    slow = slow.next;\n    fast = fast.next.next;\n}\nreturn slow;   // middle node\n```\n\n**Trace** on `1→2→3→4→5→7`:\n\n| Step | slow | fast |\n| --- | --- | --- |\n| 0 | 1 | 1 |\n| 1 | 2 | 3 |\n| 2 | 3 | 5 |\n| 3 | 4 | end |\n\n**Complexity**: `O(n)` time, `O(1)` space — and only **one traversal**, versus counting the length then walking half of it.\n\n> For an even-length list this returns the **second** middle node. Use `while (fast.next != null && fast.next.next != null)` if you need the first."
+    },
+    {
+      "question": "How do you check if a linked list is a palindrome?",
+      "answer": "**Find middle → split → reverse the second half → compare.**\n\n1. **Find the middle** with fast/slow pointers.\n2. **Reverse** the second half in place.\n3. **Compare** both halves node by node.\n4. (Optionally restore the list by reversing back.)\n\n```java\n// 1. find middle\nListNode slow = head, fast = head;\nwhile (fast != null && fast.next != null) {\n    slow = slow.next;\n    fast = fast.next.next;\n}\n\n// 2. reverse second half\nListNode prev = null;\nwhile (slow != null) {\n    ListNode next = slow.next;\n    slow.next = prev;\n    prev = slow;\n    slow = next;\n}\n\n// 3. compare halves\nwhile (prev != null) {\n    if (head.val != prev.val) return false;\n    head = head.next;\n    prev = prev.next;\n}\nreturn true;\n```\n\n**Complexity**: `O(n)` time, `O(1)` space — better than copying values into a list or stack, which costs `O(n)` space."
     }
   ]
 }

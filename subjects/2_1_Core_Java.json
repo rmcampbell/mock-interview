@@ -1,5 +1,6 @@
 {
   "topic": "Core Java",
+  "enabled": true,
   "questions": [
     {
       "question": "What is the difference between `StringBuilder` and `StringBuffer`?",
@@ -282,72 +283,72 @@
       "answer": "- `Interface`: Defines method signatures without implementation.\n- `Abstract Class`: Can define both abstract methods and implemented methods."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "Why is `String` immutable in Java?",
+      "answer": "The value is held in a `final` array with no mutating methods exposed. Reasons:\n\n- **String pool safety**: literals are shared, so one reference mutating the value would corrupt every other holder.\n- **Security**: strings carry file paths, URLs, credentials, and class names. If mutable, a value could be changed *after* a security check but *before* use.\n- **Thread safety**: immutable objects are inherently safe to share without synchronization.\n- **Cached hash code**: `hashCode()` is computed once and reused, making `String` a fast `HashMap` key.\n\n> Every \"modification\" (`concat`, `substring`, `replace`) returns a **new** `String`."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "How many objects are created by `new String(\"hello\")`?",
+      "answer": "**Up to two**:\n\n1. The **literal** `\"hello\"` in the **string pool** — created at class load time, if not already present.\n2. A **new object on the heap**, because `new` always allocates.\n\n```java\nString a = \"hello\";              // pool reference\nString b = \"hello\";              // same pool reference\nString c = new String(\"hello\");  // new heap object\n\na == b;          // true  - same pooled instance\na == c;          // false - different objects\na.equals(c);     // true  - same characters\n```\n\n> If `\"hello\"` is already pooled, `new String(\"hello\")` creates only **one** new object. This is why `new String(...)` is considered wasteful — prefer the literal."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What does the `intern()` method do?",
+      "answer": "`intern()` returns the **pooled** instance of a string:\n- If an equal string is already in the pool, that reference is returned.\n- Otherwise the string is added to the pool and that reference is returned.\n\n```java\nString a = new String(\"hello\");\nString b = a.intern();\n\na == \"hello\";   // false\nb == \"hello\";   // true\n```\n\n**Use case**: deduplicating many identical strings built at runtime (e.g. parsed input) to cut memory.\n\n**Caution**: interning has a cost, and pooled strings live as long as the pool. Don't intern high-cardinality values."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "Why is String concatenation with `+` inefficient in a loop?",
+      "answer": "Because `String` is immutable, each `+` creates a **new** `String` and copies all previous characters — turning a loop into **O(n²)** work and heavy garbage.\n\n```java\n// BAD - new String every iteration\nString result = \"\";\nfor (String s : items) {\n    result += s;   // compiles to a new StringBuilder EACH iteration\n}\n\n// GOOD - one buffer, appended in place\nStringBuilder sb = new StringBuilder();\nfor (String s : items) {\n    sb.append(s);\n}\nString result = sb.toString();\n```\n\n> A single expression like `\"a\" + b + \"c\"` is fine — the compiler optimizes it into one `StringBuilder`. The problem is only when concatenation happens **across loop iterations**."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "Why are `SoftReference`s a poor choice for a cache?",
+      "answer": "The idea is appealing — \"the GC clears them only when memory is low, so it's a self-tuning cache.\" In practice it backfires:\n\n- **The GC decides, not you.** Clearing is unpredictable and JVM/collector-specific. You get no control over eviction policy, TTL, or size.\n- **All-or-nothing clearing.** Under pressure the collector often clears **many or all** soft references at once, so the cache empties exactly when load is highest — causing a stampede of expensive recomputation.\n- **They delay GC and worsen pauses.** Soft references survive extra cycles, get promoted to old gen, and add reference-processing work — sometimes turning a memory problem into a **long GC pause** problem.\n- **No hit/miss metrics** and no bounded memory guarantee.\n\n**Better**: a real cache with an explicit bound and eviction policy (Caffeine, Guava, or an LRU `LinkedHashMap`), which gives predictable memory use and observable hit rates.\n\n> `WeakReference` is still the right tool for **canonicalizing maps** and listener registries — the trap is specifically using `SoftReference` *as a cache*."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is Metaspace, and how does it differ from PermGen?",
+      "answer": "**Metaspace** (Java 8+) stores **class metadata** — class structures, method data, and the runtime constant pool.\n\n| | PermGen (≤ Java 7) | Metaspace (Java 8+) |\n| --- | --- | --- |\n| Location | Inside the JVM heap | **Native** (off-heap) memory |\n| Sizing | Fixed max (`-XX:MaxPermSize`) | Grows dynamically by default |\n| Typical failure | `OutOfMemoryError: PermGen space` | `OutOfMemoryError: Metaspace` |\n\n**Why the change**: PermGen's fixed size caused frequent OOMs in apps that loaded many classes (app servers, frameworks doing bytecode generation). Metaspace grows as needed, bounded by `-XX:MaxMetaspaceSize`.\n\n> Metaspace leaks still happen — usually from **classloader leaks** where redeployments keep old classloaders alive."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the difference between minor GC and major GC?",
+      "answer": "**Minor GC** — collects the **young generation** (Eden + survivor spaces):\n- Runs frequently\n- Usually **fast**, because most objects die young\n- Surviving objects are promoted toward the old generation\n\n**Major GC** (or **Full GC**) — collects the **old generation** (and often the whole heap):\n- Runs much less often\n- **Slower**, and typically causes a longer stop-the-world pause\n\n**Why it matters**: frequent Full GCs are a red flag — usually a memory leak, an undersized heap, or too much premature promotion.\n\n> This split exists because of the **weak generational hypothesis**: most objects become garbage almost immediately."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "Can Java have memory leaks? Give examples.",
+      "answer": "Yes. Garbage collection frees **unreachable** objects — a leak is anything that stays **reachable** but is never used again.\n\n**Common causes**:\n- **Static collections** that only ever grow (a `static Map` used as a cache with no eviction)\n- **Unremoved listeners/callbacks** holding a reference to a dead component\n- **`ThreadLocal`s** not cleared in pooled threads — the value survives as long as the thread does\n- **Mutated `HashMap` keys** — the entry becomes unreachable but still occupies memory\n- **Unclosed resources** (streams, connections) holding native buffers\n- **Classloader leaks** on redeploy, retaining whole class hierarchies\n\n**Diagnosis**: heap dump + a tool like MAT, looking for the largest retained sets and their GC roots."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What causes `OutOfMemoryError` versus `StackOverflowError`?",
+      "answer": "They come from **different memory regions**:\n\n`OutOfMemoryError` — the **heap** (or Metaspace) can't satisfy an allocation:\n- A genuine memory leak\n- Heap too small for the workload\n- Loading a huge dataset at once\n- Variants: `Java heap space`, `Metaspace`, `GC overhead limit exceeded`\n\n`StackOverflowError` — a **thread's stack** is exhausted:\n- Infinite or excessively deep **recursion** (the usual cause)\n- Very deep call chains\n- Tune with `-Xss`, but fix the recursion first\n\n> Both are `Error`s, not `Exception`s — you generally should **not** catch them, because the JVM may be in an unrecoverable state."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is Java bytecode and why does it matter?",
+      "answer": "**Bytecode** is the platform-neutral instruction set in `.class` files, produced by `javac` and executed by the JVM.\n\n**Why it matters**:\n- **Portability** — \"write once, run anywhere\": the same `.class` runs on any JVM.\n- **Performance** — the **JIT** compiler profiles running bytecode and compiles hot paths to native code, so long-running Java can approach native speed.\n- **Language interop** — Kotlin, Scala, Groovy, and Clojure all compile to the same bytecode and interoperate.\n- **Tooling** — frameworks (Spring AOP, Hibernate, Mockito) generate or rewrite bytecode at runtime.\n\n> Inspect it with `javap -c YourClass`."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What are the important methods of the `Object` class?",
+      "answer": "Every class inherits these:\n\n- `equals(Object)` — logical equality; default is reference identity\n- `hashCode()` — hash value; **must** be consistent with `equals()`\n- `toString()` — string representation; default is `ClassName@hexHash`\n- `getClass()` — runtime class (`final`)\n- `clone()` — field-for-field copy; requires `Cloneable`\n- `finalize()` — **deprecated**; never rely on it\n- `wait()` / `notify()` / `notifyAll()` — thread coordination, callable only while holding the monitor\n\n> The three worth overriding together are **`equals`, `hashCode`, and `toString`**."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is type erasure in Java generics?",
+      "answer": "Generic type information exists **only at compile time**. The compiler checks types, then **erases** them — replacing type parameters with their bounds (usually `Object`) and inserting casts.\n\n```java\nList<String> a = new ArrayList<>();\nList<Integer> b = new ArrayList<>();\na.getClass() == b.getClass();   // true - both are just ArrayList\n```\n\n**Consequences**:\n- No `new T()` and no `new T[]`\n- Can't use `instanceof List<String>`\n- Can't overload on `List<String>` vs `List<Integer>` — same erased signature\n- Primitives need boxing (`List<int>` is illegal)\n\n**Why**: backward compatibility — generics (Java 5) had to interoperate with pre-generic code."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "How do you create an immutable class in Java?",
+      "answer": "**Rules**:\n1. Mark the class `final` (or all constructors private) so it can't be subclassed.\n2. Make all fields `private final`.\n3. Provide **no setters** or other mutators.\n4. Initialize everything in the constructor.\n5. **Defensively copy** mutable inputs on the way in *and* out.\n\n```java\npublic final class Person {\n    private final String name;\n    private final List<String> roles;\n\n    public Person(String name, List<String> roles) {\n        this.name = name;\n        this.roles = List.copyOf(roles);   // defensive copy in\n    }\n\n    public List<String> getRoles() {\n        return roles;                       // already unmodifiable\n    }\n}\n```\n\n> Step 5 is the one people miss — without it, the caller keeps a reference to your internal list and can mutate it. Since Java 16, a **`record`** gives you most of this automatically (but still needs defensive copies for mutable components)."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "Does the `finally` block always execute?",
+      "answer": "**Almost always** — it runs whether the `try` completes normally, throws, or returns.\n\n**Exceptions where it does not run**:\n- `System.exit()` is called\n- The JVM crashes or is killed\n- The thread is killed at the OS level\n- An infinite loop or deadlock inside `try`\n\n**Gotcha** — a `return` in `finally` swallows exceptions and overrides the `try` value:\n\n```java\ntry {\n    throw new RuntimeException(\"boom\");\n} finally {\n    return \"ok\";   // exception silently discarded - never do this\n}\n```\n\n> Prefer **try-with-resources** over `finally` for cleanup — it also handles suppressed exceptions correctly."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "How do you create a custom exception?",
+      "answer": "Extend `Exception` for **checked** or `RuntimeException` for **unchecked**:\n\n```java\npublic class OrderNotFoundException extends RuntimeException {\n    private final Long orderId;\n\n    public OrderNotFoundException(Long orderId) {\n        super(\"Order not found: \" + orderId);\n        this.orderId = orderId;\n    }\n\n    public Long getOrderId() { return orderId; }\n}\n```\n\n**Guidelines**:\n- Always provide a constructor that accepts a **cause** so the original stack trace isn't lost\n- Carry useful context as fields, not just in the message\n- Prefer **unchecked** unless the caller can realistically recover\n- Don't create a custom type where a standard one (`IllegalArgumentException`, `IllegalStateException`) already fits"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the Executor Framework and why use it?",
+      "answer": "`java.util.concurrent` abstraction that **decouples task submission from thread management**, so you stop creating threads by hand.\n\n```java\nExecutorService pool = Executors.newFixedThreadPool(4);\nFuture<Integer> result = pool.submit(() -> compute());\npool.shutdown();\n```\n\n**Why**:\n- **Thread reuse** — avoids the cost of creating a thread per task\n- **Bounded concurrency** — protects against unbounded thread creation under load\n- **Lifecycle management** — `shutdown()` / `awaitTermination()`\n- **Results and errors** via `Future` / `CompletableFuture`\n\n**Common pools**: `newFixedThreadPool`, `newCachedThreadPool`, `newSingleThreadExecutor`, `newScheduledThreadPool`.\n\n> In production, prefer constructing a `ThreadPoolExecutor` directly so you control the **queue bound** and rejection policy. Java 21 adds `newVirtualThreadPerTaskExecutor()` for IO-heavy workloads."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is serialization in Java?",
+      "answer": "Converting an object into a **byte stream** (and back) so it can be persisted or sent over a network.\n\n```java\npublic class User implements Serializable {\n    private static final long serialVersionUID = 1L;\n    private String name;\n    private transient String password;   // excluded from serialization\n}\n```\n\n**Key points**:\n- The class must implement `Serializable` (a **marker** interface)\n- `transient` fields are skipped and come back as defaults\n- `serialVersionUID` guards compatibility — if it doesn't match on read, you get `InvalidClassException`\n- `static` fields belong to the class, not the instance, so they aren't serialized\n\n> Java's built-in serialization is widely considered a **security risk** (deserializing untrusted data enables remote code execution). Prefer JSON/Protobuf for external data."
     },
     {
       "question": "",

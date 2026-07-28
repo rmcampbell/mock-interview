@@ -1,5 +1,6 @@
 {
   "topic": "Paypal Specific",
+  "enabled": false,
   "questions": [
     {
       "question": "Why do you want to work at PayPal?",

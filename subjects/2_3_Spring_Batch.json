@@ -1,5 +1,6 @@
 {
   "topic": "Spring Batch",
+  "enabled": true,
   "questions": [
     {
       "question": "What is `Spring Batch` and what are its core features?",

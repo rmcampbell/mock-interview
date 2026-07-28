@@ -1,5 +1,6 @@
 {
   "topic": "Technical Resume",
+  "enabled": true,
   "questions": [
     {
       "question": "How do you explain technical challenges to stakeholders who do not have technical knowledge or backgrounds?",

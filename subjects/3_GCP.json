@@ -1,5 +1,6 @@
 {
   "topic": "GCP",
+  "enabled": true,
   "questions": [
     {
       "question": "What is `BigQuery`, and how does it help in analytics?",

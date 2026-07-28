@@ -1,5 +1,6 @@
 {
   "topic": "Delegates and Functional Programming",
+  "enabled": true,
   "questions": [
     {
       "question": "What is the role of functional programming in streams?",
@@ -76,6 +77,74 @@
     {
       "question": "Can you use default methods in functional interfaces?",
       "answer": "Yes.\n- Functional interfaces can have default methods\n- The single abstract method requirement for functional interfaces remains unchanged."
+    },
+    {
+      "question": "What is the scope of variables in a lambda?",
+      "answer": "A lambda can access:\n- Its own parameters and local variables\n- **Effectively final** local variables from the enclosing scope\n- Instance and static fields of the enclosing class\n\n**Effectively final** means the variable is never reassigned after initialization — the `final` keyword is optional.\n\n```java\nint count = 0;\nlist.forEach(item -> System.out.println(count));   // OK - never reassigned\n\nint total = 0;\nlist.forEach(item -> total += item);              // COMPILE ERROR\n```\n\n**Why**: the lambda may outlive the method call, so the value is **captured by value**. Allowing reassignment would create ambiguity about which value is seen.\n\n> Unlike anonymous inner classes, `this` inside a lambda refers to the **enclosing instance**, not the lambda itself."
+    },
+    {
+      "question": "Can a lambda throw a checked exception?",
+      "answer": "Only if the **functional interface's method declares it**. The built-in interfaces (`Function`, `Consumer`, `Supplier`, `Predicate`) do **not**, so checked exceptions won't compile.\n\n```java\n// Does not compile - Function.apply() declares no checked exception\nfiles.stream().map(f -> Files.readString(f));\n```\n\n**Options**:\n1. Wrap in an unchecked exception inside the lambda:\n```java\nfiles.stream().map(f -> {\n    try { return Files.readString(f); }\n    catch (IOException e) { throw new UncheckedIOException(e); }\n});\n```\n2. Define your own throwing interface:\n```java\n@FunctionalInterface\ninterface ThrowingFunction<T, R, E extends Exception> {\n    R apply(T t) throws E;\n}\n```\n3. Handle the exception inside the lambda and return an `Optional`."
+    },
+    {
+      "question": "What is the difference between `Predicate` and `Function`?",
+      "answer": "`Predicate<T>`:\n- `boolean test(T t)` — takes one argument, returns a **boolean**\n- Used for filtering and conditions\n- Composes with `and()`, `or()`, `negate()`\n\n`Function<T, R>`:\n- `R apply(T t)` — takes one argument, returns **any type**\n- Used for transformation/mapping\n- Composes with `andThen()`, `compose()`\n\n```java\nPredicate<String> isLong = s -> s.length() > 5;\nFunction<String, Integer> length = String::length;\n\nnames.stream()\n     .filter(isLong)     // Predicate\n     .map(length)        // Function\n     .toList();\n```\n\n> `Predicate<T>` is effectively a specialization of `Function<T, Boolean>` that avoids boxing."
+    },
+    {
+      "question": "What is the difference between intermediate and terminal stream operations?",
+      "answer": "**Intermediate** — return a new stream, are **lazy**, and can be chained:\n`filter`, `map`, `flatMap`, `sorted`, `distinct`, `limit`, `skip`, `peek`\n\n**Terminal** — produce a result or side effect and **trigger execution**:\n`collect`, `forEach`, `reduce`, `count`, `findFirst`, `anyMatch`, `toList`\n\n```java\nStream<String> s = names.stream().filter(n -> n.length() > 3);  // nothing runs yet\nList<String> result = s.toList();                                // NOW it runs\n```\n\n**Key rule**: a stream with **no terminal operation never executes**. This is the classic \"my `map()` didn't run\" bug."
+    },
+    {
+      "question": "Can a stream be reused?",
+      "answer": "**No.** A stream can be consumed only **once**. After a terminal operation, the stream is closed.\n\n```java\nStream<String> stream = names.stream();\nstream.forEach(System.out::println);\nstream.count();   // IllegalStateException: stream has already been\n                  // operated upon or closed\n```\n\n**Workarounds**:\n- Create a new stream from the source each time\n- Use a `Supplier<Stream<T>>` if you need repeated traversal:\n```java\nSupplier<Stream<String>> supplier = () -> names.stream();\nsupplier.get().forEach(...);\nsupplier.get().count();      // fine - a fresh stream\n```\n\n> Collections are **reusable sources**; streams are **one-shot pipelines** over them."
+    },
+    {
+      "question": "What is lazy evaluation in streams?",
+      "answer": "Intermediate operations do **no work** until a terminal operation runs. The pipeline is then executed in a **single pass**, element by element — not stage by stage.\n\n```java\nList<String> result = names.stream()\n    .filter(n -> { System.out.println(\"filter: \" + n); return n.length() > 3; })\n    .map(n -> { System.out.println(\"map: \" + n); return n.toUpperCase(); })\n    .findFirst()\n    .orElse(null);\n```\n\nEach element flows through `filter` then `map` before the next begins, and processing **stops at the first match**.\n\n**Benefits**:\n- **Short-circuiting** — `findFirst`, `anyMatch`, and `limit` can stop early\n- No intermediate collections allocated between stages\n- Works with **infinite** streams: `Stream.iterate(1, n -> n + 1).limit(10)`"
+    },
+    {
+      "question": "What is the difference between `map()` and `flatMap()`?",
+      "answer": "`map()` — **one-to-one**: transforms each element, preserving structure.\n`flatMap()` — **one-to-many**: each element becomes a stream, and all are **flattened** into one.\n\n```java\nList<List<String>> nested = List.of(List.of(\"a\", \"b\"), List.of(\"c\"));\n\nnested.stream().map(List::stream);       // Stream<Stream<String>> - still nested\nnested.stream().flatMap(List::stream);   // Stream<String> - flattened: a, b, c\n```\n\n**Typical use**: flattening a collection-of-collections, or expanding one record into many:\n```java\norders.stream()\n      .flatMap(order -> order.getItems().stream())\n      .toList();   // all items across all orders\n```"
+    },
+    {
+      "question": "How does `reduce()` work?",
+      "answer": "It combines stream elements into a single result by repeatedly applying an accumulator.\n\n**Three forms**:\n```java\n// 1. Accumulator only - returns Optional (stream may be empty)\nOptional<Integer> sum = nums.stream().reduce((a, b) -> a + b);\n\n// 2. Identity + accumulator - returns a value\nint total = nums.stream().reduce(0, (a, b) -> a + b);\n\n// 3. Identity + accumulator + combiner - for parallel streams\nint length = words.stream()\n    .reduce(0, (acc, w) -> acc + w.length(), Integer::sum);\n```\n\n**Requirements for correctness**: the accumulator must be **associative** and **stateless**, and the identity must satisfy `f(identity, x) == x` — otherwise parallel results are wrong.\n\n> For simple cases prefer purpose-built terminals like `mapToInt(...).sum()`, which are clearer and avoid boxing."
+    },
+    {
+      "question": "What is the difference between `groupingBy` and `partitioningBy`?",
+      "answer": "`groupingBy` — splits into **any number** of groups, keyed by a classifier function:\n```java\nMap<String, List<Employee>> byDept =\n    employees.stream().collect(groupingBy(Employee::getDepartment));\n```\n\n`partitioningBy` — splits into exactly **two** groups using a `Predicate`, keyed by `Boolean`:\n```java\nMap<Boolean, List<Employee>> split =\n    employees.stream().collect(partitioningBy(e -> e.getSalary() > 50000));\n```\n\n**Key difference**: `partitioningBy` **always** returns both `true` and `false` keys — even when one side is empty. `groupingBy` only creates keys that actually occur.\n\n> Both accept a **downstream collector**: `groupingBy(Employee::getDept, counting())`."
+    },
+    {
+      "question": "What are the most important `Collectors` methods?",
+      "answer": "```java\ntoList()  toSet()  toMap(keyFn, valueFn)\njoining(\", \")            // string concatenation\ncounting()               // count per group\nsummingInt(fn)  averagingDouble(fn)\ngroupingBy(fn)  partitioningBy(predicate)\nmapping(fn, downstream)  // transform before collecting\nteeing(c1, c2, merger)   // Java 12+, two collectors at once\n```\n\n**Composed example** — highest-paid employee per department:\n```java\nMap<String, Optional<Employee>> topPaid = employees.stream()\n    .collect(groupingBy(Employee::getDepartment,\n             maxBy(comparing(Employee::getSalary))));\n```\n\n> Watch out: `toMap` throws `IllegalStateException` on **duplicate keys** unless you supply a merge function."
+    },
+    {
+      "question": "What is the difference between `orElse()` and `orElseGet()`?",
+      "answer": "`orElse(value)` — the argument is **always evaluated**, even when the `Optional` has a value.\n`orElseGet(supplier)` — the supplier runs **only when the `Optional` is empty**.\n\n```java\n// expensiveDefault() runs EVEN IF the optional is present\nString a = optional.orElse(expensiveDefault());\n\n// expensiveDefault() runs ONLY if the optional is empty\nString b = optional.orElseGet(() -> expensiveDefault());\n```\n\n**Rule**: use `orElse` for cheap constants; use `orElseGet` whenever the default involves computation, a database call, or side effects.\n\n> The same applies to `orElseThrow(supplier)` — the exception is only constructed when needed."
+    },
+    {
+      "question": "When should you NOT use `Optional`?",
+      "answer": "`Optional` was designed for **return types**, to signal \"this may legitimately be absent.\"\n\n**Avoid it**:\n- As a **field** — it isn't `Serializable` and adds memory overhead per instance\n- As a **method parameter** — forces callers to wrap; use overloads or `@Nullable` instead\n- In **collections** — prefer an empty collection over `Optional<List<T>>`, and never `List<Optional<T>>`\n- For **constructor arguments**\n\n**Never do this**:\n```java\nif (optional.isPresent()) { return optional.get(); }   // defeats the purpose\n```\nPrefer `map`, `filter`, `orElse`, `orElseGet`, `ifPresent`.\n\n> An `Optional` that is itself `null` is the worst of both worlds — never return `null` from a method whose type is `Optional`."
+    },
+    {
+      "question": "When should you use parallel streams?",
+      "answer": "**Good fit** when *all* of these hold:\n- **Large** dataset (typically 10,000+ elements)\n- **CPU-bound** work per element\n- An **efficiently splittable** source (`ArrayList`, arrays, `IntStream.range`)\n- **Stateless, associative, side-effect-free** operations\n\n**Poor fit**:\n- Small collections — coordination overhead exceeds the gain\n- **I/O-bound** work — threads just block (use async or virtual threads)\n- `LinkedList` or iterator-based sources that split badly\n- Any operation with **shared mutable state**\n\n```java\nlong count = hugeList.parallelStream().filter(this::isExpensive).count();\n```\n\n> Parallel streams share the **common ForkJoinPool** by default, so one slow parallel stream can starve others across the whole JVM. **Always measure** — parallel is often slower."
+    },
+    {
+      "question": "How do you find the second-highest salary from a list of employees?",
+      "answer": "```java\nOptional<Employee> second = employees.stream()\n    .sorted(Comparator.comparing(Employee::getSalary).reversed())\n    .skip(1)\n    .findFirst();\n```\n\n**Handling duplicate salaries** — get the second *distinct* value:\n```java\nOptional<Double> secondHighest = employees.stream()\n    .map(Employee::getSalary)\n    .distinct()\n    .sorted(Comparator.reverseOrder())\n    .skip(1)\n    .findFirst();\n```\n\n> The interviewer is usually checking whether you consider **duplicates** and the **empty/single-element** case."
+    },
+    {
+      "question": "How do you group employees by department and find the highest paid in each?",
+      "answer": "```java\nMap<String, Optional<Employee>> topByDept = employees.stream()\n    .collect(Collectors.groupingBy(\n        Employee::getDepartment,\n        Collectors.maxBy(Comparator.comparing(Employee::getSalary))\n    ));\n```\n\n**Unwrapping the `Optional`** with `collectingAndThen`:\n```java\nMap<String, Employee> topByDept = employees.stream()\n    .collect(Collectors.groupingBy(\n        Employee::getDepartment,\n        Collectors.collectingAndThen(\n            Collectors.maxBy(Comparator.comparing(Employee::getSalary)),\n            Optional::get\n        )\n    ));\n```\n\n> This demonstrates **downstream collectors**, which is the point of the question."
+    },
+    {
+      "question": "How do you find duplicate elements in a list using streams?",
+      "answer": "**With a `Set` to track what's been seen**:\n```java\nSet<String> seen = new HashSet<>();\nSet<String> duplicates = items.stream()\n    .filter(item -> !seen.add(item))   // add() returns false if already present\n    .collect(Collectors.toSet());\n```\n\n**By frequency count** (no shared mutable state — parallel-safe):\n```java\nSet<String> duplicates = items.stream()\n    .collect(Collectors.groupingBy(i -> i, Collectors.counting()))\n    .entrySet().stream()\n    .filter(e -> e.getValue() > 1)\n    .map(Map.Entry::getKey)\n    .collect(Collectors.toSet());\n```\n\n> The first is shorter, but its filter is **stateful** — it breaks on a parallel stream. Prefer the second if parallelism matters."
+    },
+    {
+      "question": "How do you convert a list of strings to a comma-separated string?",
+      "answer": "```java\nString result = names.stream()\n    .collect(Collectors.joining(\", \"));\n```\n\n**With a prefix and suffix**:\n```java\nString result = names.stream()\n    .collect(Collectors.joining(\", \", \"[\", \"]\"));   // [Alice, Bob, Carol]\n```\n\n**When elements aren't already strings**:\n```java\nString ids = orders.stream()\n    .map(Order::getId)\n    .map(String::valueOf)\n    .collect(Collectors.joining(\",\"));\n```\n\n> `String.join(\", \", names)` is simpler when you already have a `Collection<String>` and don't need a pipeline."
     }
   ]
 }

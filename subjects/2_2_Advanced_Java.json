@@ -1,5 +1,6 @@
 {
   "topic": "Advanced Java",
+  "enabled": true,
   "questions": [
     {
       "question": "What is the difference between `synchronized` block and `ReentrantLock`?",

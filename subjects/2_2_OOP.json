@@ -1,5 +1,6 @@
 {
   "topic": "Java OOP",
+  "enabled": true,
   "questions": [
     {
       "question": "What is the `Diamond Problem`?",
@@ -222,12 +223,16 @@
       "answer": "`Upcasting`:\n- Converting a subclass reference to a superclass reference (safe, implicit)\n\n`Downcasting`:\n- Converting a superclass reference back to a subclass reference (requires explicit casting, risky)."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the difference between encapsulation and abstraction?",
+      "answer": "They're often confused because both involve \"hiding\", but they hide **different things**:\n\n**Encapsulation** — hides **state**:\n- *How* you protect data: `private` fields with controlled accessors\n- An **implementation** technique\n- Goal: prevent invalid state and uncontrolled access\n\n**Abstraction** — hides **complexity**:\n- *What* an object does, not how it does it: interfaces and abstract classes\n- A **design** technique\n- Goal: let callers work with a simple contract\n\n**Example**: a `List` interface is **abstraction** (you call `add()` without knowing the structure). `ArrayList` keeping its backing array `private` is **encapsulation**."
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "What is the difference between aggregation and composition?",
+      "answer": "Both are **HAS-A** relationships; they differ in **ownership and lifecycle**:\n\n**Aggregation** — weak, \"has-a\":\n- The contained object can **outlive** the container\n- It can be shared between containers\n- Example: a `Department` has `Professor`s — deleting the department doesn't delete the professors\n\n**Composition** — strong, \"part-of\":\n- The part **cannot exist independently** of the whole\n- Destroying the container destroys the parts\n- Example: a `House` has `Room`s — demolish the house and the rooms cease to exist\n\n```java\n// Aggregation - passed in, shared, outlives Department\nclass Department {\n    private List<Professor> staff;\n    Department(List<Professor> staff) { this.staff = staff; }\n}\n\n// Composition - created and owned internally\nclass House {\n    private final List<Room> rooms = List.of(new Room(\"kitchen\"));\n}\n```"
+    },
+    {
+      "question": "How do you apply OOP principles in a real Spring Boot project?",
+      "answer": "- **Encapsulation**: entities keep fields private with validated setters; DTOs isolate the API contract from the persistence model.\n- **Abstraction**: define a service or repository **interface**, and let callers depend on it rather than the implementation.\n- **Polymorphism**: multiple implementations of one interface, selected at runtime — e.g. a `PaymentProcessor` with card, ACH, and wallet variants injected by `@Qualifier`.\n- **Inheritance**: used sparingly — a `BaseEntity` with `id`, `createdAt`, `updatedAt` via `@MappedSuperclass`, or a shared `@ControllerAdvice` exception handler.\n\n**Dependency injection** is the practical glue: constructor injection of interfaces gives loose coupling and makes classes trivially unit-testable with mocks.\n\n> Prefer **composition over inheritance** — deep hierarchies age badly in a service codebase."
     },
     {
       "question": "",

@@ -1,5 +1,6 @@
 {
   "topic": "Spring & Spring Boot",
+  "enabled": true,
   "questions": [
     {
       "question": "What are the main modules of the Spring Framework?",

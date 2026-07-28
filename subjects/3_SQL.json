@@ -1,5 +1,6 @@
 {
   "topic": "SQL",
+  "enabled": true,
   "questions": [
     {
       "question": "What is SQL?",

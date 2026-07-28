@@ -1,5 +1,6 @@
 {
   "topic": "Design Patterns and Software Engineering",
+  "enabled": true,
   "questions": [
     {
       "question": "What is the Singleton Design Pattern, and how is it implemented in Java?",
@@ -106,8 +107,8 @@
       "answer": "Defines a one-to-many dependency where an object (subject) notifies a list of observers about state changes.\n\n**Implementation in Java**:\n```java\nimport java.util.*;\n\ninterface Observer {\n    void update(String message);\n}\n\nclass ConcreteObserver implements Observer {\n    private String observerName;\n    \n    public ConcreteObserver(String name) {\n        this.observerName = name;\n    }\n\n    public void update(String message) {\n        System.out.println(observerName + \" received message: \" + message);\n    }\n}\n\nclass Subject {\n    private List<Observer> observers = new ArrayList<>();\n\n    public void addObserver(Observer observer) {\n        observers.add(observer);\n    }\n\n    public void removeObserver(Observer observer) {\n        observers.remove(observer);\n    }\n\n    public void notifyObservers(String message) {\n        for (Observer observer : observers) {\n            observer.update(message);\n        }\n    }\n}\n```"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "Explain the Singleton pattern and its thread-safe implementations.",
+      "answer": "**Eager initialization** — simplest, thread-safe by class-loading guarantees, but built even if never used:\n```java\npublic class Eager {\n    private static final Eager INSTANCE = new Eager();\n    private Eager() {}\n    public static Eager getInstance() { return INSTANCE; }\n}\n```\n\n**Double-checked locking** — lazy and fast; `volatile` is **required** to prevent returning a partially constructed object:\n```java\npublic class Dcl {\n    private static volatile Dcl instance;\n    private Dcl() {}\n    public static Dcl getInstance() {\n        if (instance == null) {\n            synchronized (Dcl.class) {\n                if (instance == null) instance = new Dcl();\n            }\n        }\n        return instance;\n    }\n}\n```\n\n**Bill Pugh holder idiom** — lazy, thread-safe, no synchronization cost:\n```java\npublic class Holder {\n    private Holder() {}\n    private static class H { static final Holder INSTANCE = new Holder(); }\n    public static Holder getInstance() { return H.INSTANCE; }\n}\n```\n\n**Enum** — the safest; immune to reflection and serialization attacks:\n```java\npublic enum Config { INSTANCE; public void doWork() { } }\n```\n\n> In Spring, beans are singletons **per container** by default, so you rarely hand-roll this."
     },
     {
       "question": "",
