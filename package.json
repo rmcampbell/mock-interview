@@ -8,10 +8,16 @@
   "private": true,
   "license": "ISC",
   "scripts": {
-    "interview": "node index.js"
+    "interview": "node index.js",
+    "build:web": "node scripts/build-web.js",
+    "serve:web": "node scripts/serve-web.js"
   },
   "dependencies": {
     "@inquirer/prompts": "^8.5.2",
     "cli-markdown": "^3.5.1"
+  },
+  "devDependencies": {
+    "markdown-it": "^14.1.0",
+    "prismjs": "^1.30.0"
   }
 }
