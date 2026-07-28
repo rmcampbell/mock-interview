@@ -1,0 +1,282 @@
+:root {
+  --bg: #0f1117;
+  --card: #171a23;
+  --border: #272b38;
+  --text: #e6e8ee;
+  --muted: #9aa1b1;
+  --accent: #7aa2f7;
+  --accent-ink: #0f1117;
+  --code-bg: #1e222d;
+  --ok: #9ece6a;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --border: #e2e5ea;
+    --text: #1c1f27;
+    --muted: #5c6373;
+    --accent: #3355cc;
+    --accent-ink: #ffffff;
+    --code-bg: #f0f2f5;
+    --ok: #2f7d32;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 0;
+}
+
+.topbar h1 {
+  font-size: 1.1rem;
+  letter-spacing: .02em;
+  margin: 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card h2 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+}
+
+/* Topic picker */
+.controls { display: flex; gap: .5rem; margin-bottom: .75rem; }
+
+.topics {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0 .25rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .4rem;
+  /* Long lists scroll inside the card instead of pushing the Start button away. */
+  max-height: 22rem;
+  overflow-y: auto;
+}
+
+.topics label {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .5rem .65rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  height: 100%;
+}
+
+.topics label:hover { border-color: var(--accent); }
+.topics input { flex: none; }
+
+/* Let long topic names wrap cleanly instead of overflowing or breaking mid-word. */
+.topics .name {
+  min-width: 0;
+  overflow-wrap: break-word;
+  line-height: 1.35;
+}
+
+.topics .count {
+  margin-left: auto;
+  padding-left: .35rem;
+  flex: none;
+  color: var(--muted);
+  font-size: .85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.options {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  margin: 0 0 1.25rem;
+}
+
+.options legend { color: var(--muted); font-size: .85rem; padding: 0 .35rem; }
+.options label { display: flex; align-items: center; gap: .55rem; padding: .2rem 0; cursor: pointer; }
+
+/* Buttons */
+button {
+  font: inherit;
+  border-radius: 8px;
+  padding: .6rem 1.1rem;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+}
+
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+
+.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.small { padding: .35rem .7rem; font-size: .85rem; }
+
+/* Quiz */
+.quiz-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .6rem;
+}
+
+.pill {
+  background: var(--code-bg);
+  border-radius: 999px;
+  padding: .2rem .7rem;
+  font-size: .8rem;
+  color: var(--muted);
+}
+
+.counter { color: var(--muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+
+.progress { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-bottom: 1.25rem; }
+#progress-bar { height: 100%; width: 0; background: var(--accent); transition: width .2s ease; }
+
+.question { font-size: 1.15rem; font-weight: 600; }
+
+.answer {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+.actions .ghost { margin-left: 0; }
+#next { margin-left: auto; }
+
+.hint { color: var(--muted); font-size: .8rem; margin: .9rem 0 0; }
+
+kbd {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0 .3rem;
+  font-size: .85em;
+}
+
+.error { border-color: #b4433a; color: #ff9d94; }
+
+/* Rendered markdown */
+.markdown > :first-child { margin-top: 0; }
+.markdown > :last-child { margin-bottom: 0; }
+.markdown ul, .markdown ol { padding-left: 1.4rem; }
+.markdown li { margin: .25rem 0; }
+.markdown code {
+  background: var(--code-bg);
+  padding: .12em .38em;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .9em;
+}
+
+.markdown pre {
+  background: var(--code-bg);
+  padding: .9rem 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.markdown pre code { background: none; padding: 0; }
+
+/* Prism tokens. Written against our own variables rather than importing a
+   Prism theme, so highlighting follows the light/dark scheme. */
+:root {
+  --tok-comment: #6b7280;
+  --tok-keyword: #c792ea;
+  --tok-string: #9ece6a;
+  --tok-number: #ff9e64;
+  --tok-function: #7aa2f7;
+  --tok-class: #e0af68;
+  --tok-operator: #89ddff;
+  --tok-punctuation: #9aa1b1;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --tok-comment: #6a737d;
+    --tok-keyword: #a626a4;
+    --tok-string: #227a37;
+    --tok-number: #b35000;
+    --tok-function: #3355cc;
+    --tok-class: #8a6100;
+    --tok-operator: #0a7ca5;
+    --tok-punctuation: #5c6373;
+  }
+}
+
+.token.comment, .token.prolog, .token.doctype, .token.cdata { color: var(--tok-comment); font-style: italic; }
+.token.punctuation { color: var(--tok-punctuation); }
+.token.keyword, .token.boolean, .token.null, .token.important, .token.atrule { color: var(--tok-keyword); }
+.token.string, .token.char, .token.attr-value, .token.regex { color: var(--tok-string); }
+.token.number { color: var(--tok-number); }
+.token.function, .token.method { color: var(--tok-function); }
+.token.class-name, .token.namespace, .token.annotation, .token.tag, .token.selector { color: var(--tok-class); }
+.token.operator, .token.entity, .token.url, .token.variable { color: var(--tok-operator); }
+.token.property, .token.attr-name, .token.constant, .token.symbol { color: var(--tok-class); }
+.token.deleted { color: #f7768e; }
+.token.inserted { color: var(--tok-string); }
+.token.bold { font-weight: 600; }
+.token.italic { font-style: italic; }
+
+.markdown blockquote {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--border);
+  color: var(--muted);
+}
+
+/* Tables scroll on their own so the page never scrolls sideways */
+.markdown .table-scroll { overflow-x: auto; margin: 1rem 0; }
+.markdown table { border-collapse: collapse; width: 100%; }
+.markdown th, .markdown td {
+  border: 1px solid var(--border);
+  padding: .45rem .7rem;
+  text-align: left;
+  vertical-align: top;
+}
+.markdown th { background: var(--code-bg); }
+
+@media (max-width: 560px) {
+  .card { padding: 1.1rem; }
+  .topics { grid-template-columns: 1fr; }
+  #next { margin-left: 0; }
+  .actions button { flex: 1 1 auto; }
+}

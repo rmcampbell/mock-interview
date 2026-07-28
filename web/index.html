@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mock Interview</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <h1>Mock Interview</h1>
+  <button id="restart" class="ghost" hidden>Start over</button>
+</header>
+
+<main>
+  <!-- Topic picker -->
+  <section id="setup" class="card" hidden>
+    <h2>What do you want to study?</h2>
+    <div class="controls">
+      <button id="select-all" class="ghost small">Select all</button>
+      <button id="select-none" class="ghost small">Clear</button>
+    </div>
+    <ul id="topic-list" class="topics"></ul>
+
+    <fieldset class="options">
+      <legend>Options</legend>
+      <label><input type="checkbox" id="opt-shuffle"> Randomize question order</label>
+      <label><input type="checkbox" id="opt-combine"> Mix all topics together</label>
+    </fieldset>
+
+    <button id="start" class="primary" disabled>Start quiz</button>
+  </section>
+
+  <!-- Quiz -->
+  <section id="quiz" class="card" hidden>
+    <div class="quiz-meta">
+      <span id="topic-label" class="pill"></span>
+      <span id="counter" class="counter"></span>
+    </div>
+    <div class="progress"><div id="progress-bar"></div></div>
+
+    <div id="question" class="question markdown"></div>
+
+    <div id="answer" class="answer markdown" hidden></div>
+
+    <div class="actions">
+      <button id="reveal" class="primary">View answer</button>
+      <button id="prev" class="ghost">Previous</button>
+      <button id="next" class="ghost">Next</button>
+    </div>
+    <p class="hint"><kbd>Space</kbd> toggles the answer · <kbd>Enter</kbd> reveals or advances · <kbd>←</kbd> <kbd>→</kbd> to navigate</p>
+  </section>
+
+  <!-- Done -->
+  <section id="done" class="card" hidden>
+    <h2>Quiz complete</h2>
+    <p id="done-summary"></p>
+    <button id="again" class="primary">Study again</button>
+  </section>
+
+  <section id="error" class="card error" hidden></section>
+</main>
+
+<script src="vendor/markdown-it.min.js"></script>
+<script src="vendor/prism.js" data-manual></script>
+<script src="vendor/prism-java.min.js"></script>
+<script src="vendor/prism-sql.min.js"></script>
+<script src="vendor/prism-http.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
