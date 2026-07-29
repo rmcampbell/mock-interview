@@ -299,8 +299,8 @@
       "answer": "`Dependency Injection (DI)`:\n- A design pattern that allows a class to receive its dependencies (objects or services) from an external source rather than creating them itself.\n\n**Benefits**:\n- **Loose Coupling**: Components are decoupled, making the system more flexible and easier to test.\n- **Reusability**: Easily swap dependencies without affecting the class using them.\n- **Testability**: Dependencies can be easily mocked during unit testing.\n\n**Example in Java (using Spring)**:\n```java\n@Component\npublic class UserService {\n    private final UserRepository userRepository;\n\n    @Autowired\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}\n```"
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "Difference between `@Component`, `@Service`, `@Repository` and `@Controller`?",
+      "answer": "`@Service`, `@Repository`, `@Controller`:\n- All composed annotations with `@Component` as a meta-annotation for each of them\n\n`@Component`: Generic bean that allows Spring to detect our custom beans automatically\n`@Service`: Business logic; Semantic only (better readability)\n`@Repository`: persistence layer; Automatic exception translation\n`@Controller`: Used in Spring MVC to handle HTTP requests; For REST APIs, use `@RestController`"
     },
     {
       "question": "",
