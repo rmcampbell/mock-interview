@@ -3,12 +3,8 @@
   "enabled": true,
   "questions": [
     {
-      "question": "",
-      "answer": "TODO: Why are you looking to move?\n\n\n- Been looking to move for a full-stack position\n- As I master skills or started looking externally\n- Mosaicx recently bought by another company and was forced to lay of a significant number of staff"
-    },
-    {
       "question": "Tell me about yourself.",
-      "answer": "- Interned at Union Pacific as a Full-Stack Developer\n- Started at Mosaicx in App Dev out of college\n- Started a platform modernization in 2020\n- Selected to add functionality for reusable components to new platform\n- Mentored migration teams in reusable component development\n- Promoted and led with their client migrations to GCP using Node\n- Promoted to Outbound product team\n- Work primarily in Java using Spring Boot"
+      "answer": "Backend engineer, ~8 years building backend/middleware systems.\n\n**Core background:**\n- Java / Spring Boot\n- Cloud-native microservices & event-driven architectures\n- API integrations\n\n**Now — TEKsystems, Air Force Weather Systems:**\n- Build and maintain Java and Python applications\n- Reusable testing infrastructure and automated CI/CD pipelines\n- Apache Airflow workflows for large-scale data processing\n\n**Before — Mosaicx:**\n- Event-driven backend services on GCP (Spring Boot, Node.js, Pub/Sub, Cloud Run, Cloud Scheduler)\n- Processed millions of Pub/Sub messages for voice/SMS systems\n- Built reusable libraries and tooling used across teams; mentored during platform modernization"
     },
     {
       "question": "How do you build rapport with new team members?",
