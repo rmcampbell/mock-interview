@@ -21,7 +21,7 @@ Each file in `subjects/` looks like:
 ```
 
 Both front ends skip entries with an empty `question` or `answer`, so blank slots
-can be left in place as placeholders. Answers are markdown — bullets, tables, and
+can be left in place as placeholders. Answers are Markdown — bullets, tables, and
 fenced code blocks all render.
 
 ### `enabled`
@@ -69,14 +69,12 @@ One-time setup: **Settings → Pages → Build and deployment → Source: GitHub
 
 The site is then served at `https://<user>.github.io/mock-interview/`.
 
-> GitHub Pages requires a public repo, or a paid plan for private repos.
-
 ## Layout
 
-| Path | Purpose |
-| --- | --- |
-| `subjects/` | Question data (source of truth) |
-| `index.js`, `src/` | Terminal quiz |
-| `web/` | Static site source |
+| Path                   | Purpose                                   |
+|------------------------|-------------------------------------------|
+| `subjects/`            | Question data (source of truth)           |
+| `index.js`, `src/`     | Terminal quiz                             |
+| `web/`                 | Static site source                        |
 | `scripts/build-web.js` | Bundles data + copies `web/` into `dist/` |
-| `dist/` | Build output (git-ignored) |
+| `dist/`                | Build output (git-ignored)                |
